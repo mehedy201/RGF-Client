@@ -1,0 +1,20 @@
+
+
+.navigation_style{
+    display: flex;
+    align-items: center;
+}
+
+.navigation_style a{
+    font-family: 'Noto Sans', sans-serif;
+    justify-items: center;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 20px;
+    color: rgb(27, 27, 27);
+
+}
+.navigation_style a img{
+    width: 200px;
+    height: 96.25px;
+}
