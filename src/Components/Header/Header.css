@@ -3,6 +3,7 @@
 .navigation_style{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .navigation_style a{
