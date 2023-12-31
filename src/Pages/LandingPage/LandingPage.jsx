@@ -6,6 +6,7 @@ import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 import Experience from '../../Components/LandingPageComponents/Experience/Experience';
+import KeyBenefits from '../../Components/LandingPageComponents/KeyBenefits/KeyBenefits';
 
 const LandingPage = () => {
     return (
@@ -46,6 +47,8 @@ const LandingPage = () => {
         <section className='container'>
             <Experience/>
         </section>
+        {/* Key Benifits Section ________________________________________________________________ */}
+        <KeyBenefits/>
 
 
 
