@@ -7,6 +7,7 @@ import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 import Experience from '../../Components/LandingPageComponents/Experience/Experience';
 import KeyBenefits from '../../Components/LandingPageComponents/KeyBenefits/KeyBenefits';
+import Section4 from '../../Components/LandingPageComponents/Section4/Section4';
 
 const LandingPage = () => {
     return (
@@ -43,12 +44,21 @@ const LandingPage = () => {
               </div>
             </div>
         </section>
-        {/* Experience Section _________________________________________________________________ */}
+        {/* Experience Section __________________ */}
         <section className='container'>
             <Experience/>
         </section>
-        {/* Key Benifits Section ________________________________________________________________ */}
+        {/* Key Benifits Section _________________ */}
         <KeyBenefits/>
+        {/* Section 4 ____________________________ */}
+        <Section4/>
+
+
+        
+        {/* Section 4 ____________________________ */}
+        {/* Section 4 ____________________________ */}
+        {/* Section 4 ____________________________ */}
+        {/* Section 4 ____________________________ */}
 
 
 
