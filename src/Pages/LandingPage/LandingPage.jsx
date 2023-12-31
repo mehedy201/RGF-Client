@@ -5,10 +5,12 @@ import { FaPinterestP } from "@react-icons/all-files/fa/FaPinterestP";
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
+import Experience from '../../Components/LandingPageComponents/Experience/Experience';
 
 const LandingPage = () => {
     return (
-        <div className="landing_page">
+        <>
+        <section className="landing_page">
             <div className="container">
               {/* Hero Section_________________________ */}
               {/* Hero Text  */}
@@ -39,8 +41,15 @@ const LandingPage = () => {
                     </div>
               </div>
             </div>
+        </section>
+        {/* Experience Section _________________________________________________________________ */}
+        <section className='container'>
+            <Experience/>
+        </section>
 
-        </div>
+
+
+        </>
     );
 };
 
