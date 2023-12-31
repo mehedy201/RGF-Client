@@ -44,3 +44,11 @@
 .ant-drawer-title{
     visibility: hidden;
 }
+
+/* Responsive Header _________________ */
+@media only screen and (max-width: 768px) {
+    .mobile_navigation .mobile_menu_innerdiv a img{
+        width: 120px;
+        height: auto;
+    }
+}

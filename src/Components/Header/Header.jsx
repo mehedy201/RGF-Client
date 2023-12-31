@@ -63,7 +63,7 @@ const Header = () => {
                                         </div>
                                     </Drawer>
                                 </div>
-                                <div className='mobile_menu_innerdiv'>
+                                <div className='mobile_menu_innerdiv '>
                                     <Link to={'/'}><img src={logo} alt="RFG" /></Link>
                                 </div>
                             </div>
