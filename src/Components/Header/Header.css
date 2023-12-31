@@ -1,5 +1,3 @@
-
-
 .navigation_style{
     display: flex;
     align-items: center;
@@ -18,4 +16,31 @@
 .navigation_style a img{
     width: 200px;
     height: 96.25px;
+}
+
+/* Mobile Menu ______________ */
+.mobile_navigation{
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+.mobile_menu_nav_link a {
+    display: block;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+}
+.mobile_navigation .mobile_menu_innerdiv a img{
+    width: 150px;
+    height: auto;
+}
+.ant-drawer-header-title{
+    flex-direction: row-reverse !important;
+}
+.ant-drawer-title{
+    visibility: hidden;
 }
