@@ -8,6 +8,7 @@ import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 import Experience from '../../Components/LandingPageComponents/Experience/Experience';
 import KeyBenefits from '../../Components/LandingPageComponents/KeyBenefits/KeyBenefits';
 import Section4 from '../../Components/LandingPageComponents/Section4/Section4';
+import CarouselComponents from '../../Components/LandingPageComponents/CarouselComponents/CarouselComponents';
 
 const LandingPage = () => {
     return (
@@ -52,15 +53,9 @@ const LandingPage = () => {
         <KeyBenefits/>
         {/* Section 4 ____________________________ */}
         <Section4/>
-
-
-        
-        {/* Section 4 ____________________________ */}
-        {/* Section 4 ____________________________ */}
-        {/* Section 4 ____________________________ */}
-        {/* Section 4 ____________________________ */}
-
-
+        {/* Section 5 Carousel ____________________________ */}
+        <div><h2 style={{fontWeight: '700', fontSize: '3.125rem'}} className='text-center pt-5 pb-2'>Customer Testimonials</h2></div>
+        <CarouselComponents/>
 
         </>
     );
