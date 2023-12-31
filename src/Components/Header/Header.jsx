@@ -70,10 +70,10 @@ const Header = () => {
                         </div>
                         {/* Icon List ___________________________ */}
                         <div>
-                            <a className='px-1' href=""><img src={fbIcon} alt="" /></a>
-                            <a className='px-1' href=""><img src={inIcon} alt="" /></a>
-                            <a className='px-1' href=""><img src={piIcon} alt="" /></a>
-                            <a className='px-1' href=""><img src={twIcon} alt="" /></a>
+                            <a className='px-1' target='_blank' rel='noreferrer' href="https://www.facebook.com/rgvturf"><img src={fbIcon} alt="" /></a>
+                            <a className='px-1' target='_blank' rel='noreferrer' href="https://www.instagram.com/rgvturf/"><img src={inIcon} alt="" /></a>
+                            <a className='px-1' target='_blank' rel='noreferrer' href="https://www.pinterest.com/rgvturf/"><img src={piIcon} alt="" /></a>
+                            <a className='px-1' target='_blank' rel='noreferrer' href="https://twitter.com/rgvturf"><img src={twIcon} alt="" /></a>
                         </div>
                     </div>
                 </div>

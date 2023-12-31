@@ -6,9 +6,10 @@
 }
 .landing_page_hero_text{
     color: white;
-    font-size: 2.875rem;
+    font-size: 3rem;
     font-weight: 700;
     line-height: 1.2;
+    text-shadow: 1px 1px BLACK;
 }
 
 .landingPageButtonPrenentDiv{
