@@ -1,14 +1,15 @@
-// import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './LandingPage.css'
 import { FaPinterestP } from "@react-icons/all-files/fa/FaPinterestP";
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
-import Experience from '../../Components/LandingPageComponents/Experience/Experience';
-import KeyBenefits from '../../Components/LandingPageComponents/KeyBenefits/KeyBenefits';
-import Section4 from '../../Components/LandingPageComponents/Section4/Section4';
-import CarouselComponents from '../../Components/LandingPageComponents/CarouselComponents/CarouselComponents';
+const  Experience = React.lazy(() => import('../../Components/LandingPageComponents/Experience/Experience'));
+const  KeyBenefits = React.lazy(() => import('../../Components/LandingPageComponents/KeyBenefits/KeyBenefits'));
+const  Section4 = React.lazy(() => import('../../Components/LandingPageComponents/Section4/Section4'));
+const  CarouselComponents = React.lazy(() => import('../../Components/LandingPageComponents/CarouselComponents/CarouselComponents'));
+
 
 const LandingPage = () => {
     return (
@@ -47,15 +48,24 @@ const LandingPage = () => {
         </section>
         {/* Experience Section __________________ */}
         <section className='container'>
-            <Experience/>
+            <React.Suspense fallback={<p>Experience is looding.................</p>}>
+                <Experience/>
+            </React.Suspense>
         </section>
         {/* Key Benifits Section _________________ */}
-        <KeyBenefits/>
+        <React.Suspense fallback={<p>Key Benefits is looding.................</p>}>
+            <KeyBenefits/>
+        </React.Suspense>
+        
         {/* Section 4 ____________________________ */}
-        <Section4/>
+        <React.Suspense fallback={<p>Section 4 is looding.................</p>}>
+            <Section4/>
+        </React.Suspense>
         {/* Section 5 Carousel ____________________________ */}
         <div><h2 style={{fontWeight: '700', fontSize: '3.125rem'}} className='text-center pt-5 pb-2'>Customer Testimonials</h2></div>
-        <CarouselComponents/>
+        <React.Suspense fallback={<p>Carousel Components is looding.................</p>}>
+            <CarouselComponents/>
+        </React.Suspense>
 
         </>
     );

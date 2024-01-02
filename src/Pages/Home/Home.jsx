@@ -1,7 +1,8 @@
-// import React from 'react';
+import React from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
+const Footer = React.lazy(() => import('../../Components/Footer/Footer'));
 
 const Home = () => {
     return (
@@ -10,7 +11,9 @@ const Home = () => {
             <div>
                 <Outlet/>
             </div>
-            <Footer/>
+            <Suspense fallback={<p>Footer Looding...........</p>}>
+                <Footer/>
+            </Suspense>
         </>
     );
 };

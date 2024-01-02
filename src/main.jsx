@@ -1,4 +1,5 @@
 import React from 'react'
+import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client'
 // import App from './App.jsx'
 import './index.css'
@@ -8,14 +9,16 @@ import {
 } from "react-router-dom";
 import Home from './Pages/Home/Home.jsx';
 import LandingPage from './Pages/LandingPage/LandingPage';
-import ShopTurf from './Pages/ShopTurf/ShopTurf';
-import ShopPlants from './Pages/ShopPlants/ShopPlants';
-import Modeling from './Pages/Modeling/Modeling';
-import Services from './Pages/Services/Services';
-import Calculator from './Pages/Calculator/Calculator';
-import FAQs from './Pages/FAQs/FAQs';
-import ContactUs from './Pages/ContactUs/ContactUs';
+const ShopTurf = React.lazy(() => import('./Pages/ShopTurf/ShopTurf'));
+const ShopPlants = React.lazy(() => import('./Pages/ShopPlants/ShopPlants'));
+const Modeling = React.lazy(() => import('./Pages/Modeling/Modeling'));
+const About = React.lazy(() => import('./Pages/About/About'));
+const Services = React.lazy(() => import('./Pages/Services/Services'));
+const Calculator = React.lazy(() => import('./Pages/Calculator/Calculator'));
+const FAQs = React.lazy(() => import('./Pages/FAQs/FAQs'));
+const ContactUs = React.lazy(() => import('./Pages/ContactUs/ContactUs'));
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
@@ -30,35 +33,35 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop-turf',
-        element: <ShopTurf/>
+        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><ShopTurf/></Suspense>
       },
       {
         path: '/shop-plants',
-        element: <ShopPlants/>
+        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><ShopPlants/></Suspense>
       },
       {
         path: '/services',
-        element: <Services/>
+        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><Services/></Suspense>
       },
       {
         path: '/modeling',
-        element: <Modeling/>
+        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><Modeling/></Suspense>
       },
       {
         path: '/about',
-        element: <Modeling/>
+        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><About/></Suspense>
       },
       {
         path: '/calculator',
-        element: <Calculator/>
+        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><Calculator/></Suspense>
       },
       {
         path: '/faqs',
-        element: <FAQs/>
+        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><FAQs/></Suspense>
       },
       {
         path: '/contact-us',
-        element: <ContactUs/>
+        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><ContactUs/></Suspense>
       },
 
     ]
