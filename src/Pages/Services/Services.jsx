@@ -1,10 +1,17 @@
 // import React from 'react';
+import './Services.css'
 
 const Services = () => {
     return (
-        <div>
-            <h1>This is Services Page</h1>
-        </div>
+        <section id="servicesPage">
+            <div className="servicesPageHeroBackground">
+                <div className="servicesBackgroundOverly">
+                    <div className="container">
+                        <h1 className='servicesPageTitle'>Synthetic | Modern | Designs</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 };
 
