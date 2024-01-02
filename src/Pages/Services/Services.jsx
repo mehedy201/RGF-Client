@@ -1,7 +1,9 @@
-// import React from 'react';
+import React from 'react';
 import './Services.css'
 import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
-import WhatWeDo from '../../Components/ServicesPageComponents/WhatWeDo/WhatWeDo';
+import { Spin } from 'antd';
+const WhatWeDo = React.lazy(() => import('../../Components/ServicesPageComponents/WhatWeDo/WhatWeDo'));
+const OurExpertise = React.lazy(() => import('../../Components/ServicesPageComponents/OurExpertise/OurExpertise'));
 
 const Services = () => {
     return (
@@ -19,18 +21,23 @@ const Services = () => {
                     <div className="col-md-6">
                         <h4 className='fs-1 fw-bold text-gray'>We don&apos;t settle for average landscapes. Ours look their best 365 days a year! </h4>
                     </div> 
-                    <div className="col-md-6 d-flex align-items-center justify-content-end">
-                        <div>
-                            <h5 className='fw-bold fs-5 text-end'>TXT or CALL for a free estimate</h5>
-                            <a style={{textDecoration: 'none', color: 'black', fontWeight: 'bold', fontSize: '20px', display: 'block' }} className='fs-bold fs-2 text-end' href="callto:9562532741"><FaMobileAlt style={{width: '30px', height: 'auto'}}/> 956-253-2741</a>
+                    <div className="col-md-6 d-md-flex align-items-center justify-content-end">
+                        <div className='py-3'>
+                            <h5 className='fw-bold fs-5 text-md-end'>TXT or CALL for a free estimate</h5>
+                            <a style={{textDecoration: 'none', color: 'black', fontWeight: 'bold', fontSize: '20px', display: 'block' }} className='fs-bold fs-2 text-md-end' href="callto:9562532741"><FaMobileAlt style={{width: '30px', height: 'auto'}}/> 956-253-2741</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         {/* 3rd Section Components What We Do_________________________________ */}
-        <WhatWeDo/>
+        <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
+            <WhatWeDo/>
+        </React.Suspense>
         {/* 4th Section Components What We Do_________________________________ */}
+        <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
+            <OurExpertise/>
+        </React.Suspense>
         </>
     );
 };
