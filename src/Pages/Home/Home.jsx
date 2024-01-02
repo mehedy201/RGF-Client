@@ -1,3 +1,4 @@
+import { Spin } from 'antd';
 import React from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -11,7 +12,7 @@ const Home = () => {
             <div>
                 <Outlet/>
             </div>
-            <Suspense fallback={<p>Footer Looding...........</p>}>
+            <Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
                 <Footer/>
             </Suspense>
         </>

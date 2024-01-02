@@ -18,6 +18,7 @@ const Calculator = React.lazy(() => import('./Pages/Calculator/Calculator'));
 const FAQs = React.lazy(() => import('./Pages/FAQs/FAQs'));
 const ContactUs = React.lazy(() => import('./Pages/ContactUs/ContactUs'));
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LoadingSpain from './Components/LoadingSpain/LoadingSpain';
 
 
 
@@ -33,35 +34,35 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop-turf',
-        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><ShopTurf/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><ShopTurf/></Suspense>
       },
       {
         path: '/shop-plants',
-        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><ShopPlants/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><ShopPlants/></Suspense>
       },
       {
         path: '/services',
-        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><Services/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><Services/></Suspense>
       },
       {
         path: '/modeling',
-        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><Modeling/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><Modeling/></Suspense>
       },
       {
         path: '/about',
-        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><About/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><About/></Suspense>
       },
       {
         path: '/calculator',
-        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><Calculator/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><Calculator/></Suspense>
       },
       {
         path: '/faqs',
-        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><FAQs/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><FAQs/></Suspense>
       },
       {
         path: '/contact-us',
-        element: <Suspense fallback={<p>Shop Turf Looding............</p>}><ContactUs/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><ContactUs/></Suspense>
       },
 
     ]

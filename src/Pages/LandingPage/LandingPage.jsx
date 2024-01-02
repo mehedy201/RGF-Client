@@ -5,6 +5,7 @@ import { FaPinterestP } from "@react-icons/all-files/fa/FaPinterestP";
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
+import { Spin } from 'antd';
 const  Experience = React.lazy(() => import('../../Components/LandingPageComponents/Experience/Experience'));
 const  KeyBenefits = React.lazy(() => import('../../Components/LandingPageComponents/KeyBenefits/KeyBenefits'));
 const  Section4 = React.lazy(() => import('../../Components/LandingPageComponents/Section4/Section4'));
@@ -48,22 +49,22 @@ const LandingPage = () => {
         </section>
         {/* Experience Section __________________ */}
         <section className='container'>
-            <React.Suspense fallback={<p>Experience is looding.................</p>}>
+            <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
                 <Experience/>
             </React.Suspense>
         </section>
         {/* Key Benifits Section _________________ */}
-        <React.Suspense fallback={<p>Key Benefits is looding.................</p>}>
+        <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
             <KeyBenefits/>
         </React.Suspense>
         
         {/* Section 4 ____________________________ */}
-        <React.Suspense fallback={<p>Section 4 is looding.................</p>}>
+        <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
             <Section4/>
         </React.Suspense>
         {/* Section 5 Carousel ____________________________ */}
         <div><h2 style={{fontWeight: '700', fontSize: '3.125rem'}} className='text-center pt-5 pb-2'>Customer Testimonials</h2></div>
-        <React.Suspense fallback={<p>Carousel Components is looding.................</p>}>
+        <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
             <CarouselComponents/>
         </React.Suspense>
 
