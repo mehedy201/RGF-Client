@@ -4,6 +4,7 @@ import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
 import { Spin } from 'antd';
 const WhatWeDo = React.lazy(() => import('../../Components/ServicesPageComponents/WhatWeDo/WhatWeDo'));
 const OurExpertise = React.lazy(() => import('../../Components/ServicesPageComponents/OurExpertise/OurExpertise'));
+const Landscope = React.lazy(() => import('../../Components/ServicesPageComponents/Landscape/Landscape'));
 
 const Services = () => {
     return (
@@ -37,6 +38,10 @@ const Services = () => {
         {/* 4th Section Components What We Do_________________________________ */}
         <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
             <OurExpertise/>
+        </React.Suspense>
+        {/* 4th Section Components What We Do_________________________________ */}
+        <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
+            <Landscope/>
         </React.Suspense>
         </>
     );
