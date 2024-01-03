@@ -48,7 +48,7 @@ const ShopPlants = () => {
         <section id="shopPlantsSection">
             <div className='shopPlantsHeroBackground'>
                 <div className='backgroundOverlyColor'>
-                    <div className="container"><h1 className="shopPlantsTitle py-4">Outdoor, Synthetic, UV Coated Plants</h1></div>
+                    <div className="container"><h1 className="shopPlantsTitle py-4 text-center">Outdoor, Synthetic, UV Coated Plants</h1></div>
                 </div>
             </div>
             <div className="container my-5">
