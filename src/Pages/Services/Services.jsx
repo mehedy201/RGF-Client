@@ -5,6 +5,7 @@ import { Spin } from 'antd';
 const WhatWeDo = React.lazy(() => import('../../Components/ServicesPageComponents/WhatWeDo/WhatWeDo'));
 const OurExpertise = React.lazy(() => import('../../Components/ServicesPageComponents/OurExpertise/OurExpertise'));
 const Landscope = React.lazy(() => import('../../Components/ServicesPageComponents/Landscape/Landscape'));
+const ServicesSection5 = React.lazy(() => import('../../Components/ServicesPageComponents/ServicesSection5/ServicesSection5'));
 
 const Services = () => {
     return (
@@ -31,17 +32,21 @@ const Services = () => {
                 </div>
             </div>
         </section>
-        {/* 3rd Section Components What We Do_________________________________ */}
+        {/* 2nd Section Components What We Do_________________________________ */}
         <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
             <WhatWeDo/>
         </React.Suspense>
-        {/* 4th Section Components What We Do_________________________________ */}
+        {/* 3rd Section Components our expertise_________________________________ */}
         <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
             <OurExpertise/>
         </React.Suspense>
-        {/* 4th Section Components What We Do_________________________________ */}
+        {/* 4th Section Components Landscape_________________________________ */}
         <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
             <Landscope/>
+        </React.Suspense>
+        {/* 5th Section Components Services Section_________________________________ */}
+        <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
+            <ServicesSection5/>
         </React.Suspense>
         </>
     );
