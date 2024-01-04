@@ -16,7 +16,7 @@ const LandingPage = () => {
     return (
         <>
         <section className="landing_page">
-            <div className="landing_page_Background_overly">
+            <div className="landing_page_Background_overly py-2">
                 <div className="container">
                 {/* Hero Section_________________________ */}
                 {/* Hero Text  */}

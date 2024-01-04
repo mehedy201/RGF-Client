@@ -1,10 +1,21 @@
 // import React from 'react';
+import './ContactUs.css'
+import ContactForm from "./ContactForm/ContactForm";
 
 const ContactUs = () => {
     return (
-        <div>
-            <h1>This is Contact us page</h1>
-        </div>
+        <>
+        <section id="contactUsHeroSection">
+                <div className="contactUs_hero_section_overly_color">
+                    <div className='contactUs_hero_section_text'>
+                        <p>WHERE TO FIND US</p>
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+            </section>
+        {/* Contact Form _______________ */}
+        <ContactForm/>
+        </>
     );
 };
 
