@@ -2,6 +2,9 @@
 import './ContactForm.css'
 import { useForm } from "react-hook-form";
 import { useState } from 'react';
+import { FaLocationArrow } from "@react-icons/all-files/fa/FaLocationArrow";
+import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
+
 
 const ContactForm = () => {
 
@@ -26,13 +29,40 @@ const ContactForm = () => {
     return (
         <section className='py-5' style={{backgroundColor: 'rgb(234,239,228)'}} id="contact_form_section">
             <div className="container my-5">
-                <div className="row g-2">
-                    <div className="col-md-6">
+                <div className="row g-2 g-md-4">
+                    <div className="col-md-5">
                         <div>
-
+                            <div className='p-4 mb-3 shadow rounded'>
+                                <div style={{display: 'inline-block', borderRadius: '50%', border: '1px solid black'}}>
+                                    <FaLocationArrow className='fs-1 p-2'/>
+                                </div>
+                                <h4 className='mt-2'>Location</h4>
+                                <p className='text-secondary mb-0'>2330 E Freddy Gonzalez Dr. <br /> Edinburg, TX 78542</p>
+                            </div>
+                            <div className='p-4 mb-3 shadow rounded'>
+                                <div style={{display: 'inline-block', borderRadius: '50%', border: '1px solid black'}}>
+                                    <FaMobileAlt className='fs-1 p-2'/>
+                                </div>
+                                <h4 className='mt-2'>Call Us</h4>
+                                <p className='text-secondary mb-0'>956-253-2741</p>
+                            </div>
+                            <div className='p-4 mb-3 shadow rounded'>
+                                <div style={{display: 'inline-block', borderRadius: '50%', border: '1px solid black'}}>
+                                    <FaLocationArrow className='fs-1 p-2'/>
+                                </div>
+                                <h4 className='mt-2'>Write to Us</h4>
+                                <p className='text-secondary mb-0'>info@rgvturf.com</p>
+                            </div>
+                            <div className='p-4 mb-3 shadow rounded'>
+                                <div style={{display: 'inline-block', borderRadius: '50%', border: '1px solid black'}}>
+                                    <FaLocationArrow className='fs-1 p-2'/>
+                                </div>
+                                <h4 className='mt-2'>Working Hours</h4>
+                                <p className='text-secondary mb-0'>Monday – Friday: 12pm to 5pm <br />Saturday – Sunday: Closed</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-7">
                         <div className="contact_form p-4 rounded">
                             <h3 className='mb-4'>Contact Us</h3>
                             <form onSubmit={handleSubmit(onSubmit)}>

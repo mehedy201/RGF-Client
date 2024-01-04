@@ -7,6 +7,7 @@ const SectionFourAffordability = React.lazy(() => import('../../Components/About
 const SectionFiveSynthetcTurf = React.lazy(() => import('../../Components/AboutPageComponents/SectionFiveSyntheticTurf/SectionFiveSynthetcTurf.jsx'))
 const SectionSixRGVTurfTeam = React.lazy(() => import('../../Components/AboutPageComponents/SectionSixRGVTurfTeam/SectionSixRGVTurfTeam.jsx'))
 const SectionSevnEmployer = React.lazy(() => import('../../Components/AboutPageComponents/SectionSevnEmployer/SectionSevnEmployer'))
+const ContactForm = React.lazy(() => import('../ContactUs/ContactForm/ContactForm'));
 
 const About = () => {
     return (
@@ -44,6 +45,9 @@ const About = () => {
                 <SectionSevnEmployer/>
             </React.Suspense>
             {/* Section eight Contact Form ____________________________ */}
+            <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
+                <ContactForm/>
+            </React.Suspense>
         </>
     );
 };
