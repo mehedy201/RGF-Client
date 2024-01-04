@@ -6,13 +6,13 @@ const ContactUs = () => {
     return (
         <>
         <section id="contactUsHeroSection">
-                <div className="contactUs_hero_section_overly_color">
-                    <div className='contactUs_hero_section_text'>
-                        <p>WHERE TO FIND US</p>
-                        <h2>Contact Us</h2>
-                    </div>
+            <div className="contactUs_hero_section_overly_color">
+                <div className='contactUs_hero_section_text'>
+                    <p>WHERE TO FIND US</p>
+                    <h2>Contact Us</h2>
                 </div>
-            </section>
+            </div>
+        </section>
         {/* Contact Form _______________ */}
         <ContactForm/>
         </>
