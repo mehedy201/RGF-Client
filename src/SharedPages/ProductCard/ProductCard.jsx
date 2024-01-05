@@ -14,11 +14,11 @@ const ProductCard = ({demoProduct, singlePageLink}) => {
                     {demoProduct.map((demo) => {
                         return <div key={demo.id} className="col-md-4">
                             <Link style={{textDecoration: 'none', color: 'black'}} to={`${singlePageLink}/${demo.id}/${demo.demoTitle}`}>
-                                <div style={{cursor: 'pointer'}} className="shadow rounded overflow-hidden pointer">
-                                    <div className="d-flex justify-content-center align-items-center overflow-hidden">
+                                <div style={{cursor: 'pointer'}} className="overflow-hidden pointer">
+                                    <div className="d-flex justify-content-center align-items-center overflow-hidden p-2">
                                         <img style={{height: '250px', width: 'auto',}} src={demo.demoImg} alt={demo.demoTitle} />
                                     </div>
-                                    <h3 className="py-2 fs-5 px-3 border-top">{demo.demoTitle}</h3>
+                                    <h3 className="py-2 fs-6 px-3 border-top">{demo.demoTitle}</h3>
                                 </div>
                             </Link>
                         </div>

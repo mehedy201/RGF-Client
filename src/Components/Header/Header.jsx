@@ -21,10 +21,10 @@ const Header = () => {
     const onClose = () => {
         setOpen(false);
     };
-    
+    // box-shadow: 0px 2px 3px red;
 
     return (
-        <>
+        <section style={{boxShadow: '0px 1px 5px gray'}}>
             <div className="container">
                 <div className='d-none d-sm-none d-md-none d-lg-none d-xl-block'>
                     <div className='navigation_style'>
@@ -78,7 +78,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </section>
     );
 };
 
