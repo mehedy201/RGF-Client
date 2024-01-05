@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import Home from './Pages/Home/Home.jsx';
 import LandingPage from './Pages/LandingPage/LandingPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import LoadingSpain from './Components/LoadingSpain/LoadingSpain';
 const ShopTurf = React.lazy(() => import('./Pages/ShopTurf/ShopTurf'));
 const ShopPlants = React.lazy(() => import('./Pages/ShopPlants/ShopPlants'));
 const Modeling = React.lazy(() => import('./Pages/Modeling/Modeling'));
@@ -17,8 +19,7 @@ const Services = React.lazy(() => import('./Pages/Services/Services'));
 const Calculator = React.lazy(() => import('./Pages/Calculator/Calculator'));
 const FAQs = React.lazy(() => import('./Pages/FAQs/FAQs'));
 const ContactUs = React.lazy(() => import('./Pages/ContactUs/ContactUs'));
-import 'bootstrap/dist/css/bootstrap.min.css';
-import LoadingSpain from './Components/LoadingSpain/LoadingSpain';
+const ProductCatalogPage = React.lazy(() => import('./SharedPages/ProductCatalogPage/ProductCatalogPage'));
 
 
 
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop-turf/turf/:title',
-        element: <h1>Mehedi</h1>
+        element:<Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Plants'} buttonLink={'/shop-plants'} heroText={'Premium Synthetic Turf'}/></Suspense>
       },
       {
         path: '/shop-plants',
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop-plants/plants/:title',
-        element: <h1>Hasan</h1>
+        element: <Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Turf'} buttonLink={'/shop-turf'} heroText={'Outdoor, Synthetic, UV Coated Plants'}/></Suspense>
       },
       {
         path: '/services',

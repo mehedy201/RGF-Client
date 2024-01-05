@@ -4,11 +4,6 @@ import { Link } from 'react-router-dom';
 import './TurfPlants.css'
 
 const TurfPlants = ({item, shopTurfLink}) => {
-    // console.log(item)
-    // let { userId } = useParams();
-    // console.log(userId)
-    console.log(shopTurfLink/item.title)
-    // category.map(element => console.log(element))
 
     return (
         <div className='col-md-4 turfPlantsCard'>
