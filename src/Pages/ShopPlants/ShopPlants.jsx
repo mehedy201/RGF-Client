@@ -54,7 +54,7 @@ const ShopPlants = () => {
             <div className="container my-5">
                 <div className="row g-2 g-md-5 px-md-5 mx-md-5">
                         {
-                            items.map((item, index) => <TurfPlants item={item} key={index}/>)
+                            items.map((item, index) => <TurfPlants shopTurfLink={'plants'} item={item} key={index}/>)
                         }
                 </div>
             </div>

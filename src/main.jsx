@@ -37,8 +37,16 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<LoadingSpain/>}><ShopTurf/></Suspense>
       },
       {
+        path: '/shop-turf/turf/:title',
+        element: <h1>Mehedi</h1>
+      },
+      {
         path: '/shop-plants',
         element: <Suspense fallback={<LoadingSpain/>}><ShopPlants/></Suspense>
+      },
+      {
+        path: '/shop-plants/plants/:title',
+        element: <h1>Hasan</h1>
       },
       {
         path: '/services',

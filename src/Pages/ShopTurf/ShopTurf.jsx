@@ -14,7 +14,7 @@ const ShopTurf = () => {
     const items = [
         {
             id: '1',
-            title: 'Residential/Commercial Landscape',
+            title: 'Residential & Commercial Landscape',
             image: residentialLandscope,
         },
         {
@@ -57,7 +57,7 @@ const ShopTurf = () => {
             <div className="container my-5">
                 <div className="row g-2 g-md-5 px-md-5 mx-md-5">
                         {
-                            items.map((item, index) => <TurfPlants item={item} key={index}/>)
+                            items.map((item, index) => <TurfPlants shopTurfLink={'turf'} item={item} key={index}/>)
                         }
                 </div>
             </div>
