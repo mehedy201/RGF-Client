@@ -20,6 +20,7 @@ const Calculator = React.lazy(() => import('./Pages/Calculator/Calculator'));
 const FAQs = React.lazy(() => import('./Pages/FAQs/FAQs'));
 const ContactUs = React.lazy(() => import('./Pages/ContactUs/ContactUs'));
 const ProductCatalogPage = React.lazy(() => import('./SharedPages/ProductCatalogPage/ProductCatalogPage'));
+const SingleProductPage = React.lazy(() => import('./SharedPages/SingleProductPage/SingleProductPage'));
 
 
 
@@ -38,16 +39,24 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<LoadingSpain/>}><ShopTurf/></Suspense>
       },
       {
-        path: '/shop-turf/turf/:title',
-        element:<Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Plants'} buttonLink={'/shop-plants'} heroText={'Premium Synthetic Turf'}/></Suspense>
+        path: '/shop-turf/turf/:productCategory',
+        element:<Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Plants'} singlePageLink={'/shop-turf'} buttonLink={'/shop-plants'} heroText={'Premium Synthetic Turf'}/></Suspense>
+      },
+      {
+        path: '/shop-turf/:id/:title',
+        element:<Suspense fallback={<LoadingSpain/>}><SingleProductPage/></Suspense>
       },
       {
         path: '/shop-plants',
         element: <Suspense fallback={<LoadingSpain/>}><ShopPlants/></Suspense>
       },
       {
-        path: '/shop-plants/plants/:title',
-        element: <Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Turf'} buttonLink={'/shop-turf'} heroText={'Outdoor, Synthetic, UV Coated Plants'}/></Suspense>
+        path: '/shop-plants/plants/:productCategory',
+        element: <Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Turf'} singlePageLink={'/shop-plants'} buttonLink={'/shop-turf'} heroText={'Outdoor, Synthetic, UV Coated Plants'}/></Suspense>
+      },
+      {
+        path: '/shop-plants/:id/:title',
+        element: <Suspense fallback={<LoadingSpain/>}><SingleProductPage/></Suspense>
       },
       {
         path: '/services',

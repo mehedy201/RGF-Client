@@ -8,9 +8,9 @@ import { Link, useParams } from "react-router-dom";
 import demoImge from '../../assets/AboutUsImages/interior-courtyard-turf-design.webp'
 import ProductCard from '../ProductCard/ProductCard';
 
-const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
+const ProductCatalogPage = ({heroText, buttonLink, buttonText, singlePageLink}) => {
 
-    const { title } = useParams();
+    const { productCategory } = useParams();
 
     const onSearch = (value, _e, info) => console.log(info?.source, value);
     const handleChange = (value) => {
@@ -47,7 +47,7 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
                         <div className="col-sm-4">
                             <div>
                                 <Select
-                                    defaultValue= {title}
+                                    defaultValue= {productCategory}
                                     size= 'large'
                                     style={{
                                         width: '100%',
@@ -68,7 +68,7 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
                     </div>
                 </div>
             </section>
-            <ProductCard demoProduct={demoProduct}/>
+            <ProductCard demoProduct={demoProduct} singlePageLink={singlePageLink}/>
         </>
     );
 };
