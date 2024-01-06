@@ -4,7 +4,7 @@
 import './ProductCatalogPage.css'
 import { Select } from "antd";
 import Search from "antd/es/input/Search";
-import { Link, useParams } from "react-router-dom";
+import { Link, ScrollRestoration, useParams } from "react-router-dom";
 import demoImge from '../../assets/ProductImage/ar-162090.webp'
 import ProductCard from '../ProductCard/ProductCard';
 
@@ -31,6 +31,7 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText, singlePageLink}) 
 
     return (
         <>
+            <ScrollRestoration />
             <section className="backgroundImage">
                 <div className="backgrondOverly">
                     <div className="container py-4">

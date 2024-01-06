@@ -7,6 +7,7 @@ import childrencPlay from '../../assets/ShofTurfImage/childrens-play-areas.webp'
 import kennels from '../../assets/ShofTurfImage/kennels-and-pets.webp'
 import golf from '../../assets/ShofTurfImage/golf-and-putting-zones.webp'
 import syntheticPlants from '../../assets/ShofTurfImage/synthetic-plants.webp'
+import { ScrollRestoration } from 'react-router-dom';
 
 
 const ShopTurf = () => {
@@ -48,6 +49,8 @@ const ShopTurf = () => {
 
 
     return (
+        <>
+        <ScrollRestoration />
         <section id="shopTurfSection">
             <div className='shopTurfHeroBackground'>
                 <div className='backgroundOverlyColor  py-4'>
@@ -62,6 +65,7 @@ const ShopTurf = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 };
 

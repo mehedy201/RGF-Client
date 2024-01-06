@@ -1,6 +1,6 @@
 // import React from 'react';
 import './SingleProductPage.css'
-import { Link, useParams } from "react-router-dom";
+import { Link, ScrollRestoration, useParams } from "react-router-dom";
 import { Tab, Tabs } from 'react-bootstrap';
 import demoImage from '../../assets/ProductImage/ar-162090.webp';
 import {
@@ -20,6 +20,7 @@ const SingleProductPage = () => {
     console.log(id, title)
     return (
         <>
+        <ScrollRestoration />
         <section className="my-4">
             <div className="container">
                 <div className="row">

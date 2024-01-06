@@ -2,6 +2,7 @@ import React from 'react';
 import './Services.css'
 import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
 import { Spin } from 'antd';
+import { ScrollRestoration } from 'react-router-dom';
 const WhatWeDo = React.lazy(() => import('../../Components/ServicesPageComponents/WhatWeDo/WhatWeDo'));
 const OurExpertise = React.lazy(() => import('../../Components/ServicesPageComponents/OurExpertise/OurExpertise'));
 const Landscope = React.lazy(() => import('../../Components/ServicesPageComponents/Landscape/Landscape'));
@@ -10,6 +11,7 @@ const ServicesSection5 = React.lazy(() => import('../../Components/ServicesPageC
 const Services = () => {
     return (
         <>
+        <ScrollRestoration />
         <section id="servicesPage">
             <div className="servicesPageHeroBackground">
                 <div className="servicesBackgroundOverly">

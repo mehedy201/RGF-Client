@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, ScrollRestoration } from 'react-router-dom';
 import './LandingPage.css'
 import { FaPinterestP } from "@react-icons/all-files/fa/FaPinterestP";
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
@@ -15,6 +15,7 @@ const  CarouselComponents = React.lazy(() => import('../../Components/LandingPag
 const LandingPage = () => {
     return (
         <>
+        <ScrollRestoration />
         <section className="landing_page">
             <div className="landing_page_Background_overly py-2">
                 <div className="container">
@@ -24,9 +25,9 @@ const LandingPage = () => {
                 {/* Hero Button  */}
                 <div className="landingPageButtonPrenentDiv">
                     <div className='landingPageButtonDiv'>
-                        <Link to={'/'} className="heroBtnStyle">Shop Turf</Link>
-                        <Link to={'/'} className="heroBtnStyle">Shop Plants</Link>
-                        <Link to={'/'} className="heroBtnStyle">Free Quote</Link>
+                        <Link to={'/shop-turf'} className="heroBtnStyle">Shop Turf</Link>
+                        <Link to={'/shop-plants'} className="heroBtnStyle">Shop Plants</Link>
+                        <Link to={'/contact-us'} className="heroBtnStyle">Free Quote</Link>
                     </div>
                 </div>
                 {/* Hero Section bottom part ___________ */}

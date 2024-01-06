@@ -7,6 +7,7 @@ import cypress from '../../assets/ShopPlantsImage/istockphoto-1057939746-612x612
 import flowers from '../../assets/ShopPlantsImage/flowers.webp'
 import trees from '../../assets/ShopPlantsImage/ezgif-5-fe0f17fe03.webp'
 import synthetiic from '../../assets/ShopPlantsImage/sports-and-athletics.webp'
+import { ScrollRestoration } from 'react-router-dom';
 
 const ShopPlants = () => {
 
@@ -45,6 +46,8 @@ const ShopPlants = () => {
 
 
     return (
+        <>
+        <ScrollRestoration />
         <section id="shopPlantsSection">
             <div className='shopPlantsHeroBackground'>
                 <div className='backgroundOverlyColor'>
@@ -59,6 +62,7 @@ const ShopPlants = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 };
 
