@@ -4,7 +4,7 @@
 import { Link,} from "react-router-dom";
 
 
-const ProductCard = ({demoProduct, singlePageLink}) => {
+const ProductCard = ({demoProduct}) => {
 
 
     return (
@@ -13,7 +13,7 @@ const ProductCard = ({demoProduct, singlePageLink}) => {
                 <div className="row g-3">
                     {demoProduct.map((demo) => {
                         return <div key={demo.id} className="col-md-4">
-                            <Link style={{textDecoration: 'none', color: 'black'}} to={`${singlePageLink}/${demo.id}/${demo.demoTitle}`}>
+                            <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${demo.id}/${demo.demoTitle}`}>
                                 <div style={{cursor: 'pointer'}} className="overflow-hidden pointer">
                                     <div className="d-flex justify-content-center align-items-center overflow-hidden p-2">
                                         <img style={{height: '250px', width: 'auto',}} src={demo.demoImg} alt={demo.demoTitle} />

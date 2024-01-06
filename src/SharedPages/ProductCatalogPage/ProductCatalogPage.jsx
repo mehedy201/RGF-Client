@@ -8,7 +8,7 @@ import { Link, ScrollRestoration, useParams } from "react-router-dom";
 import demoImge from '../../assets/ProductImage/ar-162090.webp'
 import ProductCard from '../ProductCard/ProductCard';
 
-const ProductCatalogPage = ({heroText, buttonLink, buttonText, singlePageLink}) => {
+const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
 
     const { productCategory } = useParams();
 
@@ -69,7 +69,7 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText, singlePageLink}) 
                     </div>
                 </div>
             </section>
-            <ProductCard demoProduct={demoProduct} singlePageLink={singlePageLink}/>
+            <ProductCard demoProduct={demoProduct}/>
         </>
     );
 };

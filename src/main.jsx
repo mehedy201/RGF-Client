@@ -40,10 +40,10 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop-turf/turf/:productCategory',
-        element:<Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Plants'} singlePageLink={'/shop-turf'} buttonLink={'/shop-plants'} heroText={'Premium Synthetic Turf'}/></Suspense>
+        element:<Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Plants'} buttonLink={'/shop-plants'} heroText={'Premium Synthetic Turf'}/></Suspense>
       },
       {
-        path: '/shop-turf/:id/:title',
+        path: '/product-catalog/:id/:title',
         element:<Suspense fallback={<LoadingSpain/>}><SingleProductPage/></Suspense>
       },
       {
@@ -52,10 +52,10 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop-plants/plants/:productCategory',
-        element: <Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Turf'} singlePageLink={'/shop-plants'} buttonLink={'/shop-turf'} heroText={'Outdoor, Synthetic, UV Coated Plants'}/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Turf'} buttonLink={'/shop-turf'} heroText={'Outdoor, Synthetic, UV Coated Plants'}/></Suspense>
       },
       {
-        path: '/shop-plants/:id/:title',
+        path: '/product-catalog/:id/:title',
         element: <Suspense fallback={<LoadingSpain/>}><SingleProductPage/></Suspense>
       },
       {

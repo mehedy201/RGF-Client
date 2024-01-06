@@ -14,6 +14,7 @@ import {
   import { FaArrowLeft } from "@react-icons/all-files/fa/FaArrowLeft";
   import { FaThLarge } from "@react-icons/all-files/fa/FaThLarge";
   import { FaArrowRight } from "@react-icons/all-files/fa/FaArrowRight";
+import ProductCarousel from '../ProductCarousel/ProductCarousel';
 
 const SingleProductPage = () => {
     const {id,title} = useParams()
@@ -92,6 +93,8 @@ const SingleProductPage = () => {
                 </div>
             </div>
         </section>
+        {/* Product Carousel ________________________ */}
+        <ProductCarousel/>
         
         </>
     );
