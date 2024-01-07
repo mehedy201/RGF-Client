@@ -21,6 +21,8 @@ const FAQs = React.lazy(() => import('./Pages/FAQs/FAQs'));
 const ContactUs = React.lazy(() => import('./Pages/ContactUs/ContactUs'));
 const ProductCatalogPage = React.lazy(() => import('./SharedPages/ProductCatalogPage/ProductCatalogPage'));
 const SingleProductPage = React.lazy(() => import('./SharedPages/SingleProductPage/SingleProductPage'));
+// Admin Page ________________________________________________________________________
+const AdminLoginPage = React.lazy(() => import('./AdminPages/AdminLoginPage/AdminLoginPage'));
 
 
 
@@ -84,6 +86,10 @@ const router = createBrowserRouter([
       },
 
     ]
+  },
+  {
+    path: "/admin",
+    element: <Suspense fallback={<LoadingSpain/>}><AdminLoginPage/></Suspense>
   },
 ]);
 
