@@ -1,6 +1,7 @@
 import React from 'react';
 import './About.css'
 import { Spin } from 'antd';
+import { ScrollRestoration } from 'react-router-dom';
 const SectionTwoFullLandScape = React.lazy(() => import('../../Components/AboutPageComponents/SectionTwoFullLandScape/SectionTwoFullLandScape.jsx'))
 const SectionThreeWeDont = React.lazy(() => import('../../Components/AboutPageComponents/SectionThreeWeDont/SectionThreeWeDont.jsx'))
 const SectionFourAffordability = React.lazy(() => import('../../Components/AboutPageComponents/SectionFourAffordability/SectionFourAffordability.jsx'))
@@ -12,6 +13,7 @@ const ContactForm = React.lazy(() => import('../ContactUs/ContactForm/ContactFor
 const About = () => {
     return (
         <>
+            <ScrollRestoration />
             <section id="aboutHeroSection">
                 <div className="about_hero_section_overly_color">
                     <div className='about_hero_section_text'>

@@ -37,7 +37,7 @@ const Header = () => {
                         <Link to={'/about'}>About</Link>
                         <Link to={'/calculator'}>Calculator</Link>
                         <Link to={'/faqs'}>FAQs</Link>
-                        <Link className='btn btn-sm border' to={'/contact-us'}>Contact Us</Link>
+                        <Link className='header_button_style' to={'/contact-us'}>Contact Us</Link>
                     </div>
                 </div>
                 {/* Mobile Naviagetion __________________________________________________________ */}
