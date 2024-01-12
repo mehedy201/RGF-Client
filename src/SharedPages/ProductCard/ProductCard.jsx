@@ -5,7 +5,6 @@ import { Link,} from "react-router-dom";
 
 
 const ProductCard = ({products}) => {
-    console.log(products)
 
 
     return (

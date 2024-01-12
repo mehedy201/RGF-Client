@@ -1,8 +1,8 @@
 // import React from 'react';
 import './SingleProductPage.css'
+// import axios from 'axios'
 import { Link, ScrollRestoration, useParams } from "react-router-dom";
 import { Tab, Tabs } from 'react-bootstrap';
-import demoImage from '../../assets/ProductImage/ar-162090.webp';
 import {
     FacebookShareButton,
     FacebookIcon,
@@ -15,10 +15,21 @@ import {
   import { FaThLarge } from "@react-icons/all-files/fa/FaThLarge";
   import { FaArrowRight } from "@react-icons/all-files/fa/FaArrowRight";
 import ProductCarousel from '../ProductCarousel/ProductCarousel';
+import { useEffect, useState } from 'react';
 
 const SingleProductPage = () => {
-    const {id,title} = useParams()
-    console.log(id, title)
+    const {id, title} = useParams()
+    const [product, setProduct] = useState()
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/products/${id}`)
+        .then(res => res.json())
+        .then(data => setProduct(data))
+    }, [])
+ 
+
+    
+
     return (
         <>
         <ScrollRestoration />
@@ -26,7 +37,7 @@ const SingleProductPage = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-10">
-                        <h1>Dynamic Product Title will Have</h1>
+                        <h1>{product?.ProductTitle}</h1>
                     </div>
                     <div className="col-md-2">
                         <div style={{backgroundColor: '#eaefe4'}} className='border d-md-flex justify-content-md-center'>
@@ -39,7 +50,7 @@ const SingleProductPage = () => {
                         <div className="border px-3 py-2">
                             <Link className="text-secondary pe-2" style={{textDecoration: 'none'}}>Home &gt;&gt;</Link>
                             <Link className="text-secondary pe-2" style={{textDecoration: 'none'}}>All Product &gt;&gt;</Link>
-                            <span className="text-secondary">Dynamic Product Title will Have</span>
+                            <span className="text-secondary">{product?.ProductTitle}</span>
                         </div>
                     </div>
                     <div className="col-md-2">
@@ -70,7 +81,7 @@ const SingleProductPage = () => {
                 </div>
                 <div className="row">  
                     <div className="col d-flex justify-content-center p-2 overflow-hidden">
-                        <img style={{height: '100vh', width: 'auto'}} src={demoImage} alt="" />
+                        <img style={{height: '80vh', width: 'auto'}} src={`http://localhost:5000/${product?.img}`} alt="" />
                     </div>
                 </div>
                 <div className="row">
@@ -80,10 +91,96 @@ const SingleProductPage = () => {
                             id="product_details_tabs"
                             >
                             <Tab eventKey="product_description" title="PRODUCT DESCRIPTION">
-                                <div>Product Descriptio text </div>
+                                <div><p>{product?.ProductDescription}</p></div>
                             </Tab>
                             <Tab eventKey="product_features" title="PRODUCT FEATURES">
-                                Tab content for Profile
+                                <div>
+                                    {
+                                        product?.category == 'Shop Turf' ? <table className='table'>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Yarn Type</td>
+                                                    <td className='fw-bold'>{product?.YarnType}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Weight</td>
+                                                    <td className='fw-bold'>{product?.Weight}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Secondary Backing</td>
+                                                    <td className='fw-bold'>{product?.SecondaryBacking}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pile Height</td>
+                                                    <td className='fw-bold'>{product?.Pile_Height}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Roll Width</td>
+                                                    <td className='fw-bold'>{product?.RollWidth}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Perforated</td>
+                                                    <td className='fw-bold'>{product?.Perforated}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Color</td>
+                                                    <td className='fw-bold'>{product?.Color}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>PDF Spec Sheet</td>
+                                                    <td className='fw-bold'>{product?.PDFSpecSheet}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table> : <table className='table'>
+                                            <tbody className='p-3'>
+                                                <tr>
+                                                    <td>Product code</td>
+                                                    <td className='fw-bold'>{product?.Product_Code}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>UPC</td>
+                                                    <td className='fw-bold'>{product?.UPC}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Items per pack</td>
+                                                    <td className='fw-bold'>{product?.ItemsPerPack}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dominant color</td>
+                                                    <td className='fw-bold'>{product?.DominantColor}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Product code</td>
+                                                    <td className='fw-bold'>{product?.Product_Code}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Potted or base included</td>
+                                                    <td className='fw-bold'>{product?.PottedOrBaseIncluded}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Weight of each item</td>
+                                                    <td className='fw-bold'>{product?.WeightOfEachItem}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Weight of 1 pack</td>
+                                                    <td className='fw-bold'>{product?.WeightOf1pack}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shipping box size</td>
+                                                    <td className='fw-bold'>{product?.ShippingBoxSize}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shipping dimensional weight</td>
+                                                    <td className='fw-bold'>{product?.ShippingDimensionalWeight}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shipping dimensional weight</td>
+                                                    <td className='fw-bold'>{product?.OversizedFreightShipping}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    }
+                                </div>
                             </Tab>
                             <Tab eventKey="reques_a_quate" title="REQUEST A QUATE">
                                 Tab content for Contact
