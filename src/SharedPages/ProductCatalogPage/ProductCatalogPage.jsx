@@ -1,31 +1,44 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // import React from 'react';
 
 import './ProductCatalogPage.css'
 import { Select } from "antd";
 import Search from "antd/es/input/Search";
-import { Link, ScrollRestoration, useParams } from "react-router-dom";
-import demoImge from '../../assets/ProductImage/ar-162090.webp'
+import { Link, ScrollRestoration, useLoaderData, useParams } from "react-router-dom";
 import ProductCard from '../ProductCard/ProductCard';
+// import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import {  } from 'react';
 
 const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
+    // Fatch Product Data using Axios _______________________________
+    const fatchProduct = useLoaderData();
+    const [products, setProducts] = useState(fatchProduct)
 
+    // Get product Sub Category From Use Params _____________________ 
     const { productCategory } = useParams();
+    const [productCat, setProductCat] = useState(productCategory);
+    // Problem Solving About Residential/Commercial Landscape '/' Problem )______________________
+    let category;
+    useEffect(() => {
+        if(productCategory === 'Residential Commercial Landscape'){
+            category = 'Residential/Commercial Landscape';
+            const search = fatchProduct.filter(d =>d.subCategory.includes(category))
+            setProducts(search)      
+        }else{
+            setProductCat(productCategory)
+            const search = fatchProduct.filter(d =>d.subCategory.includes(productCat))
+            setProducts(search)                                        
+        }
+    },[])
 
-    const onSearch = (value, _e, info) => console.log(info?.source, value);
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-      };
-
-    const demoProduct = [
-        {id: '1', demoTitle: 'Demo Title for Product 1', demoImg: demoImge},
-        {id: '2', demoTitle: 'Demo Title for Product 2', demoImg: demoImge},
-        {id: '3', demoTitle: 'Demo Title for Product 3', demoImg: demoImge},
-        {id: '4', demoTitle: 'Demo Title for Product 4', demoImg: demoImge},
-        {id: '5', demoTitle: 'Demo Title for Product 5', demoImg: demoImge},
-        {id: '6', demoTitle: 'Demo Title for Product 6', demoImg: demoImge},
-    ]
-
+    // Implement Search Function __________________________________
+    const onSearch = (value) => {
+        console.log( value)
+        const search = fatchProduct.filter(d =>d.ProductTitle.toLowerCase().includes(value.toLowerCase()))
+        setProducts(search)
+    };
 
 
 
@@ -47,20 +60,56 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
                         </div>
                         <div className="col-sm-4">
                             <div>
-                                <Select
-                                    defaultValue= {productCategory}
-                                    size= 'large'
-                                    style={{
-                                        width: '100%',
-                                    }}
-                                    onChange={handleChange}
-                                    options={[
-                                        {value: 'jack',label: 'Jack',},
-                                        {value: 'jack1',label: 'Jack1',},
-                                        {value: 'jack2',label: 'Jack2',},
-                                        {value: 'jack3',label: 'Jack3',},
-                                    ]}
-                                    />
+                                {
+                                    buttonText == 'Shop Turf' ? <>
+                                        <Select
+                                            defaultValue= {productCategory}
+                                            size= 'large'
+                                            style={{
+                                                width: '100%',
+                                            }}
+                                            onChange={e => {
+                                                    const search = fatchProduct.filter(d =>d.subCategory.includes(e))
+                                                    setProducts(search)
+                                                    if(e == 'All'){
+                                                        setProducts(fatchProduct)
+                                                    }
+                                            }}
+                                            options={[
+                                                {value: 'All',label: 'All',},
+                                                {value: 'Bushes And Shrubs',label: 'Bushes And Shrubs',},
+                                                {value: 'Cactus',label: 'Cactus',},
+                                                {value: 'Cypress trees',label: 'Cypress trees',},
+                                                {value: 'Flowers Arrangements',label: 'Flowers Arrangements',},
+                                                {value: 'Trees And Palms',label: 'Trees And Palms',},
+                                            ]}
+                                        />
+                                    </>:
+                                    <>
+                                        <Select
+                                            defaultValue= {productCategory}
+                                            size= 'large'
+                                            style={{
+                                                width: '100%',
+                                            }}
+                                            onChange={e => {
+                                                const search = fatchProduct.filter(d =>d.subCategory.includes(e))
+                                                setProducts(search)
+                                                if(e == 'All'){
+                                                    setProducts(fatchProduct)
+                                                }
+                                            }}
+                                            options={[
+                                                {value: 'All',label: 'All',},
+                                                {value: 'Residential/Commercial Landscape',label: 'Residential/Commercial Landscape',},
+                                                {value: 'Sport and Athletic',label: 'Sport and Athletic',},
+                                                {value: 'Childrens Play Areas',label: 'Childrens Play Areas',},
+                                                {value: 'Kennels and Pets',label: 'Kennels and Pets',},
+                                                {value: 'Golf and Putting Zones',label: 'Golf and Putting Zones',},
+                                            ]}
+                                        />
+                                    </>
+                                }
                             </div>
                         </div>
                         <div className="col-sm-4">
@@ -69,7 +118,7 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
                     </div>
                 </div>
             </section>
-            <ProductCard demoProduct={demoProduct}/>
+            <ProductCard products={products}/>
         </>
     );
 };

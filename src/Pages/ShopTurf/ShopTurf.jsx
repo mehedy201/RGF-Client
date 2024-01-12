@@ -15,7 +15,7 @@ const ShopTurf = () => {
     const items = [
         {
             id: '1',
-            title: 'Residential & Commercial Landscape',
+            title: 'Residential Commercial Landscape',
             image: residentialLandscope,
         },
         {

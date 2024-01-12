@@ -4,21 +4,22 @@
 import { Link,} from "react-router-dom";
 
 
-const ProductCard = ({demoProduct}) => {
+const ProductCard = ({products}) => {
+    console.log(products)
 
 
     return (
         <section className="my-4">
             <div className="container">
                 <div className="row g-3">
-                    {demoProduct.map((demo) => {
-                        return <div key={demo.id} className="col-md-4">
-                            <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${demo.id}/${demo.demoTitle}`}>
+                    {products.map((product) => {
+                        return <div key={product._id} className="col-md-4">
+                            <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product._id}/${product.demoTitle}`}>
                                 <div style={{cursor: 'pointer'}} className="overflow-hidden pointer">
-                                    <div className="d-flex justify-content-center align-items-center overflow-hidden p-2">
-                                        <img style={{height: '250px', width: 'auto',}} src={demo.demoImg} alt={demo.demoTitle} />
+                                    <div style={{height: '250px'}} className="d-flex justify-content-center align-items-center overflow-hidden p-2">
+                                        <img style={{height: '-webkit-fill-available', width: '100%',}} src={`http://localhost:5000/${product.img}`} alt={product.ProductTitle} />
                                     </div>
-                                    <h3 className="py-2 fs-6 px-3 border-top">{demo.demoTitle}</h3>
+                                    <h3 className="py-2 fs-6 px-3 border-top">{product.ProductTitle}</h3>
                                 </div>
                             </Link>
                         </div>

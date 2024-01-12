@@ -11,6 +11,7 @@ import Home from './Pages/Home/Home.jsx';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LoadingSpain from './Components/LoadingSpain/LoadingSpain';
+import axios from 'axios'
 const ShopTurf = React.lazy(() => import('./Pages/ShopTurf/ShopTurf'));
 const ShopPlants = React.lazy(() => import('./Pages/ShopPlants/ShopPlants'));
 const Modeling = React.lazy(() => import('./Pages/Modeling/Modeling'));
@@ -23,6 +24,9 @@ const ProductCatalogPage = React.lazy(() => import('./SharedPages/ProductCatalog
 const SingleProductPage = React.lazy(() => import('./SharedPages/SingleProductPage/SingleProductPage'));
 // Admin Page ________________________________________________________________________
 const AdminLoginPage = React.lazy(() => import('./AdminPages/AdminLoginPage/AdminLoginPage'));
+const AdminDashboard = React.lazy(() => import('./AdminPages/AdminDashboard/AdminDashboard'));
+const AddProductPage = React.lazy(() => import('./AdminPages/AdminDashboard/AddProductPage/AddProductPage'));
+const EditProduct = React.lazy(() => import('./AdminPages/AdminDashboard/EditProduct/EditProduct'));
 
 
 
@@ -42,7 +46,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop-turf/turf/:productCategory',
-        element:<Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Plants'} buttonLink={'/shop-plants'} heroText={'Premium Synthetic Turf'}/></Suspense>
+        element:<Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Plants'} buttonLink={'/shop-plants'} heroText={'Premium Synthetic Turf'}/></Suspense>,
+        loader: async () => {
+          const data = await axios.get(`http://localhost:5000/shopTurf`)
+            .then(res => res.data)
+            .catch(er => console.log(er))
+            return data;
+          }
       },
       {
         path: '/product-catalog/:id/:title',
@@ -54,7 +64,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop-plants/plants/:productCategory',
-        element: <Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Turf'} buttonLink={'/shop-turf'} heroText={'Outdoor, Synthetic, UV Coated Plants'}/></Suspense>
+        element: <Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Turf'} buttonLink={'/shop-turf'} heroText={'Outdoor, Synthetic, UV Coated Plants'}/></Suspense>,
+        loader: async () => {
+          const data = await axios.get(`http://localhost:5000/shopPlants`)
+              .then(res => res.data)
+              .catch(er => console.log(er))
+              return data;
+          }
       },
       {
         path: '/product-catalog/:id/:title',
@@ -90,6 +106,20 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Suspense fallback={<LoadingSpain/>}><AdminLoginPage/></Suspense>
+  },
+  {
+    path: "/dashbord",
+    element: <Suspense fallback={<LoadingSpain/>}><AdminDashboard/></Suspense>,
+    children: [
+      {
+        path:'/dashbord/add-product',
+        element: <Suspense fallback={<LoadingSpain/>}><AddProductPage/></Suspense>,
+      },
+      {
+        path:'/dashbord/edit-product/:id',
+        element: <Suspense fallback={<LoadingSpain/>}><EditProduct/></Suspense>,
+      },
+    ]
   },
 ]);
 

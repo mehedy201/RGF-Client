@@ -1,6 +1,7 @@
 // import React from 'react';
 
 import { Input, Select } from "antd";
+// import { useRef } from "react";
 import { useState } from "react";
 
 const Calculator = () => {
@@ -44,9 +45,11 @@ const Calculator = () => {
         setCubicYards(getCubicYards.toFixed(2))
         setTotalTon(getTotalTon.toFixed(2))
     }
-
-
     
+
+    const clearInputField = () => {
+
+    }
 
 
     return (
@@ -126,7 +129,7 @@ const Calculator = () => {
                             </div>
                             <div className="col-12 p-2">
                                 {/* Clear Button ________________________ */}
-                                <button className="btn bg-light d-block w-100 fw-bold">Clear</button>
+                                <button onClick={() => clearInputField()} className="btn bg-light d-block w-100 fw-bold">Clear</button>
                             </div>
                             {/* Cubic Yards: ____________________________ */}
                             <div className="col-6 border p-2">
