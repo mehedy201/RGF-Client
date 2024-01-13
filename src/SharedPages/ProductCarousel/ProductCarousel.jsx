@@ -1,10 +1,18 @@
 // import React from 'react';
 
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
-import demoImage from '../../assets/ProductImage/ar-162092.webp'
 
 const ProductCarousel = () => {
+
+    const [products, setProducts] = useState([])
+    useEffect(() => {
+      axios.get('http://localhost:5000/products').then(res => setProducts(res.data.slice(0,10)))
+    },[])
+
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
@@ -20,14 +28,6 @@ const ProductCarousel = () => {
         }
       };
 
-      const newDemoData =[
-          {id: '10', demoTitle: 'Demo title for Carousel 1', demoImg: demoImage},
-          {id: '11', demoTitle: 'Demo title for Carousel 2', demoImg: demoImage},
-          {id: '12', demoTitle: 'Demo title for Carousel 3', demoImg: demoImage},
-          {id: '13', demoTitle: 'Demo title for Carousel 4', demoImg: demoImage},
-          {id: '14', demoTitle: 'Demo title for Carousel 5', demoImg: demoImage},
-          {id: '15', demoTitle: 'Demo title for Carousel 6', demoImg: demoImage},
-      ]
     return (
         <section>
           <div className="container py-4">
@@ -41,14 +41,14 @@ const ProductCarousel = () => {
                 >
                 {/* Need Just One for Dynamic _______________________________________________________________________________________ */}
                 {
-                    newDemoData.map(demo => {
-                        return <div key={demo.id} className='mx-2'>
-                                <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${demo.id}/${demo.demoTitle}`}>
+                    products && products?.map(product => {
+                        return <div key={product._id} className='mx-2'>
+                                <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product._id}/${product.ProductTitle}`}>
                                     <div style={{cursor: 'pointer'}} className="overflow-hidden pointer">
-                                        <div className="d-flex justify-content-center align-items-center overflow-hidden p-2">
-                                            <img style={{height: '250px', width: 'auto',}} src={demo.demoImg} alt={demo.demoTitle} />
+                                        <div style={{height: '250px'}} className="d-flex justify-content-center align-items-center overflow-hidden p-2">
+                                            <img style={{height: 'auto', width: '100%',}} src={`http://localhost:5000/${product.img}`} alt={product.ProductTitle} />
                                         </div>
-                                        <h3 className="py-2 fs-6 px-3 border-top">{demo.demoTitle}</h3>
+                                        <h3 className="py-2 fs-6 px-3 border-top">{product?.ProductTitle}</h3>
                                     </div>
                                 </Link>
                         </div>
