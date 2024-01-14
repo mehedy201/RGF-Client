@@ -12,8 +12,8 @@ const AdminDashboard = () => {
                         <img className='mx-auto' style={{height: '70px', width: 'auto'}} src={logoImage} alt="" />
                         <div className='py-3'>
                             <Link to={'/dashbord/add-product'} className='d-block fw-bold my-2 border p-2 dashboard_link_style'>Add Product</Link>
-                            <Link to={'/'} className='d-block fw-bold my-2 border p-2 dashboard_link_style'>Add Modeling Image</Link>
-                            <Link to={'/'} className='d-block fw-bold my-2 border p-2 dashboard_link_style'>Manage Product</Link>
+                            <Link to={'/dashbord/manage-product'} className='d-block fw-bold my-2 border p-2 dashboard_link_style'>Add Modeling Image</Link>
+                            <Link to={'/dashbord/manage-product'} className='d-block fw-bold my-2 border p-2 dashboard_link_style'>Manage Product</Link>
                         </div>
                     </div>
                     <div className="col-md-9">

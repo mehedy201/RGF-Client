@@ -27,6 +27,7 @@ const AdminLoginPage = React.lazy(() => import('./AdminPages/AdminLoginPage/Admi
 const AdminDashboard = React.lazy(() => import('./AdminPages/AdminDashboard/AdminDashboard'));
 const AddProductPage = React.lazy(() => import('./AdminPages/AdminDashboard/AddProductPage/AddProductPage'));
 const EditProduct = React.lazy(() => import('./AdminPages/AdminDashboard/EditProduct/EditProduct'));
+const ManageProduct = React.lazy(() => import('./AdminPages/AdminDashboard/ManageProduct/ManageProduct'));
 
 
 
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
       {
         path:'/dashbord/add-product',
         element: <Suspense fallback={<LoadingSpain/>}><AddProductPage/></Suspense>,
+      },
+      {
+        path:'/dashbord/manage-product',
+        element: <Suspense fallback={<LoadingSpain/>}><ManageProduct/></Suspense>,
       },
       {
         path:'/dashbord/edit-product/:id',
