@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Select, Spin } from 'antd';
 import axios from 'axios';
 import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -51,9 +52,14 @@ const AddProductPage = () => {
 
         axios.post(`http://localhost:5000/products`, formData)
             .then(res => {
-                console.log(res)
-                reset()
-                setImagePath('')
+                if(data.success){
+                    toast.success('Succesfully Post Updated')
+                    reset()
+                    setImagePath('')
+                }
+                if(data.error){
+                  toast.error(`Error ${data.error}`)
+                }
             })
             .catch(er => console.log(er))
     };
@@ -183,6 +189,7 @@ const AddProductPage = () => {
                 </div>
                 <button type="submit">Publish</button>
             </form>
+            <Toaster />
         </>
     );
 };

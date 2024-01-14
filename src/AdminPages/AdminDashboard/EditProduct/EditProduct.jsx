@@ -8,24 +8,36 @@ import axios from 'axios';
 import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 const EditProduct = () => {
 
 
     const {id} = useParams()
     const [product, setProduct] = useState({})
-    useEffect(() => {
-        axios.get(`http://localhost:5000/products/${id}`)
-            .then(res => setProduct(res.data))
-            .catch(er => console.log(er))
-    },[])
-    console.log('Product Data', product)
-
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
     const [imagePath, setImagePath] = useState('');
     const [fileName, setFileName] = useState('')
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/products/${id}`)
+            .then(res => {
+                setProduct(res.data)
+                setCategory(res.data.category);
+                setSubCategory(res.data.subCategory);
+                setImagePath(res.data.img);
+                setFileName(res.data.fileName);
+            })
+            .catch(er => console.log(er))
+    },[])
+    // console.log('Product Data', product)
+    
+
+    useEffect(() => {
+        
+    },[])
 
     const imageUpload = (e) => {
         setLoading(true)
@@ -52,18 +64,39 @@ const EditProduct = () => {
 
     // Post Request ______________________________
     // productCatelog
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         const img = imagePath;
+        if(!data.ProductTitle){
+            data.ProductTitle = product.ProductTitle
+        }
+        if(!data.ProductDescription){
+            data.ProductDescription = product.ProductDescription
+        }
         const formData = {...data, img, category, subCategory, fileName}
-        console.log(formData)
 
-        axios.post(`http://localhost:5000/products`, formData)
-            .then(res => {
-                console.log('Delete Image Response', res)
-                setImagePath('')
-            })
-            .catch(er => console.log(er))
+        fetch(`http://localhost:5000/products/${id}`, {
+          method: 'PUT',
+          headers:{
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        }).then(res => res.json())
+          .then(data => {
+            if(data.success){
+                console.log(data)
+                setProduct('')
+                setCategory('');
+                setSubCategory('');
+                setImagePath('');
+                setFileName('');
+                toast.success('Succesfully Post Updated')
+                reset();
+            }
+            if(data.error){
+              toast.error(`Error ${data.error}`)
+            }
+          })
     };
 
 
@@ -72,16 +105,17 @@ const EditProduct = () => {
             <h4 className="border-bottom pb-2">Edit Product</h4>
             <form className="edit_product_form" onSubmit={handleSubmit(onSubmit)}>
                 {
-                    product?.ProductTitle ? <input defaultValue={product.ProductTitle} type='text' className="fw-bold" placeholder="Product Title" name="ProductTitle" {...register("ProductTitle", { required: true })} /> : <input type='text' className="fw-bold" placeholder="Product Title" name="ProductTitle" {...register("ProductTitle", { required: true })} />
-                }
-                {
-                    product?.ProductDescription ? <textarea defaultValue={product.ProductDescription} size="large" rows={4} placeholder="Product Description" {...register("ProductDescription", { required: true })} /> : <textarea size="large" rows={4} placeholder="Product Description" {...register("ProductDescription", { required: true })} />
+                    product && <div>
+                    <input defaultValue={product?.ProductTitle} className="fw-bold" placeholder="Product Title" {...register("ProductTitle")} />
+                    <textarea defaultValue={product?.ProductDescription}  rows={4} placeholder="Product Description" {...register("ProductDescription")} />
+                </div>
                 }
                 <h6 className="pt-2">Product Category</h6>
                 <div className="row g-md-2">
                     <div className="col-md-6">
-                        <Select
-                            placeholder="Select Category"
+                        {
+                            product?.category && <Select
+                            defaultValue={product?.category}
                             className="me-md-2"
                             size="large"
                             style={{
@@ -93,11 +127,13 @@ const EditProduct = () => {
                                 {value: 'Shop Plants',label: 'Shop Plants',},
                             ]}
                         />
+                        }
                     </div>
                     <div className="col-md-6">
                         {
-                            category == 'Shop Turf' && <Select
+                            product?.category == 'Shop Turf' && <Select
                                 placeholder="Select Shop Turf Sub Category"
+                                defaultValue={product?.subCategory}
                                 size="large"
                                 style={{
                                     width: '100%',
@@ -113,8 +149,9 @@ const EditProduct = () => {
                             />
                         }
                         {
-                            category == 'Shop Plants' && <Select
+                            product?.category == 'Shop Plants' && <Select
                                 // {...register("SubCategory", { required: true })} 
+                                defaultValue={product?.subCategory}
                                 placeholder="Select Shop Plants Sub Category"
                                 size="large"
                                 style={{
@@ -137,37 +174,37 @@ const EditProduct = () => {
                             <div className="row">
                                 {/* Input Deatails Information For Shop Plants Products ____________________________ */}
                                 {
-                                    category == 'Shop Turf' && <>
+                                    product?.category == 'Shop Turf' && <>
                                         <div className="col-md-6">
-                                            <input {...register("YarnType")} className='mb-2' placeholder="Yarn Type" />
-                                            <input {...register("Weight")} className='mb-2' placeholder="Weight" />
-                                            <input {...register("SecondaryBacking")} className='mb-2' placeholder="Secondary Backing" />
-                                            <input {...register("Pile_Height")} className='mb-2' placeholder="Pile Height" />
+                                            <input defaultValue={product?.YarnType} {...register("YarnType")} className='mb-2' placeholder="Yarn Type" />
+                                            <input defaultValue={product?.Weight} {...register("Weight")} className='mb-2' placeholder="Weight" />
+                                            <input defaultValue={product?.SecondaryBacking} {...register("SecondaryBacking")} className='mb-2' placeholder="Secondary Backing" />
+                                            <input defaultValue={product?.Pile_Height} {...register("Pile_Height")} className='mb-2' placeholder="Pile Height" />
                                         </div>
                                         <div className="col-md-6">
-                                            <input {...register("RollWidth")} className='mb-2' placeholder="Roll Width" />
-                                            <input {...register("Perforated")} className='mb-2' placeholder="Perforated" />
-                                            <input {...register("Color")} className='mb-2' placeholder="Color" />
-                                            <input {...register("PDFSpecSheet")} className='mb-2' placeholder="PDF Spec Sheet" />
+                                            <input defaultValue={product?.RollWidth} {...register("RollWidth")} className='mb-2' placeholder="Roll Width" />
+                                            <input defaultValue={product?.Perforated} {...register("Perforated")} className='mb-2' placeholder="Perforated" />
+                                            <input defaultValue={product?.Color} {...register("Color")} className='mb-2' placeholder="Color" />
+                                            <input defaultValue={product?.PDFSpecSheet} {...register("PDFSpecSheet")} className='mb-2' placeholder="PDF Spec Sheet" />
                                         </div>
                                     </>
                                 }
                                 {/* Input Deatails Information For Shop Plants Products ____________________________ */}
                                 {
-                                    category == 'Shop Plants' && <>
+                                    product?.category == 'Shop Plants' && <>
                                         <div className="col-md-6">
-                                            <input {...register("Product_Code")} className='mb-2' placeholder="Product code" />
-                                            <input {...register("UPC")} className='mb-2' placeholder="UPC" />
-                                            <input {...register("ItemsPerPack")} className='mb-2' placeholder="Items per pack" />
-                                            <input {...register("DominantColor")} className='mb-2' placeholder="Dominant color" />
-                                            <input {...register("PottedOrBaseIncluded")} className='mb-2' placeholder="Potted or base included" />
+                                            {product?.Product_Code ? <input defaultValue={product?.Product_Code} {...register("Product_Code")} className='mb-2' placeholder="Product code" />:<input {...register("Product_Code")} className='mb-2' placeholder="Product code" />}
+                                            <input defaultValue={product?.UPC} {...register("UPC")} className='mb-2' placeholder="UPC" />
+                                            <input defaultValue={product?.ItemsPerPack} {...register("ItemsPerPack")} className='mb-2' placeholder="Items per pack" />
+                                            <input defaultValue={product?.DominantColor} {...register("DominantColor")} className='mb-2' placeholder="Dominant color" />
+                                            <input defaultValue={product?.PottedOrBaseIncluded} {...register("PottedOrBaseIncluded")} className='mb-2' placeholder="Potted or base included" />
                                         </div>
                                         <div className="col-md-6">
-                                            <input {...register("WeightOfEachItem")} className='mb-2' placeholder="Weight of each item" />
-                                            <input {...register("WeightOf1pack")} className='mb-2' placeholder="Weight of 1 pack" />
-                                            <input {...register("ShippingBoxSize")} className='mb-2' placeholder="Shipping box size" />
-                                            <input {...register("ShippingDimensionalWeight")} className='mb-2' placeholder="Shipping dimensional weight" />
-                                            <input {...register("OversizedFreightShipping")} className='mb-2' placeholder="Shipping dimensional weight" />
+                                            <input defaultValue={product?.WeightOfEachItem} {...register("WeightOfEachItem")} className='mb-2' placeholder="Weight of each item" />
+                                            <input defaultValue={product?.WeightOf1pack} {...register("WeightOf1pack")} className='mb-2' placeholder="Weight of 1 pack" />
+                                            <input defaultValue={product?.ShippingBoxSize} {...register("ShippingBoxSize")} className='mb-2' placeholder="Shipping box size" />
+                                            <input defaultValue={product?.ShippingDimensionalWeight} {...register("ShippingDimensionalWeight")} className='mb-2' placeholder="Shipping dimensional weight" />
+                                            <input defaultValue={product?.OversizedFreightShipping} {...register("OversizedFreightShipping")} className='mb-2' placeholder="Over sized Freight Shipping" />
                                         </div>
                                     </>
                                 }
@@ -181,7 +218,7 @@ const EditProduct = () => {
                                         loading && <Spin/>
                                     }
                                     {
-                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`http://localhost:5000/${imagePath}`} alt="" />
+                                        product?.img && <img style={{height: '200px', weight: 'auto'}} src={`http://localhost:5000/${product.img}`} alt="" />
                                     }
                                     {
                                         imagePath && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>
@@ -196,6 +233,7 @@ const EditProduct = () => {
                 </div>
                 <button type="submit">Publish</button>
             </form>
+            <Toaster />
         </>
     );
 };
