@@ -7,7 +7,7 @@ import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ManageProduct = () => {
 
@@ -84,7 +84,7 @@ const ManageProduct = () => {
                     })
                 }
             </div>
-            
+            <Toaster />
         </section>
     );
 };
