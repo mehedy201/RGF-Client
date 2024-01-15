@@ -34,8 +34,7 @@ const CarouselComponents = () => {
                 responsive={responsive}
                 draggable={true}
                 infinite={true}
-                arrows={false}
-                showDots={true}
+                arrows={true}
                 autoPlay={true}
                 >
                 {/* Need Just One for Dynamic _______________________________________________________________________________________ */}
