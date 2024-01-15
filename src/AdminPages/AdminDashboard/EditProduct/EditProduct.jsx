@@ -22,7 +22,7 @@ const EditProduct = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/products/${id}`)
+        axios.get(`https://rgf.onrender.com/products/${id}`)
             .then(res => {
                 setProduct(res.data)
                 setCategory(res.data.category);
@@ -43,7 +43,7 @@ const EditProduct = () => {
         setLoading(true)
         const formData = new FormData();
         formData.append('file', e[0])
-        axios.post('http://localhost:5000/productImage', formData)
+        axios.post('https://rgf.onrender.com/productImage', formData)
             .then(res => {
                 setFileName(res.data.imagePath.filename)
                 setImagePath(res.data.imagePath.path)
@@ -53,7 +53,7 @@ const EditProduct = () => {
     }
     // Delete Image ___________________
     const deleteImage = () => {
-        axios.delete(`http://localhost:5000/productImageDelete/${fileName}`)
+        axios.delete(`https://rgf.onrender.com/productImageDelete/${fileName}`)
             .then(res => {
                 console.log('Delete Image Response', res)
                 setImagePath('')
@@ -75,7 +75,7 @@ const EditProduct = () => {
         }
         const formData = {...data, img, category, subCategory, fileName}
 
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://rgf.onrender.com/products/${id}`, {
           method: 'PUT',
           headers:{
               'content-type': 'application/json'
@@ -218,7 +218,7 @@ const EditProduct = () => {
                                         loading && <Spin/>
                                     }
                                     {
-                                        product?.img && <img style={{height: '200px', weight: 'auto'}} src={`http://localhost:5000/${product.img}`} alt="" />
+                                        product?.img && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${product.img}`} alt="" />
                                     }
                                     {
                                         imagePath && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>

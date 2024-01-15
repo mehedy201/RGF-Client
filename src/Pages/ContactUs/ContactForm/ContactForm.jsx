@@ -19,7 +19,7 @@ const ContactForm = () => {
     const onSubmit = async (data) => {  
 
         if(captchaValue == 'DQ33'){
-            await axios.post('http://localhost:5000/mainContactForm', data).then(res => console.log(res) )
+            await axios.post('https://rgf.onrender.com/mainContactForm', data).then(res => console.log(res) )
             toast.success('Email Send.!', {
                 duration: 3000,
                 position: 'top-right'

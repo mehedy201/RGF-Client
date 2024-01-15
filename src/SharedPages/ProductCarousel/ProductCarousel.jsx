@@ -10,7 +10,7 @@ const ProductCarousel = () => {
 
     const [products, setProducts] = useState([])
     useEffect(() => {
-      axios.get('http://localhost:5000/products').then(res => setProducts(res.data.slice(0,10)))
+      axios.get('https://rgf.onrender.com/products').then(res => setProducts(res.data.slice(0,10)))
     },[])
 
     const responsive = {
@@ -46,7 +46,7 @@ const ProductCarousel = () => {
                                 <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product._id}/${product.ProductTitle}`}>
                                     <div style={{cursor: 'pointer'}} className="overflow-hidden pointer">
                                         <div style={{height: '250px'}} className="d-flex justify-content-center align-items-center overflow-hidden p-2">
-                                            <img style={{height: 'auto', width: '100%',}} src={`http://localhost:5000/${product.img}`} alt={product.ProductTitle} />
+                                            <img style={{height: 'auto', width: '100%',}} src={`https://rgf.onrender.com/${product.img}`} alt={product.ProductTitle} />
                                         </div>
                                         <h3 className="py-2 fs-6 px-3 border-top">{product?.ProductTitle}</h3>
                                     </div>

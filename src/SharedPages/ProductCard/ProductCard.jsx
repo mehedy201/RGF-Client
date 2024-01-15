@@ -16,7 +16,7 @@ const ProductCard = ({products}) => {
                             <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product?._id}/${product?.ProductTitle}`}>
                                 <div style={{cursor: 'pointer'}} className="overflow-hidden pointer">
                                     <div style={{height: '250px'}} className="d-flex justify-content-center align-items-center overflow-hidden p-2">
-                                        <img style={{height: '-webkit-fill-available', width: '100%',}} src={`http://localhost:5000/${product?.img}`} alt={product?.ProductTitle} />
+                                        <img style={{height: '-webkit-fill-available', width: '100%',}} src={`https://rgf.onrender.com/${product?.img}`} alt={product?.ProductTitle} />
                                     </div>
                                     <h3 className="py-2 fs-6 px-3 border-top">{product.ProductTitle}</h3>
                                 </div>

@@ -24,7 +24,7 @@ const AddProductPage = () => {
         setLoading(true)
         const formData = new FormData();
         formData.append('file', e[0])
-        axios.post('http://localhost:5000/productImage', formData)
+        axios.post('https://rgf.onrender.com/productImage', formData)
             .then(res => {
                 setFileName(res.data.imagePath.filename)
                 setImagePath(res.data.imagePath.path)
@@ -34,7 +34,7 @@ const AddProductPage = () => {
     }
     // Delete Image ___________________
     const deleteImage = () => {
-        axios.delete(`http://localhost:5000/productImageDelete/${fileName}`)
+        axios.delete(`https://rgf.onrender.com/productImageDelete/${fileName}`)
             .then(res => {
                 console.log('Delete Image Response', res)
                 setImagePath('')
@@ -50,7 +50,7 @@ const AddProductPage = () => {
         const formData = {...data, img, category, subCategory, fileName}
         console.log(formData)
 
-        axios.post(`http://localhost:5000/products`, formData)
+        axios.post(`https://rgf.onrender.com/products`, formData)
             .then(res => {
                 if(res.success){
                     toast.success('Succesfully Post Updated')
@@ -174,7 +174,7 @@ const AddProductPage = () => {
                                         loading && <Spin/>
                                     }
                                     {
-                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`http://localhost:5000/${imagePath}`} alt="" />
+                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${imagePath}`} alt="" />
                                     }
                                     {
                                         imagePath && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>

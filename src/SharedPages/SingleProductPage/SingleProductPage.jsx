@@ -23,7 +23,7 @@ const SingleProductPage = () => {
     const [product, setProduct] = useState()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://rgf.onrender.com/products/${id}`)
         .then(res => res.json())
         .then(data => setProduct(data))
     }, [id])
@@ -82,7 +82,7 @@ const SingleProductPage = () => {
                 </div>
                 <div className="row">  
                     <div className="col d-flex justify-content-center p-2 overflow-hidden">
-                        <img style={{height: '80vh', width: 'auto'}} src={`http://localhost:5000/${product?.img}`} alt="" />
+                        <img style={{height: '80vh', width: 'auto'}} src={`https://rgf.onrender.com/${product?.img}`} alt="" />
                     </div>
                 </div>
                 <div className="row">
