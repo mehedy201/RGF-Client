@@ -55,14 +55,9 @@ const AddProductPage = () => {
 
         axios.post(`https://rgf.onrender.com/products`, formData)
             .then(res => {
-                if(res.success){
                     toast.success('Succesfully Post Updated')
                     reset()
                     setImagePath('')
-                }
-                if(data.error){
-                  toast.error(`Error ${data.error}`)
-                }
             })
             .catch(er => console.log(er))
     };

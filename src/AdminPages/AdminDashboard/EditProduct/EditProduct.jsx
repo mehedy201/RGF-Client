@@ -106,10 +106,13 @@ const EditProduct = () => {
             <h4 className="border-bottom pb-2">Edit Product</h4>
             <form className="edit_product_form" onSubmit={handleSubmit(onSubmit)}>
                 {
-                    product ? <div>
+                    product && <div>
                     <input defaultValue={product?.ProductTitle} className="fw-bold" placeholder="Product Title" {...register("ProductTitle")} />
                     <textarea defaultValue={product?.ProductDescription}  rows={4} placeholder="Product Description" {...register("ProductDescription")} />
-                </div> : <div>
+                </div>
+                }
+                {
+                    !product && <div>
                     <input className="fw-bold" placeholder="Product Title" {...register("ProductTitle")} />
                     <textarea  rows={4} placeholder="Product Description" {...register("ProductDescription")} />
                 </div> 
