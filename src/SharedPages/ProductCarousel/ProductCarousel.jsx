@@ -1,5 +1,5 @@
 // import React from 'react';
-
+import './ProductCarousel.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
