@@ -12,6 +12,7 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LoadingSpain from './Components/LoadingSpain/LoadingSpain';
 import axios from 'axios'
+import { Toaster } from 'react-hot-toast';
 const ShopTurf = React.lazy(() => import('./Pages/ShopTurf/ShopTurf'));
 const ShopPlants = React.lazy(() => import('./Pages/ShopPlants/ShopPlants'));
 const Modeling = React.lazy(() => import('./Pages/Modeling/Modeling'));
@@ -29,7 +30,8 @@ const AddProductPage = React.lazy(() => import('./AdminPages/AdminDashboard/AddP
 const EditProduct = React.lazy(() => import('./AdminPages/AdminDashboard/EditProduct/EditProduct'));
 const ManageProduct = React.lazy(() => import('./AdminPages/AdminDashboard/ManageProduct/ManageProduct'));
 const AddModelingImage = React.lazy(() => import('./AdminPages/AdminDashboard/AddModelingImage/AddModelingImage'));
-import { Toaster } from 'react-hot-toast';
+const ProductCatelog = React.lazy(() => import('./SharedPages/ProductCatelog/ProductCatelog'));
+
 
 
 
@@ -102,6 +104,16 @@ const router = createBrowserRouter([
       {
         path: '/contact-us',
         element: <Suspense fallback={<LoadingSpain/>}><ContactUs/></Suspense>
+      },
+      {
+        path: '/product-catelog',
+        element: <Suspense fallback={<LoadingSpain/>}> <ProductCatelog/></Suspense>,
+        loader: async () => {
+          const data = await axios.get(`http://localhost:5000/products`)
+              .then(res => res.data)
+              .catch(er => console.log(er))
+              return data;
+          }
       },
 
     ]

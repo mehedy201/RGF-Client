@@ -48,8 +48,8 @@ const SingleProductPage = () => {
                     </div>
                     <div className="col-md-10">
                         <div className="border px-3 py-2">
-                            <Link className="text-secondary pe-2" style={{textDecoration: 'none'}}>Home &gt;&gt;</Link>
-                            <Link className="text-secondary pe-2" style={{textDecoration: 'none'}}>All Product &gt;&gt;</Link>
+                            <Link to={'/'} className="text-secondary pe-2" style={{textDecoration: 'none'}}>Home &gt;&gt;</Link>
+                            <Link to={'/product-catelog'} className="text-secondary pe-2" style={{textDecoration: 'none'}}>Product Catelog &gt;&gt;</Link>
                             <span className="text-secondary">{product?.ProductTitle}</span>
                         </div>
                     </div>
