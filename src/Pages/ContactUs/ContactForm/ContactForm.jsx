@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { FaLocationArrow } from "@react-icons/all-files/fa/FaLocationArrow";
 import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
+import axios from 'axios';
 
 
 const ContactForm = () => {
@@ -13,8 +14,10 @@ const ContactForm = () => {
 
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmit = data => {
+    const onSubmit = async (data) => {  
+
         if(captchaValue == 'DQ33'){
+            await axios.post('http://localhost:5000/mainContactForm', data).then(res => console.log(res) )
             console.log(data)
             setCaptchaError('')
             reset();
