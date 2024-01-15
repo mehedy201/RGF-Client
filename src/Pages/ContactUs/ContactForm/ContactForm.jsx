@@ -19,13 +19,16 @@ const ContactForm = () => {
     const onSubmit = async (data) => {  
 
         if(captchaValue == 'DQ33'){
-            await axios.post('https://rgf.onrender.com/mainContactForm', data).then(res => console.log(res) )
-            toast.success('Email Send.!', {
-                duration: 3000,
-                position: 'top-right'
-            });
-            setCaptchaError('')
-            reset();
+            await axios.post('https://rgf.onrender.com/mainContactForm', data).then(res => {
+                console.log(res)
+                toast.success('Email Send.!', {
+                    duration: 3000,
+                    position: 'top-right'
+                });
+                setCaptchaError('')
+                reset();
+            } )
+            
         }else{
             setCaptchaError('Please Fell the Captch with Righ Text')
         }
