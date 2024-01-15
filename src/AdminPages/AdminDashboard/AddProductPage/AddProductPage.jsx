@@ -95,7 +95,7 @@ const AddProductPage = () => {
                                 }}
                                 onChange={e => setSubCategory(e)}
                                 options={[
-                                    {value: 'Residential/Commercial Landscape',label: 'Residential/Commercial Landscape',},
+                                    {value: 'Residential-Commercial Landscape',label: 'Residential Commercial Landscape',},
                                     {value: 'Sport and Athletic',label: 'Sport and Athletic',},
                                     {value: 'Childrens Play Areas',label: 'Childrens Play Areas',},
                                     {value: 'Kennels and Pets',label: 'Kennels and Pets',},

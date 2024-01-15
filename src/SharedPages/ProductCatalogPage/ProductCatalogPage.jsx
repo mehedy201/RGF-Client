@@ -23,7 +23,7 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
     let category;
     useEffect(() => {
         if(productCategory === 'Residential Commercial Landscape'){
-            category = 'Residential/Commercial Landscape';
+            category = 'Residential-Commercial Landscape';
             const search = fatchProduct.filter(d =>d.subCategory.includes(category))
             setProducts(search)      
         }else{
