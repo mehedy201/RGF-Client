@@ -158,7 +158,7 @@ const AddProductPage = () => {
                                             <input {...register("WeightOf1pack")} className='mb-2' placeholder="Weight of 1 pack" />
                                             <input {...register("ShippingBoxSize")} className='mb-2' placeholder="Shipping box size" />
                                             <input {...register("ShippingDimensionalWeight")} className='mb-2' placeholder="Shipping dimensional weight" />
-                                            <input {...register("OversizedFreightShipping")} className='mb-2' placeholder="Shipping dimensional weight" />
+                                            <input {...register("OversizedFreightShipping")} className='mb-2' placeholder="Oversized freight shipping" />
                                         </div>
                                     </>
                                 }
