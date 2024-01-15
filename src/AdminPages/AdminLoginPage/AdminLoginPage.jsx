@@ -1,22 +1,26 @@
 // import React from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import './AdminLoginPage.css'
+import auth from '../../../firebase.config'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Spin } from "antd";
 // import { Spin } from "antd";
 // import { useNavigate } from "react-router-dom";
 
 const AdminLoginPage = () => {
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
 
-    // const [
-    //     signInWithEmailAndPassword,
-    //     user,
-    //     loading,
-    //     error,
-    //   ] = useSignInWithEmailAndPassword(auth);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
 
-    // let from = "/dashboard";
+    let from = "/dashbord";
 
     // For React form hooks ------------------------------------------------------
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -24,26 +28,26 @@ const AdminLoginPage = () => {
         const {email, password} = data;
         console.log(email, password);
         reset();
-        // await signInWithEmailAndPassword(email, password)
-        // if(!error){
-        //     reset();
-        //     navigate(from, { replace: true })
-        //     console.log(user)
-        // }
-        // else{
-        //     return
-        // }
+        await signInWithEmailAndPassword(email, password)
+        if(!error){
+            reset();
+            navigate(from, { replace: true })
+            console.log(user)
+        }
+        else{
+            return
+        }
     };
 
     //   Condition User, Loading and Error --------------
     let load;
-    // if(loading){
-    //     load = <Spin />
-    // }
-    // let logInError;
-    // if(error){
-    //     logInError = <p className="text-danger fw-bold">{error?.message}</p>;
-    // }
+    if(loading){
+        load = <Spin />
+    }
+    let logInError;
+    if(error){
+        logInError = <p className="text-danger fw-bold">{error?.message}</p>;
+    }
     return (
         <section>
             <div className="container">
@@ -78,7 +82,7 @@ const AdminLoginPage = () => {
                             {/* Submit Button ----------------------------------------------------- */}
                             <div className='d-flex justify-content-center align-items-center'>
                                 {load}
-                                {/* {logInError} */}
+                                {logInError}
                             </div>
                             <button type="submit" className='fw-semibold btn bg-dark text-white w-100'>Submit</button>
                         </form>

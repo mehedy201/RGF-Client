@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { FaLocationArrow } from "@react-icons/all-files/fa/FaLocationArrow";
 import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
 import axios from 'axios';
+import toast,  { Toaster } from 'react-hot-toast';
+
 
 
 const ContactForm = () => {
@@ -18,7 +20,10 @@ const ContactForm = () => {
 
         if(captchaValue == 'DQ33'){
             await axios.post('http://localhost:5000/mainContactForm', data).then(res => console.log(res) )
-            console.log(data)
+            toast.success('Email Send.!', {
+                duration: 3000,
+                position: 'top-right'
+            });
             setCaptchaError('')
             reset();
         }else{
@@ -91,6 +96,7 @@ const ContactForm = () => {
                     </div>
                 </div>
             </div>
+            <Toaster/>
         </section>
     );
 };
