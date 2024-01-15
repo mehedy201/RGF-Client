@@ -1,14 +1,13 @@
 .galleryWrap {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
+    gap: 30px;
   }
   
   .galleryWrap .single {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 10px;
   }
   .galleryWrap .single .hoverIcon{
     position: absolute;
@@ -38,7 +37,7 @@
   }
   
   .galleryWrap .single img {
-    height: 200px;
+    height: 180px;
     width: auto;
     transition: 0.5s;
   }
