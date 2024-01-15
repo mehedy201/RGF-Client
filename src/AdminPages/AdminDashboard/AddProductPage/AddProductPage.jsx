@@ -52,7 +52,7 @@ const AddProductPage = () => {
 
         axios.post(`http://localhost:5000/products`, formData)
             .then(res => {
-                if(data.success){
+                if(res.success){
                     toast.success('Succesfully Post Updated')
                     reset()
                     setImagePath('')

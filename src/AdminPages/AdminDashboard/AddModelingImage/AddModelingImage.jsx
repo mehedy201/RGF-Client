@@ -14,7 +14,7 @@ const AddModelingImage = () => {
     const [imageData, setImageData] = useState()
     const [images, setImages] = useState();
     const [loading, setLoading] =useState(false)
-    
+
     const imageUpload = async (e) => {
         setLoading(true)
         const formData = new FormData();
@@ -36,6 +36,10 @@ const AddModelingImage = () => {
             .then(res => {
                 const remain = images.filter(img => img.filename !== fileName);
                 setImages(remain);
+                toast.success('Deleted.!', {
+                    duration: 3000,
+                    position: 'top-right'
+                });
             })
             .catch(er => console.log(er))
     }
@@ -44,7 +48,13 @@ const AddModelingImage = () => {
         await axios.post('http://localhost:5000/modelingImageApi', images)
         .then( res => {
             setImages('')
-            axios.get('http://localhost:5000/modelingImageApi').then(data => setImageData(data.data)).catch(err => console.log(err))
+            axios.get('http://localhost:5000/modelingImageApi').then(data => {
+                setImageData(data.data)
+                toast.success('Image Uploaded.!', {
+                    duration: 3000,
+                    position: 'top-right'
+                });
+            }).catch(err => console.log(err))
         })
         .catch(er => console.log(er))
     }
@@ -104,9 +114,9 @@ const AddModelingImage = () => {
                     <div className="row">
                         {
                             imageData?.map(img => {
-                                return <div key={img._id} className="col-md-2">
+                                return <div key={img._id} className="col-md-2 imageDataCard">
                                     <img style={{width: '100%', height: 'auto'}} src={`http://localhost:5000/${img.path}`} alt="" />
-                                        <FaRegTrashAlt onClick={() => deleteFromServer(img.filename, img._id)} className='deleteIconModeling'/>
+                                        <FaRegTrashAlt onClick={() => deleteFromServer(img.filename, img._id)} className='imageDataDelete'/>
                                     </div>
                             })
                         }

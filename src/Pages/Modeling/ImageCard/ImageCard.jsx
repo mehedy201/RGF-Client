@@ -6,7 +6,7 @@ import { FaArrowLeft } from "@react-icons/all-files/fa/FaArrowLeft";
 import { FaArrowRight } from "@react-icons/all-files/fa/FaArrowRight";
 import { FaSearch } from "@react-icons/all-files/fa/FaSearch";
 
-const ImageCard = ({galleryImages}) => {
+const ImageCard = ({data}) => {
     const [slideNumber, setSlideNumber] = useState(0)
     const [openModal, setOpenModal] = useState(false)
 
@@ -23,13 +23,13 @@ const ImageCard = ({galleryImages}) => {
     // Previous Image
     const prevSlide = () => {
         slideNumber === 0 
-        ? setSlideNumber( galleryImages.length -1 ) 
+        ? setSlideNumber( data.length -1 ) 
         : setSlideNumber( slideNumber - 1 )
     }
 
     // Next Image  
     const nextSlide = () => {
-        slideNumber + 1 === galleryImages.length 
+        slideNumber + 1 === data.length 
         ? setSlideNumber(0) 
         : setSlideNumber(slideNumber + 1)
     }
@@ -42,7 +42,7 @@ const ImageCard = ({galleryImages}) => {
           <FaArrowLeft  className='btnPrev' onClick={prevSlide} />
           <FaArrowRight className='btnNext' onClick={nextSlide} />
           <div className='fullScreenImage'>
-            <img src={galleryImages[slideNumber].img} alt='' />
+            <img src={`http://localhost:5000/${data[slideNumber].path}`} alt='' />
           </div>
         </div>
       }
@@ -50,14 +50,14 @@ const ImageCard = ({galleryImages}) => {
 
       <div className='galleryWrap'>
         {
-          galleryImages && galleryImages.map((slide, index) => {
+          data && data.map((slide, index) => {
             return(
               <div 
                 className='single' 
                 key={index}
                 onClick={ () => handleOpenModal(index) }
               >
-                <img src={slide.img} alt='' />
+                <img src={`http://localhost:5000/${slide.path}`} alt='' />
                 <FaSearch className='hoverIcon'/>
               </div>
             )

@@ -1,23 +1,16 @@
 // import React from 'react';
 import './Modeling.css';
-import cardImage from '../../assets/AboutUsImages/2023-10-21-13.41.50-1-1024x720.webp';
-import newImage from '../../assets/AboutUsImages/interior-courtyard-turf-design.webp';
-import image3 from '../../assets/AboutUsImages/2023-10-21-13.45.12-1024x720.webp';
-import image4 from '../../assets/AboutUsImages/southwestern-themed-plaza-with-artificial-grass-4-1024x720.webp';
-import image5 from '../../assets/AboutUsImages/turf-indoors-1280x720.webp';
-import image6 from '../../assets/ContactUsImage/hero_contact.jpg';
-
+import { useEffect,useState } from 'react';
+import axios from 'axios';
 import ImageCard from './ImageCard/ImageCard';
 
 const Modeling = () => {
-    const galleryImages =[
-        {img: cardImage},
-        {img: newImage},
-        {img: image3},
-        {img: image4},
-        {img: image5},
-        {img: image6},
-    ]
+
+    const [data, setData] = useState()
+    useEffect(() => {
+        axios.get('http://localhost:5000/modelingImageApi').then(data => setData(data.data)).catch(err => console.log(err))
+    }, [])
+
     return (
         <>
         <section id="modelingHeroSection">
@@ -31,7 +24,7 @@ const Modeling = () => {
         <section className='py-5'>
             <div className="container">
                 <div className="row g-3">
-                        <ImageCard galleryImages={galleryImages}/>
+                        <ImageCard data={data}/>
                 </div>
             </div>
         </section>

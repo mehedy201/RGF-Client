@@ -29,6 +29,7 @@ const AddProductPage = React.lazy(() => import('./AdminPages/AdminDashboard/AddP
 const EditProduct = React.lazy(() => import('./AdminPages/AdminDashboard/EditProduct/EditProduct'));
 const ManageProduct = React.lazy(() => import('./AdminPages/AdminDashboard/ManageProduct/ManageProduct'));
 const AddModelingImage = React.lazy(() => import('./AdminPages/AdminDashboard/AddModelingImage/AddModelingImage'));
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -111,7 +112,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashbord",
-    element: <Suspense fallback={<LoadingSpain/>}><AdminDashboard/></Suspense>,
+    element: <Suspense fallback={<LoadingSpain/>}><AdminDashboard/><Toaster/></Suspense>,
     children: [
       {
         path:'/dashbord/add-product',
