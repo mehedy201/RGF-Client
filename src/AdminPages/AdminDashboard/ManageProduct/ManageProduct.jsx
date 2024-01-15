@@ -66,21 +66,19 @@ const ManageProduct = () => {
             <div style={{height: '100vh', overflowY: 'auto'}}>
                 {
                     products?.map(product => {
-                        return <>
-                        <div key={product._id} className='border my-2 d-md-flex justify-content-between align-items-center p-2 rounded'>
-                            <div style={{height: '50px'}} className='d-flex justify-content-between'>
-                                <img style={{height: '-webkit-fill-available', width: '60px', borderRadius: '5px', marginRight: '10px'}} src={`http://localhost:5000/${product?.img}`} alt="" />
-                                {
-                                    product.ProductTitle.length < 30 ? <h6 className='mt-2'>{product?.ProductTitle}</h6> : <h6 className='mt-2'>{product?.ProductTitle.slice(0,20)} ...</h6>
-                                }
-                            </div>
-                            <div className='d-flex justify-content-end'>
-                                <a href={`http://localhost:5173/product-catalog/${product._id}/${product.ProductTitle}`} target='_blank' rel='noreferrer'><FaExternalLinkAlt className='mx-2 icon_style_manage_page' data-bs-toggle="tooltip" data-bs-placement="top" title="Preview Product"/></a>
-                                <Link to={`/dashbord/edit-product/${product._id}`}><FaRegEdit className='mx-2 icon_style_manage_page' data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Product"/></Link>
-                                <FaRegTrashAlt onClick={() => deleteProduct(product._id)} style={{color: 'red'}} className='mx-2 icon_style_manage_page mt-1' data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Product"/>
-                            </div>
-                        </div>
-                        </>
+                        return  <div key={product._id} className='border my-2 d-md-flex justify-content-between align-items-center p-2 rounded'>
+                                    <div style={{height: '50px'}} className='d-flex justify-content-between'>
+                                        <img style={{height: '-webkit-fill-available', width: '60px', borderRadius: '5px', marginRight: '10px'}} src={`http://localhost:5000/${product?.img}`} alt="" />
+                                        {
+                                            product.ProductTitle.length < 30 ? <h6 className='mt-2'>{product?.ProductTitle}</h6> : <h6 className='mt-2'>{product?.ProductTitle.slice(0,20)} ...</h6>
+                                        }
+                                    </div>
+                                    <div className='d-flex justify-content-end'>
+                                        <a href={`http://localhost:5173/product-catalog/${product._id}/${product.ProductTitle}`} target='_blank' rel='noreferrer'><FaExternalLinkAlt className='mx-2 icon_style_manage_page' data-bs-toggle="tooltip" data-bs-placement="top" title="Preview Product"/></a>
+                                        <Link to={`/dashbord/edit-product/${product._id}`}><FaRegEdit className='mx-2 icon_style_manage_page' data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Product"/></Link>
+                                        <FaRegTrashAlt onClick={() => deleteProduct(product._id)} style={{color: 'red'}} className='mx-2 icon_style_manage_page mt-1' data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Product"/>
+                                    </div>
+                                </div>
                     })
                 }
             </div>

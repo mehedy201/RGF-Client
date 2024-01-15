@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LoadingSpain from './Components/LoadingSpain/LoadingSpain';
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
+import PrivetRoute from './Routes/PrivetRoute';
 const ShopTurf = React.lazy(() => import('./Pages/ShopTurf/ShopTurf'));
 const ShopPlants = React.lazy(() => import('./Pages/ShopPlants/ShopPlants'));
 const Modeling = React.lazy(() => import('./Pages/Modeling/Modeling'));
@@ -124,23 +125,23 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashbord",
-    element: <Suspense fallback={<LoadingSpain/>}><AdminDashboard/><Toaster/></Suspense>,
+    element: <Suspense fallback={<LoadingSpain/>}><PrivetRoute><AdminDashboard/></PrivetRoute><Toaster/></Suspense>,
     children: [
       {
         path:'/dashbord/add-product',
-        element: <Suspense fallback={<LoadingSpain/>}><AddProductPage/></Suspense>,
+        element: <Suspense fallback={<LoadingSpain/>}><PrivetRoute><AddProductPage/></PrivetRoute></Suspense>,
       },
       {
         path:'/dashbord/manage-product',
-        element: <Suspense fallback={<LoadingSpain/>}><ManageProduct/></Suspense>,
+        element: <Suspense fallback={<LoadingSpain/>}><PrivetRoute><ManageProduct/></PrivetRoute></Suspense>,
       },
       {
         path:'/dashbord/edit-product/:id',
-        element: <Suspense fallback={<LoadingSpain/>}><EditProduct/></Suspense>,
+        element: <Suspense fallback={<LoadingSpain/>}><PrivetRoute><EditProduct/></PrivetRoute></Suspense>,
       },
       {
         path:'/dashbord/add-modeling-image',
-        element: <Suspense fallback={<LoadingSpain/>}><AddModelingImage/></Suspense>,
+        element: <Suspense fallback={<LoadingSpain/>}><PrivetRoute><AddModelingImage/></PrivetRoute></Suspense>,
       },
     ]
   },
