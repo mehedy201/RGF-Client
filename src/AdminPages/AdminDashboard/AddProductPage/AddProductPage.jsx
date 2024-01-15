@@ -7,11 +7,14 @@ import { Select, Spin } from 'antd';
 import axios from 'axios';
 import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import toast, { Toaster } from 'react-hot-toast';
+import demoImage from '../../../assets/free-gallery-187-902099.webp'
+import { useNavigate } from 'react-router-dom';
 
 
 
 const AddProductPage = () => {
 
+    const navigate = useNavigate()
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
 
@@ -172,6 +175,9 @@ const AddProductPage = () => {
                                 <div style={{height: '200px'}} className='p-2 overflow-hidden imageBoxBackground'>
                                     {
                                         loading && <Spin/>
+                                    }
+                                    {
+                                        !imagePath && <img style={{height: '200px', weight: 'auto'}} src={demoImage} alt="" />
                                     }
                                     {
                                         imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${imagePath}`} alt="" />

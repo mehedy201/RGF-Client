@@ -9,6 +9,7 @@ import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import demoImage from '../../../assets/free-gallery-187-902099.webp'
 
 const EditProduct = () => {
 
@@ -105,10 +106,13 @@ const EditProduct = () => {
             <h4 className="border-bottom pb-2">Edit Product</h4>
             <form className="edit_product_form" onSubmit={handleSubmit(onSubmit)}>
                 {
-                    product && <div>
+                    product ? <div>
                     <input defaultValue={product?.ProductTitle} className="fw-bold" placeholder="Product Title" {...register("ProductTitle")} />
                     <textarea defaultValue={product?.ProductDescription}  rows={4} placeholder="Product Description" {...register("ProductDescription")} />
-                </div>
+                </div> : <div>
+                    <input className="fw-bold" placeholder="Product Title" {...register("ProductTitle")} />
+                    <textarea  rows={4} placeholder="Product Description" {...register("ProductDescription")} />
+                </div> 
                 }
                 <h6 className="pt-2">Product Category</h6>
                 <div className="row g-md-2">
@@ -216,6 +220,9 @@ const EditProduct = () => {
                                 <div style={{height: '200px'}} className='p-2 overflow-hidden imageBoxBackground'>
                                     {
                                         loading && <Spin/>
+                                    }
+                                    {
+                                        !imagePath && <img style={{height: '200px', weight: 'auto'}} src={demoImage} alt="" />
                                     }
                                     {
                                         product?.img && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${product.img}`} alt="" />

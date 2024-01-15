@@ -19,10 +19,13 @@
     outline: 1px solid aqua;
 }
 .imageBoxBackground{
-    background-image: url(../../../assets/free-gallery-187-902099.webp);
+    /* background-image: url(../../../assets/free-gallery-187-902099.webp);
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
+    background-position: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
 }
 .imageBoxBackground .deleteIcon{
