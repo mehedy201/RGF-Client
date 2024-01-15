@@ -14,10 +14,10 @@ const AddModelingImage = () => {
     const [imageData, setImageData] = useState()
     const [images, setImages] = useState();
     const [loading, setLoading] =useState(false)
+    
     const imageUpload = async (e) => {
         setLoading(true)
         const formData = new FormData();
-        //********* HERE IS THE CHANGE ***********
         for (let i = 0; i < e.length; i++) {
         formData.append('files', e[i]);
         }
@@ -40,9 +40,12 @@ const AddModelingImage = () => {
             .catch(er => console.log(er))
     }
 
-    const uploadImages = () => {
-        axios.post('http://localhost:5000/modelingImageApi', images)
-        .then(res => console.log(res))
+    const uploadImages = async () => {
+        await axios.post('http://localhost:5000/modelingImageApi', images)
+        .then( res => {
+            setImages('')
+            axios.get('http://localhost:5000/modelingImageApi').then(data => setImageData(data.data)).catch(err => console.log(err))
+        })
         .catch(er => console.log(er))
     }
 
@@ -62,10 +65,12 @@ const AddModelingImage = () => {
                      axios.delete(`http://localhost:5000/modelingImg/${one}`)
                     .then(res => {
                         const remain = images.filter(img => img.filename !== one);
+                        const imageRemain = images.filter(img => img._id !== two);
                         setImages(remain);
                     })
                     .catch(er => console.log(er))
-
+                    const imageRemain = imageData.filter(img => img._id !== two);
+                    setImageData(imageRemain)
                     toast.success('Deleted.!', {
                         duration: 3000,
                         position: 'top-right'
@@ -84,7 +89,7 @@ const AddModelingImage = () => {
                         loading == true && <Spin/>
                     }
                     {
-                        images?.map((img , index) => {
+                        images && images?.map((img , index) => {
                             return <div className='imgBox' key={index}>
                                         <img style={{height: '60px', width: '60px'}} src={`http://localhost:5000/${img.path}`} alt="" />
                                         <FaRegTrashAlt onClick={() => deleteImage(img.filename)} className='deleteIconModeling'/>
