@@ -40,8 +40,8 @@ const EditProduct = () => {
         
     },[])
 
+    const [deletedImg, setDeletedImg] = useState(false)
     const imageUpload = (e) => {
-        setLoading(true)
         const formData = new FormData();
         formData.append('file', e[0])
         axios.post('https://rgf.onrender.com/productImage', formData)
@@ -54,6 +54,7 @@ const EditProduct = () => {
     }
     // Delete Image ___________________
     const deleteImage = () => {
+        setDeletedImg(true)
         axios.delete(`https://rgf.onrender.com/productImageDelete/${fileName}`)
             .then(res => {
                 console.log('Delete Image Response', res)
@@ -225,17 +226,26 @@ const EditProduct = () => {
                                         loading && <Spin/>
                                     }
                                     {
-                                        !imagePath && <img style={{height: '200px', weight: 'auto'}} src={demoImage} alt="" />
-                                    }
-                                    {
-                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${imagePath}`} alt="" />
-                                    }
-                                    {
-                                        product?.img && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${product.img}`} alt="" />
-                                    }
-                                    {
+                                        deletedImg == false && <>
+                                        {
+                                            !imagePath && <img style={{height: '200px', weight: 'auto'}} src={demoImage} alt="" />
+                                        }
+                                        {
+                                            imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${imagePath}`} alt="" />
+                                        }
+                                        {
+                                            product?.img && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${product.img}`} alt="" />
+                                        }
+                                        {
+                                        product?.img && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>
+                                        }
+                                        {
                                         imagePath && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>
+                                        }
+                                        </>
                                     }
+
+                                    
                                 </div>
                                 <div className="border p-2">
                                     <input type="file" name='image' onChange={e => imageUpload(e.target.files)} />
