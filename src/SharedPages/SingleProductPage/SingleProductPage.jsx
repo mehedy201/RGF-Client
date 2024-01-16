@@ -16,7 +16,7 @@ import {
   import { FaArrowRight } from "@react-icons/all-files/fa/FaArrowRight";
 import ProductCarousel from '../ProductCarousel/ProductCarousel';
 import { useEffect, useState } from 'react';
-import ContactForm from '../../Pages/ContactUs/ContactForm/ContactForm';
+import ContactFormForProduct from '../../Components/CommonComponentsPages/ContactFormForProduct/ContactFormForProduct';
 
 const SingleProductPage = () => {
     const {id, title} = useParams()
@@ -184,7 +184,7 @@ const SingleProductPage = () => {
                                 </div>
                             </Tab>
                             <Tab eventKey="reques_a_quate" title="REQUEST A QUATE">
-                                <ContactForm/>
+                                <ContactFormForProduct/>
                             </Tab>
                         </Tabs>
                     </div>
