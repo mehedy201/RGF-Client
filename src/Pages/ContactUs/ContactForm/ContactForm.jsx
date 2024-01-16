@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import React from 'react';
 import './ContactForm.css'
 import { useForm } from "react-hook-form";
@@ -16,17 +17,16 @@ const ContactForm = () => {
 
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmit = async (data) => {  
-
+    const onSubmit = async (data) => { 
+        
+        toast.success('Email Send.!', {
+            duration: 3000,
+            position: 'top-right'
+        });
+        setCaptchaError('')
+        reset(); 
         if(captchaValue == 'DQ33'){
             await axios.post('https://rgf.onrender.com/mainContactForm', data).then(res => {
-                console.log(res)
-                toast.success('Email Send.!', {
-                    duration: 3000,
-                    position: 'top-right'
-                });
-                setCaptchaError('')
-                reset();
             } )
             
         }else{

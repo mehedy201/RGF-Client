@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 // import {useLocation} from 'react';
 import axios from 'axios';
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from 'react-hot-toast';
+import toast, {Toaster} from 'react-hot-toast';
 import './ContactFormForProduct.css'
 
 const ContactFormForProduct = () => {
@@ -15,21 +16,17 @@ const ContactFormForProduct = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = async (data) => {  
-        // console.log('link =', link.href);
+        toast.success('Email Send.!', {
+            duration: 3000,
+            position: 'top-right'
+        });
+            reset()
+            setCaptchaError('')
         const productLink = window.location.href;
         const formData = {...data, productLink}
         console.log("formData", formData);
         if(captchaValue == 'Z37Q'){
-            await axios.post('https://rgf.onrender.com/productContactForm', formData).then(res => {
-                console.log(res)
-                toast.success('Email Send.!', {
-                    duration: 3000,
-                    position: 'top-right'
-                });
-                setCaptchaError('')
-                reset();
-            }
-            )
+            await axios.post('https://rgf.onrender.com/productContactForm', formData).then(res => {})
             
         }else{
             setCaptchaError('Please Fell the Captch with Righ Text')
@@ -60,6 +57,7 @@ const ContactFormForProduct = () => {
                 </div>
                 <button className='contact_form_submit_button' type="submit">Submit</button>
             </form>
+            <Toaster />
         </div>
     );
 };
