@@ -85,6 +85,9 @@
         font-weight: bold;
         padding: 6px 20px;
     }
+    .landing_page{
+        background-image: url('../../assets/optimizeForMobile.webp');
+   }
 }
 @media only screen and (max-width: 462px) {
     .landing_page_hero_text{
