@@ -228,6 +228,9 @@ const EditProduct = () => {
                                         !imagePath && <img style={{height: '200px', weight: 'auto'}} src={demoImage} alt="" />
                                     }
                                     {
+                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${imagePath}`} alt="" />
+                                    }
+                                    {
                                         product?.img && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${product.img}`} alt="" />
                                     }
                                     {
