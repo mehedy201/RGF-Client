@@ -66,7 +66,7 @@ const LandingPage = () => {
             <Section4/>
         </React.Suspense>
         {/* Section 5 Carousel ____________________________ */}
-        <div className=' pt-5 pb-2'><h2 style={{fontWeight: '700', fontSize: '3.125rem'}} className='text-center'>Customer Testimonials</h2></div>
+        <div className='pt-md-5 py-2'><h2 style={{fontWeight: '700', fontSize: '3.125rem'}} className='text-center'>Customer Testimonials</h2></div>
         <React.Suspense fallback={<div className='d-flex justify-content-center'><Spin/></div>}>
             <CarouselComponents/>
         </React.Suspense>

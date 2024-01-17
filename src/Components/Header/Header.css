@@ -72,7 +72,7 @@
 }
 .mobile_navigation .mobile_menu_innerdiv a img{
     width: 150px;
-    height: auto;
+    height: 57.5px;
 }
 .ant-drawer-header-title{
     flex-direction: row-reverse !important;
