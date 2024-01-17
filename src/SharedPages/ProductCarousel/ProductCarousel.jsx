@@ -54,7 +54,7 @@ const ProductCarousel = () => {
                     })
                 }
                 
-            </Carousel>;
+            </Carousel>
         </div>
         </section>
     );

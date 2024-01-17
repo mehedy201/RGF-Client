@@ -25,7 +25,10 @@ const SingleProductPage = () => {
     useEffect(() => {
         fetch(`https://rgf.onrender.com/products/${id}`)
         .then(res => res.json())
-        .then(data => setProduct(data))
+        .then(data => {
+            setProduct(data)
+            console.log(data)
+        })
     }, [id])
  
 

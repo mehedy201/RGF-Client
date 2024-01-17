@@ -109,7 +109,7 @@ const CarouselComponents = () => {
                         <small className="d-block text-center">Rio Grande Valley, Texas</small>
                     </div>
                 </div>
-            </Carousel>;
+            </Carousel>
         </div>
         </>
     );
