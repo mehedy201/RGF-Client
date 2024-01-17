@@ -32,6 +32,7 @@ const EditProduct = React.lazy(() => import('./AdminPages/AdminDashboard/EditPro
 const ManageProduct = React.lazy(() => import('./AdminPages/AdminDashboard/ManageProduct/ManageProduct'));
 const AddModelingImage = React.lazy(() => import('./AdminPages/AdminDashboard/AddModelingImage/AddModelingImage'));
 const ProductCatelog = React.lazy(() => import('./SharedPages/ProductCatelog/ProductCatelog'));
+const SubmitData = React.lazy(() => import('./Pages/SubmitData/SubmitData'));
 
 
 
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: '/contact-us',
         element: <Suspense fallback={<LoadingSpain/>}><ContactUs/></Suspense>
+      },
+      {
+        path: '/submit-data',
+        element: <Suspense fallback={<LoadingSpain/>}><SubmitData/></Suspense>
       },
       {
         path: '/product-catelog',
