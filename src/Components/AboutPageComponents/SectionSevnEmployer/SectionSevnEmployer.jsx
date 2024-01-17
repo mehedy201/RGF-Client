@@ -21,7 +21,7 @@ const SectionSevnEmployer = () => {
                     </div>
                     <div className="col-md-3">
                         <div className="border px-2 py-4">
-                            <h4 className="text-center">Omar <b>Pando</b></h4>
+                            <h4 className="text-center"><b>Christian Garza</b></h4>
                             <small className="d-block text-center py-3">COO/Founding Partner</small>
                             <div className="d-flex justify-content-center align-items-center">
                               <a className='text-dark fs-3' target='_blank' rel='noreferrer' href="https://www.facebook.com/rgvturf"><FaFacebookF className='m-2' /></a>
@@ -32,8 +32,8 @@ const SectionSevnEmployer = () => {
                     </div>
                     <div className="col-md-3">
                         <div className="border px-2 py-4">
-                            <h4 className="text-center">Alex <b>Garza</b></h4>
-                            <small className="d-block text-center py-3">Team Lead</small>
+                            <h4 className="text-center"><b>Isaac Gonzalez</b></h4>
+                            <small className="d-block text-center py-3">Senior Installer</small>
                             <div className="d-flex justify-content-center align-items-center">
                               <a className='text-dark fs-3' target='_blank' rel='noreferrer' href="https://www.facebook.com/rgvturf"><FaFacebookF className='m-2' /></a>
                               <a className='text-dark fs-3' target='_blank' rel='noreferrer' href="https://twitter.com/rgvturf"><FaTwitter className='m-2' /></a>
@@ -43,8 +43,8 @@ const SectionSevnEmployer = () => {
                     </div>
                     <div className="col-md-3">
                         <div className="border px-2 py-4">
-                            <h4 className="text-center">Limber <b>Hernandez</b></h4>
-                            <small className="d-block text-center py-3">Pro Turf Installer</small>
+                            <h4 className="text-center"><b>Damian Gonzalez</b></h4>
+                            <small className="d-block text-center py-3">Field Supervisor</small>
                             <div className="d-flex justify-content-center align-items-center">
                               <a className='text-dark fs-3' target='_blank' rel='noreferrer' href="https://www.facebook.com/rgvturf"><FaFacebookF className='m-2' /></a>
                               <a className='text-dark fs-3' target='_blank' rel='noreferrer' href="https://twitter.com/rgvturf"><FaTwitter className='m-2' /></a>
