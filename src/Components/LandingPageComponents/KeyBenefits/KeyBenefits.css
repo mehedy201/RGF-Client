@@ -1,9 +1,6 @@
 #keyBenefitsSection{
     background-color: #eaefe4;
 }
-#keyBenefitsSection ol li{
-    color: rgb(78, 78, 78)
-}
 #keyBenefitsSection .keyBenefitsSectionButton{
     position: relative;
     text-decoration: none;
