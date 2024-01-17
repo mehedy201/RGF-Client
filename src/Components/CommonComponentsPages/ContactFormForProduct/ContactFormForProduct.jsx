@@ -4,12 +4,14 @@ import axios from 'axios';
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, {Toaster} from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import './ContactFormForProduct.css'
 
 const ContactFormForProduct = () => {
 
     const [captchaValue, setCaptchaValue] = useState('');
-    const [captchaError, setCaptchaError] = useState('')
+    const [captchaError, setCaptchaError] = useState('');
+    const navigate = useNavigate()
 
     // const link = useLocation()
 
@@ -22,11 +24,12 @@ const ContactFormForProduct = () => {
         });
             reset()
             setCaptchaError('')
-        const productLink = window.location.href;
-        const formData = {...data, productLink}
-        console.log("formData", formData);
+            const productLink = window.location.href;
+            const formData = {...data, productLink}
+            console.log("formData", formData);
         if(captchaValue == 'Z37Q'){
             await axios.post('https://rgf.onrender.com/productContactForm', formData).then(res => {})
+            return navigate('/')
             
         }else{
             setCaptchaError('Please Fell the Captch with Righ Text')

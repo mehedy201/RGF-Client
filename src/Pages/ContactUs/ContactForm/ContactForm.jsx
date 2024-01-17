@@ -7,13 +7,15 @@ import { FaLocationArrow } from "@react-icons/all-files/fa/FaLocationArrow";
 import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
 import axios from 'axios';
 import toast,  { Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const ContactForm = () => {
 
     const [captchaValue, setCaptchaValue] = useState('');
-    const [captchaError, setCaptchaError] = useState('')
+    const [captchaError, setCaptchaError] = useState('');
+    const navigate = useNavigate()
 
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -27,8 +29,9 @@ const ContactForm = () => {
         reset(); 
         if(captchaValue == 'DQ33'){
             await axios.post('https://rgf.onrender.com/mainContactForm', data).then(res => {
-            } )
-            
+            })
+        
+            return navigate('/')
         }else{
             setCaptchaError('Please Fell the Captch with Righ Text')
         }

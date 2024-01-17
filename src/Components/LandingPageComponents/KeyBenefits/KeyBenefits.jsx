@@ -23,7 +23,9 @@ const KeyBenefits = () => {
                             <li>Custom Looks: Synthetic grass offers varied colors and lengths.</li>
                             <li>Quieter Environment: The structure of artificial lawns absorbs sound, contributing to calmer, more peaceful surroundings.</li>
                         </ol>
+                        <div className='pb-4'>
                         <Link className='keyBenefitsSectionButton py-2 ms-2' to={'/services'}><FaLocationArrow style={{marginTop: '-5px'}} className='me-2'/>RGV Turf Team</Link>
+                        </div>
                     </div>
                     <div className="col-md-6">
                         <article className='text-secondary pb-3 fw-bold'>Upgrade to a hassle-free, evergreen artificial turf that mirrors natural beauty. Ideal for McAllen, Texas residents seeking sustainable, easy-care landscaping.</article>
