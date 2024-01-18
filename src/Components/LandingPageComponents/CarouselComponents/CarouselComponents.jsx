@@ -38,9 +38,11 @@ const CarouselComponents = () => {
                 autoPlay={true}
                 >
                 {/* Need Just One for Dynamic _______________________________________________________________________________________ */}
-                <div className="p-2 m-2 bg-light">
+                <div className="h-100 p-2 m-2 bg-light">
                     <div className="carousel_style_css">
-                        <img style={{width: '100%', height: 'auto', borderRadius: '20px'}} src={veryExperiencedCrew} alt="" />
+                        <div style={{height: '180px', overflow:'hidden', borderRadius: '20px'}}>
+                            <img style={{width: '100%', height: 'auto'}} src={veryExperiencedCrew} alt="" />
+                        </div>
                         <h4 className="text-center pt-3">Very Experienced Crew!</h4>
                         <Rate className="d-block text-center text-black my-3" disabled defaultValue={5} />
                         <p className="text-center">My new landscape has really enhanced the look of my home. I highly recommend RGV Turf to anyone considering artificial turf or custom landscapes.</p>
@@ -49,9 +51,11 @@ const CarouselComponents = () => {
                     </div>
                 </div>
                 {/* ___________________________________________________________________________________________________________________ */}
-                <div className="p-2 m-2 bg-light">
+                <div className="h-100 p-2 m-2 bg-light">
                     <div className="carousel_style_css">
-                        <img style={{width: '100%', height: 'auto', borderRadius: '20px'}} src={excellentWork} alt="" />
+                        <div  style={{height: '180px', overflow:'hidden', borderRadius: '20px'}}>
+                            <img style={{width: '100%', height: 'auto'}} src={excellentWork} alt="" />
+                        </div>
                         <h4 className="text-center pt-3">Excellent Work, A+</h4>
                         <Rate className="d-block text-center text-black my-3" disabled defaultValue={5} />
                         <p className="text-center">Honest reliable and always professional in their approach to the task in hand. Very experienced with an eye to detail.</p>
@@ -59,9 +63,11 @@ const CarouselComponents = () => {
                         <small className="d-block text-center">McAllen, Texas</small>
                     </div>
                 </div>
-                <div className="p-2 m-2 bg-light">
+                <div className="h-100 p-2 m-2 bg-light">
                     <div className="carousel_style_css">
-                        <img style={{width: '100%', height: 'auto', borderRadius: '20px'}} src={veryNiceResults} alt="" />
+                        <div  style={{height: '180px', overflow:'hidden', borderRadius: '20px'}}>
+                            <img style={{width: '100%', height: 'auto'}} src={veryNiceResults} alt="" />
+                        </div>
                         <h4 className="text-center pt-3">Very Nice Results!</h4>
                         <Rate className="d-block text-center text-black my-3" disabled defaultValue={5} />
                         <p className="text-center">Thank you for your professional advice and approach to the job. You provided an efficient and courteous service throughout. Came out even better then the 3D mockups portrayed.</p>
@@ -69,9 +75,11 @@ const CarouselComponents = () => {
                         <small className="d-block text-center">Brownsville, Texas</small>
                     </div>
                 </div>
-                <div className="p-2 m-2 bg-light">
+                <div className="h-100 p-2 m-2 bg-light">
                     <div className="carousel_style_css">
-                        <img style={{width: '100%', height: 'auto', borderRadius: '20px'}} src={syntheticlLandscaping} alt="" />
+                        <div  style={{height: '180px', overflow:'hidden', borderRadius: '20px'}}>
+                             <img style={{width: '100%', height: 'auto'}} src={syntheticlLandscaping} alt="" />
+                        </div>
                         <h4 className="text-center pt-3">Synthetic Landscaping in Childs Play Area</h4>
                         <Rate className="d-block text-center text-black my-3" disabled defaultValue={5} />
                         <p className="text-center">RGV Turf did a very professional job on my backyard and children’s play zone. Many thanks RGV Turf!</p>
@@ -79,9 +87,11 @@ const CarouselComponents = () => {
                         <small className="d-block text-center">Edinburg, Texas</small>
                     </div>
                 </div>
-                <div className="p-2 m-2 bg-light">
+                <div className="h-100 p-2 m-2 bg-light">
                     <div className="carousel_style_css">
-                        <img style={{width: '100%', height: 'auto', borderRadius: '20px'}} src={syntheticMaintenance} alt="" />
+                        <div  style={{height: '180px', overflow:'hidden', borderRadius: '20px'}}>
+                            <img style={{width: '100%', height: 'auto'}} src={syntheticMaintenance} alt="" />
+                        </div>
                         <h4 className="text-center pt-3">Synthetic, Maintenance Free Landscape in Weslaco Residence</h4>
                         <Rate className="d-block text-center text-black my-3" disabled defaultValue={5} />
                         <p className="text-center">RGV Turf carries out the contract to a high professional standard. Many thanks for a very good job.</p>
@@ -89,9 +99,11 @@ const CarouselComponents = () => {
                         <small className="d-block text-center">Edinburg, Texas</small>
                     </div>
                 </div>
-                <div className="p-2 m-2 bg-light">
+                <div className="h-100 p-2 m-2 bg-light">
                     <div className="carousel_style_css">
-                        <img style={{width: '100%', height: 'auto', borderRadius: '20px'}} src={artificialTurfPebbles} alt="" />
+                        <div  style={{height: '180px', overflow:'hidden', borderRadius: '20px'}}>
+                            <img style={{width: '100%', height: 'auto'}} src={artificialTurfPebbles} alt="" />
+                        </div>
                         <h4 className="text-center pt-3">Artificial Turf, Pebbles and Pavers in Weslaco Residence</h4>
                         <Rate className="d-block text-center text-black my-3" disabled defaultValue={5} />
                         <p className="text-center">RGV Turf carries out the contract to a high professional standard. Many thanks for a very good job.</p>
@@ -99,9 +111,11 @@ const CarouselComponents = () => {
                         <small className="d-block text-center">Edinburg, Texas</small>
                     </div>
                 </div>
-                <div className="p-2 m-2 bg-light">
+                <div className="h-100 p-2 m-2 bg-light">
                     <div className="carousel_style_css">
-                        <img style={{width: '100%', height: 'auto', borderRadius: '20px'}} src={artificialTurffor} alt="" />
+                        <div  style={{height: '180px', overflow:'hidden', borderRadius: '20px'}}>
+                            <img style={{width: '100%', height: 'auto'}} src={artificialTurffor} alt="" />
+                        </div>
                         <h4 className="text-center pt-3">Artificial Turf for AVANCE Children&apos;s Center Rio Grande Valley</h4>
                         <Rate className="d-block text-center text-black my-3" disabled defaultValue={5} />
                         <p className="text-center">RGV Turf carries out the contract to a high professional standard. Many thanks for a very good job.</p>
