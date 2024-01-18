@@ -1,6 +1,6 @@
 // import React from 'react';
 import './OurExpertise.css'
-import resturentImage from '../../../assets/ServicesPageImage/restaurant-artificial-grass-designs-3.webp'
+import resturentImage from '../../../assets/services/restaurant-artificial-grass-designs-3.webp'
 import { TiTick } from "@react-icons/all-files/ti/TiTick";
 
 

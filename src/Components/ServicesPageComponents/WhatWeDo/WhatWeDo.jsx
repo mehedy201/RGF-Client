@@ -1,8 +1,8 @@
 // import React from 'react';
 import './WhatWeDo.css'
-import comaricalImage from '../../../assets/ServicesPageImage/turf-in-backyard-pool-area-3.webp'
-import SyntheticTurfImage from '../../../assets/ServicesPageImage/turf-in-backyard-pool-area-2.webp'
-import SyntheticPlantsImage from '../../../assets/ServicesPageImage/restaurant-artificial-grass-designs-2.webp'
+import comaricalImage from '../../../assets/services/turf-in-backyard-pool-area-3.webp'
+import SyntheticTurfImage from '../../../assets/services/turf-in-backyard-pool-area-2.webp'
+import SyntheticPlantsImage from '../../../assets/services/restaurant-artificial-grass-designs-2.webp'
 
 const WhatWeDo = () => {
     return (

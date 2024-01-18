@@ -1,5 +1,5 @@
 // import React from 'react';
-import sectionFourAffordabilityImage from '../../../assets/AboutUsImages/southwestern-themed-plaza-with-artificial-grass-4-1024x720.webp'
+import sectionFourAffordabilityImage from '../../../assets/about/southwestern-themed-plaza-with-artificial-grass-4-1024x720.webp'
 
 const SectionFourAffordability = () => {
     return (

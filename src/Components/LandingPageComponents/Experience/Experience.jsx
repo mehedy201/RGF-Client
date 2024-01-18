@@ -2,10 +2,10 @@
 import './Experience.css'
 import { MdContactMail } from "@react-icons/all-files/md/MdContactMail";
 import { Link } from "react-router-dom";
-import Synthetic from '../../../assets/LandingPage/laying-sod.webp'
-import Turf from '../../../assets/LandingPage/DSC_1311.webp'
-import Artificial from '../../../assets/LandingPage/plants_bg.webp'
-import Landscape from '../../../assets/LandingPage/M-SL-Yard-_-Outdoor.webp'
+import Synthetic from '../../../assets/landing-page/laying-sod.webp'
+import Turf from '../../../assets/landing-page/DSC_1311.webp'
+import Artificial from '../../../assets/landing-page/plants_bg.webp'
+import Landscape from '../../../assets/landing-page/M-SL-Yard-_-Outdoor.webp'
 
 
 const Experience = () => {

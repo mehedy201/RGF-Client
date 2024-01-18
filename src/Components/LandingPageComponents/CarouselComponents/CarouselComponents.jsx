@@ -2,13 +2,13 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Rate } from 'antd';
-import artificialTurffor from '../../../assets/LandingPage/ReviewCarousel/ArtificialTurffor.webp'
-import artificialTurfPebbles from '../../../assets/LandingPage/ReviewCarousel/ArtificialTurfPebbles.webp'
-import excellentWork from '../../../assets/LandingPage/ReviewCarousel/ExcellentWorkA+.webp'
-import syntheticlLandscaping from '../../../assets/LandingPage/ReviewCarousel/SyntheticLandscaping.webp'
-import syntheticMaintenance from '../../../assets/LandingPage/ReviewCarousel/SyntheticMaintenance.webp'
-import veryExperiencedCrew from '../../../assets/LandingPage/ReviewCarousel/VeryExperiencedCrew!.webp'
-import veryNiceResults from '../../../assets/LandingPage/ReviewCarousel/VeryNiceResults!.jpg'
+import artificialTurffor from '../../../assets/landing-page/review-carousel/ArtificialTurffor.webp'
+import artificialTurfPebbles from '../../../assets/landing-page/review-carousel/ArtificialTurfPebbles.webp'
+import excellentWork from '../../../assets/landing-page/review-carousel/ExcellentWorkA+.webp'
+import syntheticlLandscaping from '../../../assets/landing-page/review-carousel/SyntheticLandscaping.webp'
+import syntheticMaintenance from '../../../assets/landing-page/review-carousel/SyntheticMaintenance.webp'
+import veryExperiencedCrew from '../../../assets/landing-page/review-carousel/VeryExperiencedCrew!.webp'
+import veryNiceResults from '../../../assets/landing-page/review-carousel/VeryNiceResults!.jpg'
 import './CarouselComponents.css'
 
 const CarouselComponents = () => {

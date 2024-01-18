@@ -1,12 +1,12 @@
 // import React from 'react';
 import './ShopPlants.css'
 import TurfPlants from '../../Components/CommonComponentsPages/TurfPlants/TurfPlants';
-import bushes from '../../assets/ShopPlantsImage/bushesandshrubs.webp'
-import cactus from '../../assets/ShopPlantsImage/cactus.webp'
-import cypress from '../../assets/ShopPlantsImage/istockphoto-1057939746-612x612.webp'
-import flowers from '../../assets/ShopPlantsImage/flowers.webp'
-import trees from '../../assets/ShopPlantsImage/ezgif-5-fe0f17fe03.webp'
-import synthetiic from '../../assets/ShopPlantsImage/sports-and-athletics.webp'
+import bushes from '../../assets/shop-plants/bushesandshrubs.webp'
+import cactus from '../../assets/shop-plants/cactus.webp'
+import cypress from '../../assets/shop-plants/istockphoto-1057939746-612x612.webp'
+import flowers from '../../assets/shop-plants/flowers.webp'
+import trees from '../../assets/shop-plants/ezgif-5-fe0f17fe03.webp'
+import synthetiic from '../../assets/shop-plants/sports-and-athletics.webp'
 import { ScrollRestoration } from 'react-router-dom';
 
 const ShopPlants = () => {

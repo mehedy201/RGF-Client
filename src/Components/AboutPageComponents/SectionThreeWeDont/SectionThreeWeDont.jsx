@@ -1,7 +1,7 @@
 // import React from 'react';
 import './SectionThreeWeDont.css'
 import { Progress } from 'antd';
-import sectionThreeImage from '../../../assets/AboutUsImages/2023-10-21-13.45.12-1024x720.webp'
+import sectionThreeImage from '../../../assets/about/2023-10-21-13.45.12-1024x720.webp'
 
 const SectionThreeWeDont = () => {
     return (

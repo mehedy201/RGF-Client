@@ -1,6 +1,6 @@
 // import React from 'react';
 import { Progress } from 'antd';
-import sectionFiveTurfIndorImage from '../../../assets/AboutUsImages/turf-indoors-1280x720.webp'
+import sectionFiveTurfIndorImage from '../../../assets/about/turf-indoors-1280x720.webp'
 
 const SectionFiveSynthetcTurf = () => {
     return (

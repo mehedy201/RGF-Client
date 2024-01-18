@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../assets/FInal_Logo-1.webp';
 import secondLogo from '../../assets/spanish_lang.webp';
-import fbIcon from '../../assets/SocialIcon/facebook.png'
-import inIcon from '../../assets/SocialIcon/instagram.png'
-import piIcon from '../../assets/SocialIcon/pinterest.png'
-import twIcon from '../../assets/SocialIcon/twitter.png'
+import fbIcon from '../../assets/social-icon/facebook.png'
+import inIcon from '../../assets/social-icon/instagram.png'
+import piIcon from '../../assets/social-icon/pinterest.png'
+import twIcon from '../../assets/social-icon/twitter.png'
 // import { Button, Drawer } from 'antd';
 import { Drawer } from 'antd';
 import { useState } from 'react';

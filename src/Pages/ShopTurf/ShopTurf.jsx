@@ -1,12 +1,12 @@
 // import React from 'react';
 import TurfPlants from '../../Components/CommonComponentsPages/TurfPlants/TurfPlants';
 import './ShopTurf.css'
-import residentialLandscope from '../../assets/ShofTurfImage/residential-and-commercial.webp'
-import sportAndAthletic from '../../assets/ShofTurfImage/sports-and-athletics.webp'
-import childrencPlay from '../../assets/ShofTurfImage/childrens-play-areas.webp'
-import kennels from '../../assets/ShofTurfImage/kennels-and-pets.webp'
-import golf from '../../assets/ShofTurfImage/golf-and-putting-zones.webp'
-import syntheticPlants from '../../assets/ShofTurfImage/synthetic-plants.webp'
+import residentialLandscope from '../../assets/shop-turf/residential-and-commercial.webp'
+import sportAndAthletic from '../../assets/shop-turf/sports-and-athletics.webp'
+import childrencPlay from '../../assets/shop-turf/childrens-play-areas.webp'
+import kennels from '../../assets/shop-turf/kennels-and-pets.webp'
+import golf from '../../assets/shop-turf/golf-and-putting-zones.webp'
+import syntheticPlants from '../../assets/shop-turf/synthetic-plants.webp'
 import { ScrollRestoration } from 'react-router-dom';
 
 

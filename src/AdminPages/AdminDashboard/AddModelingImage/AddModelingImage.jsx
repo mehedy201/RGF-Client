@@ -2,7 +2,7 @@
 import {useState} from 'react';
 import axios from 'axios'
 import './AddModelingImage.css'
-import image from '../../../assets/AboutUsImages/2023-10-21-13.41.50-1-1024x720.webp'
+import image from '../../../assets/about/2023-10-21-13.41.50-1-1024x720.webp'
 import { Spin } from 'antd';
 import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import { useEffect } from 'react';

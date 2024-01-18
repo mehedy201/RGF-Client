@@ -1,5 +1,5 @@
 // import React from 'react';
-import sectionTwoImage from '../../../assets/AboutUsImages/2023-10-21-13.41.50-1-1024x720.webp'
+import sectionTwoImage from '../../../assets/about/2023-10-21-13.41.50-1-1024x720.webp'
 
 const SectionTwoFullLandScape = () => {
     return (
