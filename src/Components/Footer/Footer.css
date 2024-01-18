@@ -4,7 +4,7 @@
 .footer_image_style{
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 20px 30px;
 }
 .footer_image_style img{
     width: 80px;
