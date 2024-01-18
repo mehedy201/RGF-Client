@@ -6,32 +6,41 @@ import { useState } from 'react';
 import { FaLocationArrow } from "@react-icons/all-files/fa/FaLocationArrow";
 import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
 import axios from 'axios';
-import toast,  { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { Spin } from 'antd';
+import { useEffect } from 'react';
 
 
 
 const ContactForm = () => {
 
+    const [randomCaptcha, setRandomCAptcha] = useState('')
     const [captchaValue, setCaptchaValue] = useState('');
     const [captchaError, setCaptchaError] = useState('');
-    const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate('')
 
+    const characters ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    
+    useEffect(() => {
+        let result = ' ';
+        for ( let i = 0; i < 4; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * 20));
+        }
+        setRandomCAptcha(result);
+    }, [])
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmit = async (data) => { 
-        
-        toast.success('Email Send.!', {
-            duration: 3000,
-            position: 'top-right'
-        });
-        setCaptchaError('')
-        reset(); 
-        if(captchaValue == 'DQ33'){
+    const onSubmit = async (data) => {
+        setLoading(true)
+        if(captchaValue == randomCaptcha){
             await axios.post('https://rgf.onrender.com/mainContactForm', data).then(res => {
+                if(res.status == 200){
+                    setLoading(false)
+                    reset();
+                    navigate('/thankyou');
+                }
             })
-        
-            return navigate('/')
         }else{
             setCaptchaError('Please Fell the Captch with Righ Text')
         }
@@ -92,17 +101,19 @@ const ContactForm = () => {
                                 <p className='mt-3 mb-0 p-0 text-secondary'>Your message (optional)</p>
                                 <textarea rows="4" className="mt-2 d-block" {...register("message")} />
                                 <div className='captcha_div'>
-                                    <p className='bg-white text-black d-inline p-2 fw-bold'>D Q 3 3</p><br />
+                                    <p style={{letterSpacing: '10px'}} className='bg-white text-black d-inline p-2 fw-bold'>{randomCaptcha}</p><br />
                                     <input className='captcha_input' type="text" onChange={(e) => setCaptchaValue(e.target.value)}/>
                                     <span className='ms-2 text-danger'>{captchaError}</span>
                                 </div>
+                                {
+                                    loading == true && <Spin/>
+                                }
                                 <button className='contact_form_submit_button' type="submit">Submit</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <Toaster/>
         </section>
     );
 };

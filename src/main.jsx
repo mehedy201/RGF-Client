@@ -33,6 +33,7 @@ const ManageProduct = React.lazy(() => import('./AdminPages/AdminDashboard/Manag
 const AddModelingImage = React.lazy(() => import('./AdminPages/AdminDashboard/AddModelingImage/AddModelingImage'));
 const ProductCatelog = React.lazy(() => import('./SharedPages/ProductCatelog/ProductCatelog'));
 const SubmitData = React.lazy(() => import('./Pages/SubmitData/SubmitData'));
+const ThankYouPage =React.lazy(() => import('./Pages/ThankYouPage/ThankYouPage'));
 
 
 
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
       {
         path: '/submit-data',
         element: <Suspense fallback={<LoadingSpain/>}><SubmitData/></Suspense>
+      },
+      {
+        path: '/thankyou',
+        element: <Suspense fallback={<LoadingSpain/>}><ThankYouPage/></Suspense>
       },
       {
         path: '/product-catelog',
