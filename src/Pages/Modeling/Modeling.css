@@ -2,10 +2,11 @@
     background-image: url('../../assets/ModelingPageImage/maintained-garden-with-artificial-turf-3-1280x731.webp');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: bottom;
 }
 #modelingHeroSection .modeling_hero_section_overly_color{
     background-color: rgba(0, 0, 0, 0.473);
-    min-height: 500px;
+    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;

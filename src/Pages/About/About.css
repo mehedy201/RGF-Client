@@ -2,10 +2,11 @@
     background-image: url('../../assets/AboutUsImages/interior-courtyard-turf-design.webp');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: bottom;
 }
 #aboutHeroSection .about_hero_section_overly_color{
     background-color: rgba(0, 0, 0, 0.473);
-    min-height: 500px;
+    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;

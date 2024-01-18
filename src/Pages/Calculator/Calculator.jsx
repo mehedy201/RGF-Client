@@ -56,7 +56,7 @@ const Calculator = () => {
         <section className="py-5">
             <div className="container">
                 <div className="row g-2">
-                    <div className="col-md-5">
+                    <div className="col-md-4">
                         <p className="text-secondary">Utilize this calculator to ascertain the necessary Cubic Yards or tons of composite materials for your project. RGV Turf, LLC. suggests a base of 1-2 inches of crushed limestone or granite atop 2-3 inches of compacted caliche mix, creating a level and sloped surface suitable for artificial grass.</p>
                         <div style={{backgroundColor: '#eaefe4', position: 'sticky', top:'30px'}} className="row p-3 rounded">
                             {/* Select Shap ____________________________ */}
@@ -149,7 +149,7 @@ const Calculator = () => {
                         
                     </div>
                     {/* Right Side Div ____________________________________________________ */}
-                    <div className="col-md-7 p-4">
+                    <div className="col-md-8 p-4">
                         <div>
                             {
                                 selectData == 'Rectangle' && <div>
