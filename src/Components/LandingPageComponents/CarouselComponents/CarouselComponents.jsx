@@ -30,6 +30,7 @@ const CarouselComponents = () => {
     return (
         <>
         <div className="container py-4">
+        <div className='pt-md-5 py-2'><h2 style={{fontWeight: '700', fontSize: '3.125rem'}} className='text-center'>Customer Testimonials</h2></div>
             <Carousel 
                 responsive={responsive}
                 draggable={true}
