@@ -160,12 +160,6 @@ const AcordionForFAQs = () => {
                         No. Our synthetic turf products contain no detectable traces of lead or other RCRA hazardous waste heavy metals.
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="24">
-                        <Accordion.Header>Do you offer free estimates?</Accordion.Header>
-                        <Accordion.Body>
-                        Yes, we offer free estimates both on-site and remotely, “if” your property is established on mapping systems such as Google earth, Google maps or Bing maps.
-                        </Accordion.Body>
-                    </Accordion.Item>
                     <Accordion.Item eventKey="25">
                         <Accordion.Header>Do you offer free estimates?</Accordion.Header>
                         <Accordion.Body>
