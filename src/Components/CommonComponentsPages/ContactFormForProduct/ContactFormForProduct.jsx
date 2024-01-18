@@ -33,7 +33,7 @@ const ContactFormForProduct = () => {
             const formData = {...data, productLink}
         if(captchaValue == randomCaptcha){
             setLoading(true)
-            await axios.post('https://rgf.onrender.com/productContactForm', formData).then(res => {
+            await axios.post('https://rgv-server.onrender.com/productContactForm', formData).then(res => {
                 if(res.status == 200){
                     setLoading(false)
                     reset();

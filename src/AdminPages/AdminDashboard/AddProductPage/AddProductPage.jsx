@@ -27,7 +27,7 @@ const AddProductPage = () => {
         setLoading(true)
         const formData = new FormData();
         formData.append('file', e[0])
-        axios.post('https://rgf.onrender.com/productImage', formData)
+        axios.post('https://rgv-server.onrender.com/productImage', formData)
             .then(res => {
                 setFileName(res.data.imagePath.filename)
                 setImagePath(res.data.imagePath.path)
@@ -37,7 +37,7 @@ const AddProductPage = () => {
     }
     // Delete Image ___________________
     const deleteImage = () => {
-        axios.delete(`https://rgf.onrender.com/productImageDelete/${fileName}`)
+        axios.delete(`https://rgv-server.onrender.com/productImageDelete/${fileName}`)
             .then(res => {
                 console.log('Delete Image Response', res)
                 setImagePath('')
@@ -53,7 +53,7 @@ const AddProductPage = () => {
         const formData = {...data, img, category, subCategory, fileName}
         console.log(formData)
 
-        axios.post(`https://rgf.onrender.com/products`, formData)
+        axios.post(`https://rgv-server.onrender.com/products`, formData)
             .then(res => {
                     toast.success('Succesfully Post Updated')
                     reset()
@@ -175,7 +175,7 @@ const AddProductPage = () => {
                                         !imagePath && <img style={{height: '200px', weight: 'auto'}} src={demoImage} alt="" />
                                     }
                                     {
-                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://rgf.onrender.com/${imagePath}`} alt="" />
+                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://rgv-server.onrender.com/${imagePath}`} alt="" />
                                     }
                                     {
                                         imagePath && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>

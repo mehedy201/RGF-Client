@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         path: '/shop-turf/turf/:productCategory',
         element:<Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Plants'} buttonLink={'/shop-plants'} heroText={'Premium Synthetic Turf'}/></Suspense>,
         loader: async () => {
-          const data = await axios.get(`https://rgf.onrender.com/shopTurf`)
+          const data = await axios.get(`https://rgv-server.onrender.com/shopTurf`)
             .then(res => res.data)
             .catch(er => console.log(er))
             return data;
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
         path: '/shop-plants/plants/:productCategory',
         element: <Suspense fallback={<LoadingSpain/>}><ProductCatalogPage buttonText={'Shop Turf'} buttonLink={'/shop-turf'} heroText={'Outdoor, Synthetic, UV Coated Plants'}/></Suspense>,
         loader: async () => {
-          const data = await axios.get(`https://rgf.onrender.com/shopPlants`)
+          const data = await axios.get(`https://rgv-server.onrender.com/shopPlants`)
               .then(res => res.data)
               .catch(er => console.log(er))
               return data;
@@ -120,7 +120,7 @@ const router = createBrowserRouter([
         path: '/product-catelog',
         element: <Suspense fallback={<LoadingSpain/>}> <ProductCatelog/></Suspense>,
         loader: async () => {
-          const data = await axios.get("https://rgf.onrender.com/products")
+          const data = await axios.get("https://rgv-server.onrender.com/products")
               .then(res => res.data)
               .catch(er => console.log(er))
               return data;

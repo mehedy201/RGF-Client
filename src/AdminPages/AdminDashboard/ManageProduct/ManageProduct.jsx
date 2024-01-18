@@ -16,7 +16,7 @@ const ManageProduct = () => {
     const [searchProduct, setSearchProduct] = useState()
 
     useEffect(() => {
-        fetch(`https://rgf.onrender.com/products`)
+        fetch(`https://rgv-server.onrender.com/products`)
         .then(res => res.json())
         .then(data => {
             setProducts(data)
@@ -33,7 +33,7 @@ const ManageProduct = () => {
     const deleteProduct = (id) => {
         const proceed = window.confirm('Are you sure to Delete');
         if(proceed){
-            const url = `https://rgf.onrender.com/products/${id}`;
+            const url = `https://rgv-server.onrender.com/products/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -68,7 +68,7 @@ const ManageProduct = () => {
                     products?.map(product => {
                         return  <div key={product._id} className='border my-2 d-md-flex justify-content-between align-items-center p-2 rounded'>
                                     <div style={{height: '50px'}} className='d-flex justify-content-between'>
-                                        <img style={{height: '-webkit-fill-available', width: '60px', borderRadius: '5px', marginRight: '10px'}} src={`https://rgf.onrender.com/${product?.img}`} alt="" />
+                                        <img style={{height: '-webkit-fill-available', width: '60px', borderRadius: '5px', marginRight: '10px'}} src={`https://rgv-server.onrender.com/${product?.img}`} alt="" />
                                         {
                                             product.ProductTitle.length < 30 ? <h6 className='mt-2'>{product?.ProductTitle}</h6> : <h6 className='mt-2'>{product?.ProductTitle.slice(0,20)} ...</h6>
                                         }

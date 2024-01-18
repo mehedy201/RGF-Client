@@ -8,7 +8,7 @@ const Modeling = () => {
 
     const [data, setData] = useState()
     useEffect(() => {
-        axios.get('https://rgf.onrender.com/modelingImageApi').then(data => setData(data.data)).catch(err => console.log(err))
+        axios.get('https://rgv-server.onrender.com/modelingImageApi').then(data => setData(data.data)).catch(err => console.log(err))
     }, [])
 
     return (

@@ -11,9 +11,7 @@ const  KeyBenefits = React.lazy(() => import('../../Components/LandingPageCompon
 const  Section4 = React.lazy(() => import('../../Components/LandingPageComponents/Section4/Section4'));
 const  CarouselComponents = React.lazy(() => import('../../Components/LandingPageComponents/CarouselComponents/CarouselComponents'));
 
-
 const LandingPage = () => {
-
     return (
         <>
         <ScrollRestoration />

@@ -12,7 +12,7 @@ const SubmitData = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = async (data) => { 
-        await axios.post('https://rgf.onrender.com/submitData', data).then(res => {})
+        await axios.post('https://rgv-server.onrender.com/submitData', data).then(res => {})
         toast.success('Email Send.!', {
             duration: 3000,
             position: 'top-right'

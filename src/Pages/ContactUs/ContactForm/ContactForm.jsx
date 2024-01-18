@@ -34,7 +34,7 @@ const ContactForm = () => {
     const onSubmit = async (data) => {
         setLoading(true)
         if(captchaValue == randomCaptcha){
-            await axios.post('https://rgf.onrender.com/mainContactForm', data).then(res => {
+            await axios.post('https://rgv-server.onrender.com/mainContactForm', data).then(res => {
                 if(res.status == 200){
                     setLoading(false)
                     reset();
