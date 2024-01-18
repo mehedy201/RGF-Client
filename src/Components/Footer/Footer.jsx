@@ -13,7 +13,7 @@ const Footer = () => {
         <div className='py-5 footer_innerShadow'>
             <div className='container'>
                 <div>
-                    <p className='text-center'>All rights reserved | 2023 RGV Turf, LLC.</p>
+                    <p className='text-center'>All rights reserved | ©2023-2024 RGV Turf, LLC.</p>
                 </div>
                 <div className='footer_image_style'>
                     <a href="https://maps.app.goo.gl/yPXjvheLtMKfmwWp8?g_st=ic" target={'_blank'} rel='noreferrer'><img src={googleImage} alt="Google Review" /></a>
