@@ -10,7 +10,7 @@ import './ContactFormForProduct.css'
 
 const ContactFormForProduct = () => {
 
-    const [randomCaptcha, setRandomCAptcha] = useState('')
+    const [randomCaptcha, setRandomCaptcha] = useState('')
     const [captchaValue, setCaptchaValue] = useState('');
     const [captchaError, setCaptchaError] = useState('');
     const [loading, setLoading] = useState(false)
@@ -23,7 +23,7 @@ const ContactFormForProduct = () => {
         for ( let i = 0; i < 4; i++ ) {
             result += characters.charAt(Math.floor(Math.random() * 20));
         }
-        setRandomCAptcha(result);
+        setRandomCaptcha(result);
     }, [])
 
 
