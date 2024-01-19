@@ -160,10 +160,10 @@ const AcordionForFAQs = () => {
                         No. Our synthetic turf products contain no detectable traces of lead or other RCRA hazardous waste heavy metals.
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="25">
+                    <Accordion.Item eventKey="24">
                         <Accordion.Header>Do you offer free estimates?</Accordion.Header>
                         <Accordion.Body>
-                        Turf’s synthetic grass surfaces allow you to conserve water while eliminating often-toxic fertilizers and pesticides. You’ll also see reductions in your maintenance and lawn equipment expenses. Our lawns are perfect for family activities, pet play areas, personal putting greens, and, well, just about anything else you can imagine.
+                        Yes, we offer free estimates both on-site and remotely, “if” your property is established on mapping systems such as Google earth, Google maps or Bing maps.
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="26">

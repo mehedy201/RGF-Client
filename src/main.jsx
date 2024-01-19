@@ -14,6 +14,7 @@ import LoadingSpain from './Components/LoadingSpain/LoadingSpain';
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
 import PrivetRoute from './Routes/PrivetRoute';
+import SubmitPrivetRoute from './Routes/SubmitPrivetRoute';
 const ShopTurf = React.lazy(() => import('./Pages/ShopTurf/ShopTurf'));
 const ShopPlants = React.lazy(() => import('./Pages/ShopPlants/ShopPlants'));
 const Modeling = React.lazy(() => import('./Pages/Modeling/Modeling'));
@@ -33,10 +34,8 @@ const ManageProduct = React.lazy(() => import('./AdminPages/AdminDashboard/Manag
 const AddModelingImage = React.lazy(() => import('./AdminPages/AdminDashboard/AddModelingImage/AddModelingImage'));
 const ProductCatelog = React.lazy(() => import('./SharedPages/ProductCatelog/ProductCatelog'));
 const SubmitData = React.lazy(() => import('./Pages/SubmitData/SubmitData'));
-const ThankYouPage =React.lazy(() => import('./Pages/ThankYouPage/ThankYouPage'));
-
-
-
+const ThankYouPage = React.lazy(() => import('./Pages/ThankYouPage/ThankYouPage'));
+const SubmitDataEmploye = React.lazy(() => import('./Pages/SubmitDataEmploye/SubmitDataEmploye'));
 
 
 const router = createBrowserRouter([
@@ -111,6 +110,10 @@ const router = createBrowserRouter([
       {
         path: '/submit-data',
         element: <Suspense fallback={<LoadingSpain/>}><SubmitData/></Suspense>
+      },
+      {
+        path: '/submit-data-employe',
+        element: <Suspense fallback={<LoadingSpain/>}><SubmitPrivetRoute><SubmitDataEmploye/></SubmitPrivetRoute></Suspense>
       },
       {
         path: '/thankyou',

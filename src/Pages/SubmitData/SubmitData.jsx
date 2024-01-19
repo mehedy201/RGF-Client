@@ -1,24 +1,26 @@
 /* eslint-disable no-unused-vars */
 // import React from 'react';
 import { useForm } from "react-hook-form";
-import toast,  { Toaster } from 'react-hot-toast';
 import axios from 'axios'
 import './SubmitData.css'
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { PRIVET_CONTEXT } from "../Home/Home";
 
 const SubmitData = () => {
+
+    const {setUserName, setPass } = useContext(PRIVET_CONTEXT);
 
     const navigate = useNavigate();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = async (data) => { 
-        await axios.post('https://rgv-server.onrender.com/submitData', data).then(res => {})
-        toast.success('Email Send.!', {
-            duration: 3000,
-            position: 'top-right'
-        });
-        reset(); 
-        return navigate('/')
+        setUserName(data.NameEmail);
+        setPass(data.Password)
+        navigate('/submit-data-employe')
+        // await axios.post('https://rgv-server.onrender.com/submitData', data).then(res => {})
+        // reset(); 
+        // return navigate('/submit-data-employe')
     };
 
     return (
@@ -51,7 +53,6 @@ const SubmitData = () => {
                     <div className="col-md-3"></div>
                 </div>
             </div>
-            <Toaster/>
         </section>
         </>
     );

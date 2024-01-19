@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 
 const ContactForm = () => {
 
-    const [randomCaptcha, setRandomCAptcha] = useState('')
+    const [randomCaptcha, setRandomCaptcha] = useState('')
     const [captchaValue, setCaptchaValue] = useState('');
     const [captchaError, setCaptchaError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -22,27 +22,34 @@ const ContactForm = () => {
 
     const characters ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     
+    let result = '';
     useEffect(() => {
-        let result = ' ';
+        let result = '';
         for ( let i = 0; i < 4; i++ ) {
             result += characters.charAt(Math.floor(Math.random() * 20));
+            setRandomCaptcha(result);
         }
-        setRandomCAptcha(result);
     }, [])
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = async (data) => {
-        setLoading(true)
-        if(captchaValue == randomCaptcha){
+        if(captchaValue === randomCaptcha){
+            setLoading(true)
             await axios.post('https://rgv-server.onrender.com/mainContactForm', data).then(res => {
+                setLoading(false)
                 if(res.status == 200){
                     setLoading(false)
-                    reset();
-                    navigate('/thankyou');
+                    return navigate('/thankyou');
+                }else{
+                    setLoading(false)
+                    return alert('Not Send')
                 }
+
             })
         }else{
+            setLoading(false)
             setCaptchaError('Please Fell the Captch with Righ Text')
+            return;
         }
     };
 
