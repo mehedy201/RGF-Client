@@ -14,15 +14,13 @@ import { useEffect } from 'react';
 
 const ContactForm = () => {
 
-    const [randomCaptcha, setRandomCaptcha] = useState('')
+    const [randomCaptcha, setRandomCaptcha] = useState('');
     const [captchaValue, setCaptchaValue] = useState('');
     const [captchaError, setCaptchaError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate('')
 
     const characters ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    
-    let result = '';
     useEffect(() => {
         let result = '';
         for ( let i = 0; i < 4; i++ ) {

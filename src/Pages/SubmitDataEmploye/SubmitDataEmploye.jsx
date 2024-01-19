@@ -2,37 +2,76 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 // import axios from 'axios'
 import './SubmitDataEmploye.css'
-import { DatePicker, TimePicker } from 'antd';
+import { DatePicker, Spin, TimePicker } from 'antd';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { PRIVET_CONTEXT } from '../Home/Home';
+import { useEffect } from 'react';
+import axios from 'axios';
 const SubmitDataEmploye = () => {
     const navigate = useNavigate();
+
+    const [imagePath, setImagePath] = useState('');
+    // const [fileName, setFileName] = useState('');
+
+    const [randomCaptcha, setRandomCaptcha] = useState('');
+    const [captchaValue, setCaptchaValue] = useState('');
+    const [captchaError, setCaptchaError] = useState('');
+    const [loading, setLoading] = useState(false);
     const [date, setDate] = useState();
     const [time, setTime] = useState();
     const {setUserName, setPass } = useContext(PRIVET_CONTEXT);
 
+
+    const characters ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    useEffect(() => {
+        let result = '';
+        for ( let i = 0; i < 4; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * 20));
+            setRandomCaptcha(result);
+        }
+    }, [])
+
+
     const handleDate = (date, dateString) => {
         setDate(dateString);
       };
-
     const handleTime = (time, timeString) => {
         setTime(timeString);
     };
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = async (data) => { 
-        const formData = {...data, date, time}
-        console.log(formData)
-        // await axios.post('https://rgv-server.onrender.com/submitData', formData).then(res =>  {
-        //     if(res.status == 200){
-        //         reset(); 
-        //         return navigate('/thankyou')
-        //     }
-        // })
-        
+        const formData = {...data, date, time, imagePath}
+        if(captchaValue === randomCaptcha){
+            setLoading(true)
+            await axios.post('https://rgv-server.onrender.com/submitData', formData).then(res => {
+                setLoading(false)
+                if(res.status == 200){
+                    setLoading(false)
+                    return navigate('/thankyou');
+                }else{
+                    setLoading(false)
+                    return alert('Not Send')
+                }
+
+            })
+        }else{
+            setLoading(false)
+            setCaptchaError('Please Fell the Captch with Righ Text')
+            return;
+        }
     };
+
+
+    const imageUpload = (e) => {
+        const formData = new FormData();
+        formData.append('image', e[0])
+        axios.post('https://rgv-server.onrender.com/emailimage', formData)
+            .then(res => setImagePath(`https://rgv-server.onrender.com/${res.data.linkImage.path}`))
+            .catch(er => console.log(er))
+    }
 
     const handleLogOut = () => {
         setUserName('')
@@ -44,7 +83,7 @@ const SubmitDataEmploye = () => {
         <section id="submit_page">
             <div className="submit_page_hero_section_overly_color">
                 <div className='submit_page_hero_section_text'>
-                    <h2> Project Information </h2>
+                    <h2> Employee Data Portal </h2>
                 </div>
             </div>
         </section>
@@ -67,17 +106,32 @@ const SubmitDataEmploye = () => {
                                 <h3 className='pt-3 pb-2 fw-bold'>Turf Instalation Address</h3>
                                 <div>
                                     <input  className="contact_form_input mt-1 mb-2 d-block" type='text' {...register("address", { required: true })} placeholder='Address'/>
+                                    <input  className="contact_form_input mt-1 mb-2 d-block" type='text' {...register("sqft", { required: true })} placeholder='Total sq. ft. of tur zones (where turf is needed)'/>
                                     {errors.address && <span className='text-danger'>required</span>}
-                                    <div className='d-md-flex'>
-                                        <div className='me-md-2 my-1'>
-                                            <p className='mb-1'>Select Date</p>
-                                            <DatePicker size='large' onChange={handleDate} />
+                                    <div className='row'>
+                                        <div className="col-md-6">
+                                            <div className='me-md-2 my-1'>
+                                                <p className='mb-1 fw-bold'>Time Estimate was Completed</p>
+                                                <DatePicker size='large'  onChange={handleDate} />
+                                                <TimePicker size='large'  onChange={handleTime} defaultOpenValue={dayjs('00:00:00', 'HH:mm:ss')} />
+                                            </div>
                                         </div>
-                                        <div className='my-1'>
-                                            <p className='mb-1'>Select Time</p>
-                                            <TimePicker size='large' onChange={handleTime} defaultOpenValue={dayjs('00:00:00', 'HH:mm:ss')} />
+                                        <div className="col-md-6">
+                                            <p className='my-1 fw-bold'>Photos of job site (not required)</p>
+                                            <input className='py-2 px-4' type="file" name='image' onChange={e => imageUpload(e.target.files)}/>
                                         </div>
                                     </div>
+                                    <p className='my-1 fw-bold'>Additional project notes</p>
+                                    <textarea className='contact_notes' name="notes" id="" cols="20" rows="4" {...register("notes", { required: true })}></textarea>
+                                    <div className='captcha_div my-2'>
+                                        <p style={{letterSpacing: '10px'}} className='bg-white text-black d-inline p-2 fw-bold'>{randomCaptcha}</p><br />
+                                        <input className='captcha_input mt-3' type="text" onChange={(e) => setCaptchaValue(e.target.value)}/>
+                                        <span className='ms-2 text-danger'>{captchaError}</span> <br />
+                                        <small className='mt-2'>*= Required</small>
+                                    </div>
+                                    {
+                                        loading == true && <Spin/>
+                                    }
                                 </div>
                                 <button className='contact_form_submit_button mt-3' type="submit">Submit</button>
                             </form>

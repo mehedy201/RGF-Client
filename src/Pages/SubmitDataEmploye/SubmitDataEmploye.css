@@ -25,6 +25,15 @@
     border-radius: 10px;
     font-size: 18px;
 }
+.submitDatacontact_form .contact_form .contact_notes{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+}
+.submitDatacontact_form .contact_form .contact_notes:focus{
+    outline: none;
+}
 .submitDatacontact_form .contact_form .contact_form_input:focus{
     outline: none;
 }
