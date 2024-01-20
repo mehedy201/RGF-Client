@@ -4,12 +4,16 @@ import { PRIVET_CONTEXT } from "../Pages/Home/Home";
 
 
 const SubmitPrivetRoute = ({children}) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const {userName, pass } = useContext(PRIVET_CONTEXT);
-    if(userName == 'employees' && pass == 'rgvturf@2022'){
-        return children;
+    if(userName.length == 0 || pass.length == 0){
+        alert('Please Log In and access This page')
+        return navigate('/submit-data')
+    }else{
+        return children
     }
-    return navigate('/submit-data')
+    
+    
 };
 
 export default SubmitPrivetRoute;

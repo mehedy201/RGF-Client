@@ -47,6 +47,7 @@ const SubmitDataEmploye = () => {
         if(captchaValue === randomCaptcha){
             setLoading(true)
             await axios.post('https://rgv-server.onrender.com/submitData', formData).then(res => {
+                console.log(res)
                 setLoading(false)
                 if(res.status == 200){
                     setLoading(false)
@@ -65,11 +66,19 @@ const SubmitDataEmploye = () => {
     };
 
 
+    const [imgLoading, setImgLoading] = useState(false)
     const imageUpload = (e) => {
+        setImgLoading(true)
         const formData = new FormData();
         formData.append('image', e[0])
         axios.post('https://rgv-server.onrender.com/emailimage', formData)
-            .then(res => setImagePath(`https://rgv-server.onrender.com/${res.data.linkImage.path}`))
+            .then(res => {
+                if(res.success == 200){
+                    console.log('done')
+                    setImgLoading(false)
+                    setImagePath(`https://rgv-server.onrender.com/${res.data.linkImage.path}`)
+                }
+            })
             .catch(er => console.log(er))
     }
 
@@ -118,6 +127,9 @@ const SubmitDataEmploye = () => {
                                         </div>
                                         <div className="col-md-6">
                                             <p className='my-1 fw-bold'>Photos of job site (not required)</p>
+                                            {
+                                                imgLoading == true && <div>Image Uploading.. <Spin/></div>
+                                            }
                                             <input className='py-2 px-4' type="file" name='image' onChange={e => imageUpload(e.target.files)}/>
                                         </div>
                                     </div>

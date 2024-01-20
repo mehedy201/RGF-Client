@@ -113,7 +113,6 @@ const router = createBrowserRouter([
       },
       {
         path: '/submit-data-employe',
-        // element: <Suspense fallback={<LoadingSpain/>}><SubmitDataEmploye/></Suspense>
         element: <Suspense fallback={<LoadingSpain/>}><SubmitPrivetRoute><SubmitDataEmploye/></SubmitPrivetRoute></Suspense>
       },
       {

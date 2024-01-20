@@ -13,14 +13,17 @@ const SubmitData = () => {
 
     const navigate = useNavigate();
 
+    const user = 'employees';
+    const pass = 'rgvturf@2022'
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = async (data) => { 
-        setUserName(data.NameEmail);
-        setPass(data.Password)
-        navigate('/submit-data-employe')
-        // await axios.post('https://rgv-server.onrender.com/submitData', data).then(res => {})
-        // reset(); 
-        // return navigate('/submit-data-employe')
+        if(user == data.NameEmail && pass == data.Password){
+            setUserName(data.NameEmail);
+            setPass(data.Password)
+            navigate('/submit-data-employe')
+        }else{
+            alert('Please fill Right Log in Information')
+        }
     };
 
     return (
@@ -42,10 +45,11 @@ const SubmitData = () => {
                             <form className="contact_form" onSubmit={handleSubmit(onSubmit)}>
                                 <p className='m-0 p-0'>Username or Email Address </p>
                                 <input  className="contact_form_input mt-1 mb-2 d-block" type='text' {...register("NameEmail", { required: true })} />
-                                {errors.yourName && <span className='text-danger'>required</span>}
+                                {errors.NameEmail && <span className='text-danger'>Name/Email required</span>}
                                 <p className='m-0 p-0'> Password</p>
                                 <input  className="contact_form_input mt-1 d-block" type='password' {...register("Password", { required: true })} />
-                                {errors.phone && <span className='text-danger'> Password </span>}
+                                {errors.Password && <span className='text-danger'> Password Required </span>}
+                                <br />
                                 <button className='contact_form_submit_button mt-3' type="submit">Submit</button>
                             </form>
                         </div>
