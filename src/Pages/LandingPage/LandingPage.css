@@ -86,7 +86,7 @@
         padding: 6px 20px;
     }
     .landing_page{
-        background-image: url('../../assets/optimizeForMobile.webp');
+        background-image: var(--background-image-lazy);
    }
 }
 @media only screen and (max-width: 462px) {
