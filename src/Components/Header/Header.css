@@ -4,9 +4,6 @@
     justify-content: center;
 }
 .navigation_style .header_button_style{
-    
-}
-.navigation_style .header_button_style{
     position: relative;
     background-color: transparent;
     color: rgb(43, 43, 43);
@@ -85,6 +82,11 @@
 @media only screen and (max-width: 768px) {
     .mobile_navigation .mobile_menu_innerdiv a img{
         width: 120px;
-        height: auto;
+        height: 57.5px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .mobile_navigation{
+        height: 70px;
     }
 }
