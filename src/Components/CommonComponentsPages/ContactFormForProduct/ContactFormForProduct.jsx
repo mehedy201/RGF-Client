@@ -19,19 +19,21 @@ const ContactFormForProduct = () => {
     // const link = useLocation()
     const characters ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     useEffect(() => {
-        let result = ' ';
+        let result = '';
         for ( let i = 0; i < 4; i++ ) {
             result += characters.charAt(Math.floor(Math.random() * 20));
+            setRandomCaptcha(result);
         }
-        setRandomCaptcha(result);
     }, [])
 
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = async (data) => {  
+        if(captchaValue === randomCaptcha){
+            console.log('done')
             const productLink = window.location.href;
             const formData = {...data, productLink}
-        if(captchaValue == randomCaptcha){
+            console.log(formData)
             setLoading(true)
             await axios.post('https://rgv-server.onrender.com/productContactForm', formData).then(res => {
                 if(res.status == 200){
@@ -41,6 +43,7 @@ const ContactFormForProduct = () => {
                 }
             })
         }else{
+            setLoading(false)
             setCaptchaError('Please Fell the Captch with Righ Text')
         }
 
@@ -68,7 +71,7 @@ const ContactFormForProduct = () => {
                 <div className='captcha_div mt-2'>
                     <p style={{letterSpacing: '10px'}} className='bg-white text-black d-inline p-2 fw-bold'>{randomCaptcha}</p><br />
                     <input className='captcha_input' type="text" onChange={(e) => setCaptchaValue(e.target.value)}/>
-                    <span style={{letterSpacing: '10px'}} className='ms-2 text-danger'>{captchaError}</span>
+                    <span className='ms-2 text-danger'>{captchaError}</span>
                 </div>
                 {
                     loading == true && <Spin/>

@@ -53,14 +53,16 @@ const AddProductPage = () => {
         const formData = {...data, img, category, subCategory, fileName}
         console.log(formData)
 
-        axios.post(`https://rgv-server.onrender.com/products`, formData)
-            .then(res => {
-                    toast.success('Succesfully Post Updated')
-                    reset()
-                    setImagePath('')
-            })
-            .catch(er => console.log(er))
+        // axios.post(`https://rgv-server.onrender.com/products`, formData)
+        //     .then(res => {
+        //             toast.success('Succesfully Post Updated')
+        //             reset()
+        //             setImagePath('')
+        //     })
+        //     .catch(er => console.log(er))
     };
+
+
 
     return (
         <>
@@ -88,12 +90,19 @@ const AddProductPage = () => {
                     <div className="col-md-6">
                         {
                             category == 'Shop Turf' && <Select
+                                mode="multiple"
+                                allowClear
                                 placeholder="Select Shop Turf Sub Category"
                                 size="large"
                                 style={{
                                     width: '100%',
                                 }}
-                                onChange={e => setSubCategory(e)}
+                                // onChange={e => setSubCategory(e)}
+                                onChange={e => {
+                                    const sub = [];
+                                    sub.push(e)
+                                    setSubCategory(sub)
+                                }}
                                 options={[
                                     {value: 'Residential-Commercial Landscape',label: 'Residential Commercial Landscape',},
                                     {value: 'Sport and Athletic',label: 'Sport and Athletic',},
@@ -101,17 +110,24 @@ const AddProductPage = () => {
                                     {value: 'Kennels and Pets',label: 'Kennels and Pets',},
                                     {value: 'Golf and Putting Zones',label: 'Golf and Putting Zones',},
                                 ]}
+                                
                             />
                         }
                         {
                             category == 'Shop Plants' && <Select
                                 // {...register("SubCategory", { required: true })} 
+                                mode="multiple"
+                                allowClear
                                 placeholder="Select Shop Plants Sub Category"
                                 size="large"
                                 style={{
                                     width: '100%',
                                 }}
-                                onChange={e => setSubCategory(e)}
+                                onChange={e => {
+                                    const sub = [];
+                                    sub.push(e)
+                                    setSubCategory(sub)
+                                }}
                                 options={[
                                     {value: 'Bushes And Shrubs',label: 'Bushes And Shrubs',},
                                     {value: 'Cactus',label: 'Cactus',},

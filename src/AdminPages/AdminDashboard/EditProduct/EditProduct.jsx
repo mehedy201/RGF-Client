@@ -140,13 +140,19 @@ const EditProduct = () => {
                     <div className="col-md-6">
                         {
                             product?.category == 'Shop Turf' && <Select
+                                mode="multiple"
+                                allowClear
                                 placeholder="Select Shop Turf Sub Category"
                                 defaultValue={product?.subCategory}
                                 size="large"
                                 style={{
                                     width: '100%',
                                 }}
-                                onChange={e => setSubCategory(e)}
+                                onChange={e => {
+                                    const sub = [];
+                                    sub.push(e)
+                                    setSubCategory(sub)
+                                }}
                                 options={[
                                     {value: 'Residential-Commercial Landscape',label: 'Residential Commercial Landscape',},
                                     {value: 'Sport and Athletic',label: 'Sport and Athletic',},
@@ -159,13 +165,19 @@ const EditProduct = () => {
                         {
                             product?.category == 'Shop Plants' && <Select
                                 // {...register("SubCategory", { required: true })} 
+                                mode="multiple"
+                                allowClear
                                 defaultValue={product?.subCategory}
                                 placeholder="Select Shop Plants Sub Category"
                                 size="large"
                                 style={{
                                     width: '100%',
                                 }}
-                                onChange={e => setSubCategory(e)}
+                                onChange={e => {
+                                    const sub = [];
+                                    sub.push(e)
+                                    setSubCategory(sub)
+                                }}
                                 options={[
                                     {value: 'Bushes And Shrubs',label: 'Bushes And Shrubs',},
                                     {value: 'Cactus',label: 'Shop Turf',},
