@@ -19,8 +19,11 @@ const EditProduct = () => {
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
     const [imagePath, setImagePath] = useState('');
-    const [fileName, setFileName] = useState('')
+    const [fileName, setFileName] = useState('');
     const [loading, setLoading] = useState(false);
+    const [muLoading, setMuLoading] = useState(false);
+    const [multipleImage, setMultipleImage] = useState([])
+    
 
     useEffect(() => {
         axios.get(`https://s.rgvturf.com/products/${id}`)
@@ -30,6 +33,7 @@ const EditProduct = () => {
                 setSubCategory(res.data.subCategory);
                 setImagePath(res.data.img);
                 setFileName(res.data.fileName);
+                setMultipleImage(res.data.images)
             })
             .catch(er => console.log(er))
     },[])
@@ -41,7 +45,7 @@ const EditProduct = () => {
     },[])
 
     const [deletedImg, setDeletedImg] = useState(false)
-    const imageUpload = (e) => {
+    const siImageUpload = (e) => {
         const formData = new FormData();
         formData.append('file', e[0])
         axios.post('https://s.rgvturf.com/productImage', formData)
@@ -53,7 +57,7 @@ const EditProduct = () => {
             .catch(er => console.log(er))
     }
     // Delete Image ___________________
-    const deleteImage = () => {
+    const siDeleteImage = () => {
         setDeletedImg(true)
         axios.delete(`https://s.rgvturf.com/productImageDelete/${fileName}`)
             .then(res => {
@@ -76,6 +80,12 @@ const EditProduct = () => {
             data.ProductDescription = product.ProductDescription
         }
         const formData = {...data, img, category, subCategory, fileName}
+        const array = [
+            {mehedi: 'mehedi', name: 'name'},
+            {mehedi: 'mehedi', name: 'name'}
+        ]
+        const images = [...array, ...newImages]
+        console.log(formData, images)
 
         fetch(`https://s.rgvturf.com/products/${id}`, {
           method: 'PUT',
@@ -100,6 +110,57 @@ const EditProduct = () => {
             }
           })
     };
+
+
+
+
+    
+    // Product Multiple Images Upload_______________________________________
+    const [newImages, setNewImages] = useState([]);
+    const imageUpload = async (e) => {
+        setMuLoading(true)
+        const formData = new FormData();
+        for (let i = 0; i < e.length; i++) {
+        formData.append('files', e[i]);
+        }
+
+        await axios.post('https://s.rgvturf.com/productImage', formData)
+            .then(res => {
+                setNewImages(res.data.data)
+                setMuLoading(false)
+            })
+            .catch(er => console.log(er))
+    }
+
+    // Delete Image ___________________
+    const deleteImage = (fileName) => {
+        axios.delete(`https://s.rgvturf.com/productImageDelete/${fileName}`)
+            .then(res => {
+                const remain = newImages.filter(img => img.filename !== fileName);
+                setNewImages(remain);
+                toast.success('Deleted.!', {
+                    duration: 3000,
+                    position: 'top-right'
+                });
+            })
+            .catch(er => console.log(er))
+    }
+
+    const preImageDelete = (fileName) => {
+        axios.delete(`https://s.rgvturf.com/productImageDelete/${fileName}`)
+            .then(res => {
+                const remain = multipleImage.filter(img => img.filename !== fileName);
+                setMultipleImage(remain);
+                toast.success('Deleted.!', {
+                    duration: 3000,
+                    position: 'top-right'
+                });
+            })
+            .catch(er => console.log(er))
+    }
+
+
+
 
 
     return (
@@ -249,10 +310,10 @@ const EditProduct = () => {
                                             product?.img && <img style={{height: '200px', weight: 'auto'}} src={`https://s.rgvturf.com/${product.img}`} alt="" />
                                         }
                                         {
-                                        product?.img && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>
+                                        product?.img && <FaRegTrashAlt onClick={() => siDeleteImage()} className='deleteIcon'/>
                                         }
                                         {
-                                        imagePath && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>
+                                        imagePath && <FaRegTrashAlt onClick={() => siDeleteImage()} className='deleteIcon'/>
                                         }
                                         </>
                                     }
@@ -260,7 +321,36 @@ const EditProduct = () => {
                                     
                                 </div>
                                 <div className="border p-2">
-                                    <input type="file" name='image' onChange={e => imageUpload(e.target.files)} />
+                                    <input type="file" name='image' onChange={e => siImageUpload(e.target.files)} />
+                                </div>
+                            </div>
+                            <h5 className='pt-2 text-secondary fst-italic'>Add Multiple Product Images</h5>
+                            <div>
+                                {
+                                    multipleImage?.map(img => {
+                                        return <div key={img._id} className="">
+                                                <img style={{width: '100px', height: 'auto'}} src={`https://s.rgvturf.com/${img.path}`} alt="" />
+                                                <FaRegTrashAlt onClick={() => preImageDelete(img.filename)}/>
+                                            </div>
+                                    })
+                                }
+                            </div>
+                            <div className='rounded border shadow shadow-sm'>
+                                <div style={{minHeight: '150px'}} className='border p-2 d-flex flex-wrap'>
+                                    {
+                                        muLoading == true && <Spin/>
+                                    }
+                                    {
+                                        newImages && newImages?.map((img , index) => {
+                                            return <div style={{position: 'relative'}} className='mx-1' key={index}>
+                                                        <img style={{height: '60px', width: '60px'}} src={`https://s.rgvturf.com/${img.path}`} alt="" />
+                                                        <FaRegTrashAlt onClick={() => deleteImage(img.filename)} style={{position: 'absolute', top: '3px', right: '3px', backgroundColor: 'white', padding: '3px', borderRadius: '2px', cursor: 'pointer'}}/>
+                                                    </div>
+                                        })
+                                    }
+                                </div>
+                                <div>
+                                    <input type="file" name='image' onChange={e => imageUpload(e.target.files)} multiple/>
                                 </div>
                             </div>
                         </div>

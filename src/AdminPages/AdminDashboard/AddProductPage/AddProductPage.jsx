@@ -30,7 +30,7 @@ const AddProductPage = () => {
         for (let i = 0; i < e.length; i++) {
         formData.append('files', e[i]);
         }
-        axios.post('http://localhost:5000/productImage', formData)
+        axios.post('https://s.rgvturf.com/productImage', formData)
             .then(res => {
                 console.log('Res', res.data)
                 setFileName(res.data.data[0].filename)
@@ -41,7 +41,7 @@ const AddProductPage = () => {
     }
     // Delete Image ___________________
     const singleDeleteImage = () => {
-        axios.delete(`http://localhost:5000/productImageDelete/${fileName}`)
+        axios.delete(`https://s.rgvturf.com/productImageDelete/${fileName}`)
             .then(res => {
                 console.log('Delete Image Response', res)
                 setImagePath('')
@@ -57,7 +57,7 @@ const AddProductPage = () => {
         const formData = {...data, img, category, subCategory, fileName, images}
         console.log('Form Data',formData)
 
-        axios.post(`http://localhost:5000/products`, formData)
+        axios.post(`https://s.rgvturf.com/products`, formData)
             .then(res => {
                     toast.success('Succesfully Post Updated')
                     reset()
@@ -75,7 +75,7 @@ const AddProductPage = () => {
         formData.append('files', e[i]);
         }
 
-        await axios.post('http://localhost:5000/productImage', formData)
+        await axios.post('https://s.rgvturf.com/productImage', formData)
             .then(res => {
                 setImages(res.data.data)
                 setMuLoading(false)
@@ -85,7 +85,7 @@ const AddProductPage = () => {
 
     // Delete Image ___________________
     const deleteImage = (fileName) => {
-        axios.delete(`http://localhost:5000/productImageDelete/${fileName}`)
+        axios.delete(`https://s.rgvturf.com/productImageDelete/${fileName}`)
             .then(res => {
                 const remain = images.filter(img => img.filename !== fileName);
                 setImages(remain);
@@ -227,7 +227,7 @@ const AddProductPage = () => {
                                         !imagePath && <img style={{height: '100px', weight: 'auto'}} src={demoImage} alt="" />
                                     }
                                     {
-                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`http://localhost:5000/${imagePath}`} alt="" />
+                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://s.rgvturf.com/${imagePath}`} alt="" />
                                     }
                                     {
                                         imagePath && <FaRegTrashAlt onClick={() => singleDeleteImage()} className='deleteIcon'/>
@@ -248,7 +248,7 @@ const AddProductPage = () => {
                                     {
                                         images && images?.map((img , index) => {
                                             return <div style={{position: 'relative'}} className='mx-1' key={index}>
-                                                        <img style={{height: '60px', width: '60px'}} src={`http://localhost:5000/${img.path}`} alt="" />
+                                                        <img style={{height: '60px', width: '60px'}} src={`https://s.rgvturf.com/${img.path}`} alt="" />
                                                         <FaRegTrashAlt onClick={() => deleteImage(img.filename)} style={{position: 'absolute', top: '3px', right: '3px', backgroundColor: 'white', padding: '3px', borderRadius: '2px', cursor: 'pointer'}}/>
                                                     </div>
                                         })
