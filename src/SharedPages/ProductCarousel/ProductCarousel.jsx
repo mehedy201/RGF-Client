@@ -42,7 +42,7 @@ const ProductCarousel = () => {
                 {
                     products && products?.map(product => {
                         return <div key={product._id} className='mx-2'>
-                                <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product._id}/${product.ProductTitle}`}>
+                                <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product.ProductTitle.replaceAll(' ','-')}/${product._id}`}>
                                     <div style={{cursor: 'pointer'}} className="overflow-hidden pointer">
                                         <div style={{height: '250px'}} className="d-flex justify-content-center align-items-center overflow-hidden p-2">
                                             <img style={{height: 'auto', width: '100%',}} src={`https://s.rgvturf.com/${product.img}`} alt={product.ProductTitle} />
