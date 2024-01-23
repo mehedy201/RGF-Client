@@ -46,7 +46,7 @@ const SubmitDataEmploye = () => {
         const formData = {...data, date, time, imagePath}
         if(captchaValue === randomCaptcha){
             setLoading(true)
-            await axios.post('http://s.rgvturf.com/submitData', formData).then(res => {
+            await axios.post('https://s.rgvturf.com/submitData', formData).then(res => {
                 console.log(res)
                 setLoading(false)
                 if(res.status == 200){
@@ -71,12 +71,12 @@ const SubmitDataEmploye = () => {
         setImgLoading(true)
         const formData = new FormData();
         formData.append('image', e[0])
-        axios.post('http://s.rgvturf.com/emailimage', formData)
+        axios.post('https://s.rgvturf.com/emailimage', formData)
             .then(res => {
                 if(res.success == 200){
                     console.log('done')
                     setImgLoading(false)
-                    setImagePath(`http://s.rgvturf.com/${res.data.linkImage.path}`)
+                    setImagePath(`https://s.rgvturf.com/${res.data.linkImage.path}`)
                 }
             })
             .catch(er => console.log(er))

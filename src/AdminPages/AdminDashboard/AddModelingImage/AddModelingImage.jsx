@@ -22,7 +22,7 @@ const AddModelingImage = () => {
         formData.append('files', e[i]);
         }
 
-        await axios.post('http://s.rgvturf.com/modelingImg', formData)
+        await axios.post('https://s.rgvturf.com/modelingImg', formData)
             .then(res => {
                 setImages(res.data)
                 setLoading(false)
@@ -32,7 +32,7 @@ const AddModelingImage = () => {
 
     // Delete Image ___________________
     const deleteImage = (fileName) => {
-        axios.delete(`http://s.rgvturf.com/modelingImg/${fileName}`)
+        axios.delete(`https://s.rgvturf.com/modelingImg/${fileName}`)
             .then(res => {
                 const remain = images.filter(img => img.filename !== fileName);
                 setImages(remain);
@@ -45,10 +45,10 @@ const AddModelingImage = () => {
     }
 
     const uploadImages = async () => {
-        await axios.post('http://s.rgvturf.com/modelingImageApi', images)
+        await axios.post('https://s.rgvturf.com/modelingImageApi', images)
         .then( res => {
             setImages('')
-            axios.get('http://s.rgvturf.com/modelingImageApi').then(data => {
+            axios.get('https://s.rgvturf.com/modelingImageApi').then(data => {
                 setImageData(data.data)
                 toast.success('Image Uploaded.!', {
                     duration: 3000,
@@ -60,19 +60,19 @@ const AddModelingImage = () => {
     }
 
     useEffect(() => {
-        axios.get('http://s.rgvturf.com/modelingImageApi').then(data => setImageData(data.data)).catch(err => console.log(err))
+        axios.get('https://s.rgvturf.com/modelingImageApi').then(data => setImageData(data.data)).catch(err => console.log(err))
     }, [])
 
     const deleteFromServer = (one, two) => {
         const proceed = window.confirm('Are you sure to Delete');
         if(proceed){
-            const url = `http://s.rgvturf.com/modelingImageApi/${two}`;
+            const url = `https://s.rgvturf.com/modelingImageApi/${two}`;
             fetch(url, {
                 method: 'DELETE'
             })
             .then(res => console.log(res))
             .then(data => {
-                     axios.delete(`http://s.rgvturf.com/modelingImg/${one}`)
+                     axios.delete(`https://s.rgvturf.com/modelingImg/${one}`)
                     .then(res => {
                         const remain = images.filter(img => img.filename !== one);
                         const imageRemain = images.filter(img => img._id !== two);
@@ -100,7 +100,7 @@ const AddModelingImage = () => {
                     {
                         images && images?.map((img , index) => {
                             return <div className='imgBox' key={index}>
-                                        <img style={{height: '60px', width: '60px'}} src={`http://s.rgvturf.com/${img.path}`} alt="" />
+                                        <img style={{height: '60px', width: '60px'}} src={`https://s.rgvturf.com/${img.path}`} alt="" />
                                         <FaRegTrashAlt onClick={() => deleteImage(img.filename)} className='deleteIconModeling'/>
                                     </div>
                         })
@@ -114,7 +114,7 @@ const AddModelingImage = () => {
                         {
                             imageData?.map(img => {
                                 return <div key={img._id} className="col-md-2 imageDataCard">
-                                    <img style={{width: '100%', height: 'auto'}} src={`http://s.rgvturf.com/${img.path}`} alt="" />
+                                    <img style={{width: '100%', height: 'auto'}} src={`https://s.rgvturf.com/${img.path}`} alt="" />
                                         <FaRegTrashAlt onClick={() => deleteFromServer(img.filename, img._id)} className='imageDataDelete'/>
                                     </div>
                             })

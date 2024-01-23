@@ -42,7 +42,7 @@ const ImageCard = ({data}) => {
           <FaArrowLeft  className='btnPrev' onClick={prevSlide} />
           <FaArrowRight className='btnNext' onClick={nextSlide} />
           <div className='fullScreenImage'>
-            <img src={`http://s.rgvturf.com/${data[slideNumber].path}`} alt='' />
+            <img src={`https://s.rgvturf.com/${data[slideNumber].path}`} alt='' />
           </div>
         </div>
       }
@@ -57,7 +57,7 @@ const ImageCard = ({data}) => {
                 key={index}
                 onClick={ () => handleOpenModal(index) }
               >
-                <img src={`http://s.rgvturf.com/${slide.path}`} alt='' />
+                <img src={`https://s.rgvturf.com/${slide.path}`} alt='' />
                 <FaSearch className='hoverIcon'/>
               </div>
             )

@@ -23,7 +23,7 @@ const EditProduct = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        axios.get(`http://s.rgvturf.com/products/${id}`)
+        axios.get(`https://s.rgvturf.com/products/${id}`)
             .then(res => {
                 setProduct(res.data)
                 setCategory(res.data.category);
@@ -44,7 +44,7 @@ const EditProduct = () => {
     const imageUpload = (e) => {
         const formData = new FormData();
         formData.append('file', e[0])
-        axios.post('http://s.rgvturf.com/productImage', formData)
+        axios.post('https://s.rgvturf.com/productImage', formData)
             .then(res => {
                 setFileName(res.data.imagePath.filename)
                 setImagePath(res.data.imagePath.path)
@@ -55,7 +55,7 @@ const EditProduct = () => {
     // Delete Image ___________________
     const deleteImage = () => {
         setDeletedImg(true)
-        axios.delete(`http://s.rgvturf.com/productImageDelete/${fileName}`)
+        axios.delete(`https://s.rgvturf.com/productImageDelete/${fileName}`)
             .then(res => {
                 console.log('Delete Image Response', res)
                 setImagePath('')
@@ -77,7 +77,7 @@ const EditProduct = () => {
         }
         const formData = {...data, img, category, subCategory, fileName}
 
-        fetch(`http://s.rgvturf.com/products/${id}`, {
+        fetch(`https://s.rgvturf.com/products/${id}`, {
           method: 'PUT',
           headers:{
               'content-type': 'application/json'
@@ -243,10 +243,10 @@ const EditProduct = () => {
                                             !imagePath && <img style={{height: '200px', weight: 'auto'}} src={demoImage} alt="" />
                                         }
                                         {
-                                            imagePath && <img style={{height: '200px', weight: 'auto'}} src={`http://s.rgvturf.com/${imagePath}`} alt="" />
+                                            imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://s.rgvturf.com/${imagePath}`} alt="" />
                                         }
                                         {
-                                            product?.img && <img style={{height: '200px', weight: 'auto'}} src={`http://s.rgvturf.com/${product.img}`} alt="" />
+                                            product?.img && <img style={{height: '200px', weight: 'auto'}} src={`https://s.rgvturf.com/${product.img}`} alt="" />
                                         }
                                         {
                                         product?.img && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>
