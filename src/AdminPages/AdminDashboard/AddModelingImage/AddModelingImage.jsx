@@ -87,7 +87,6 @@ const AddModelingImage = () => {
                     });
             })
         }
-        console.log('One=', one, 'Two=', two)
     }
 
     return (
