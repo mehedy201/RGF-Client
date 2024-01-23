@@ -57,13 +57,13 @@ const AddProductPage = () => {
         const formData = {...data, img, category, subCategory, fileName, images}
         console.log('Form Data',formData)
 
-        // axios.post(`http://localhost:5000/products`, formData)
-        //     .then(res => {
-        //             toast.success('Succesfully Post Updated')
-        //             reset()
-        //             setImagePath('')
-        //     })
-        //     .catch(er => console.log(er))
+        axios.post(`http://localhost:5000/products`, formData)
+            .then(res => {
+                    toast.success('Succesfully Post Updated')
+                    reset()
+                    setImagePath('')
+            })
+            .catch(er => console.log(er))
     };
 
     // Product Multiple Images Upload_______________________________________
