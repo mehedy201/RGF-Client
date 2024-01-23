@@ -9,6 +9,7 @@ import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import toast, { Toaster } from 'react-hot-toast';
 import demoImage from '../../../assets/free-gallery-187-902099.webp'
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
@@ -18,26 +19,29 @@ const AddProductPage = () => {
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
 
-    
-
     const [imagePath, setImagePath] = useState('');
     const [fileName, setFileName] = useState('')
-    const [loading, setLoading] = useState(false)
-    const imageUpload = (e) => {
-        setLoading(true)
+    const [siLoading, setSiLoading] = useState(false)
+    const [muLoading, setMuLoading] = useState(false)
+
+    const singleImageUpload = (e) => {
+        setSiLoading(true)
         const formData = new FormData();
-        formData.append('file', e[0])
-        axios.post('https://s.rgvturf.com/productImage', formData)
+        for (let i = 0; i < e.length; i++) {
+        formData.append('files', e[i]);
+        }
+        axios.post('http://localhost:5000/productImage', formData)
             .then(res => {
-                setFileName(res.data.imagePath.filename)
-                setImagePath(res.data.imagePath.path)
-                setLoading(false)
+                console.log('Res', res.data)
+                setFileName(res.data.data[0].filename)
+                setImagePath(res.data.data[0].path)
+                setSiLoading(false)
             })
             .catch(er => console.log(er))
     }
     // Delete Image ___________________
-    const deleteImage = () => {
-        axios.delete(`https://s.rgvturf.com/productImageDelete/${fileName}`)
+    const singleDeleteImage = () => {
+        axios.delete(`http://localhost:5000/productImageDelete/${fileName}`)
             .then(res => {
                 console.log('Delete Image Response', res)
                 setImagePath('')
@@ -46,14 +50,14 @@ const AddProductPage = () => {
     }
 
     // Post Request ______________________________
-    // productCatelog
+    // Post Product Data. 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         const img = imagePath;
-        const formData = {...data, img, category, subCategory, fileName}
-        console.log(formData)
+        const formData = {...data, img, category, subCategory, fileName, images}
+        console.log('Form Data',formData)
 
-        // axios.post(`https://s.rgvturf.com/products`, formData)
+        // axios.post(`http://localhost:5000/products`, formData)
         //     .then(res => {
         //             toast.success('Succesfully Post Updated')
         //             reset()
@@ -61,6 +65,38 @@ const AddProductPage = () => {
         //     })
         //     .catch(er => console.log(er))
     };
+
+    // Product Multiple Images Upload_______________________________________
+    const [images, setImages] = useState([]);
+    const imageUpload = async (e) => {
+        setMuLoading(true)
+        const formData = new FormData();
+        for (let i = 0; i < e.length; i++) {
+        formData.append('files', e[i]);
+        }
+
+        await axios.post('http://localhost:5000/productImage', formData)
+            .then(res => {
+                setImages(res.data.data)
+                setMuLoading(false)
+            })
+            .catch(er => console.log(er))
+    }
+
+    // Delete Image ___________________
+    const deleteImage = (fileName) => {
+        axios.delete(`http://localhost:5000/productImageDelete/${fileName}`)
+            .then(res => {
+                const remain = images.filter(img => img.filename !== fileName);
+                setImages(remain);
+                toast.success('Deleted.!', {
+                    duration: 3000,
+                    position: 'top-right'
+                });
+            })
+            .catch(er => console.log(er))
+    }
+
 
 
 
@@ -104,7 +140,7 @@ const AddProductPage = () => {
                                     setSubCategory(sub)
                                 }}
                                 options={[
-                                    {value: 'Residential-Commercial Landscape',label: 'Residential Commercial Landscape',},
+                                    {value: 'Residential Commercial Landscape',label: 'Residential Commercial Landscape',},
                                     {value: 'Sport and Athletic',label: 'Sport and Athletic',},
                                     {value: 'Childrens Play Areas',label: 'Childrens Play Areas',},
                                     {value: 'Kennels and Pets',label: 'Kennels and Pets',},
@@ -181,26 +217,50 @@ const AddProductPage = () => {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <h4>Select Product Image</h4>
-                            <div className='border'>
+                            <h4 className='text-secondary fst-italic'>Select Featured Image</h4>
+                            <div className='rounded border shadow shadow-sm'>
                                 <div style={{height: '200px'}} className='p-2 overflow-hidden imageBoxBackground'>
                                     {
-                                        loading && <Spin/>
+                                        siLoading && <Spin/>
                                     }
                                     {
-                                        !imagePath && <img style={{height: '200px', weight: 'auto'}} src={demoImage} alt="" />
+                                        !imagePath && <img style={{height: '100px', weight: 'auto'}} src={demoImage} alt="" />
                                     }
                                     {
-                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`https://s.rgvturf.com/${imagePath}`} alt="" />
+                                        imagePath && <img style={{height: '200px', weight: 'auto'}} src={`http://localhost:5000/${imagePath}`} alt="" />
                                     }
                                     {
-                                        imagePath && <FaRegTrashAlt onClick={() => deleteImage()} className='deleteIcon'/>
+                                        imagePath && <FaRegTrashAlt onClick={() => singleDeleteImage()} className='deleteIcon'/>
                                     }
                                 </div>
                                 <div className="border p-2">
-                                    <input type="file" name='image' onChange={e => imageUpload(e.target.files)} />
+                                    <input type="file" name='image' onChange={e => singleImageUpload(e.target.files)} />
                                 </div>
                             </div>
+
+
+                            <h5 className='pt-2 text-secondary fst-italic'>Add Multiple Product Images</h5>
+                            <div className='rounded border shadow shadow-sm'>
+                                <div style={{minHeight: '150px'}} className='border p-2 d-flex flex-wrap'>
+                                    {
+                                        muLoading == true && <Spin/>
+                                    }
+                                    {
+                                        images && images?.map((img , index) => {
+                                            return <div style={{position: 'relative'}} className='mx-1' key={index}>
+                                                        <img style={{height: '60px', width: '60px'}} src={`http://localhost:5000/${img.path}`} alt="" />
+                                                        <FaRegTrashAlt onClick={() => deleteImage(img.filename)} style={{position: 'absolute', top: '3px', right: '3px', backgroundColor: 'white', padding: '3px', borderRadius: '2px', cursor: 'pointer'}}/>
+                                                    </div>
+                                        })
+                                    }
+                                </div>
+                                <div>
+                                    <input type="file" name='image' onChange={e => imageUpload(e.target.files)} multiple/>
+                                </div>
+                            </div>
+
+
+
                         </div>
                     </div>
                 </div>

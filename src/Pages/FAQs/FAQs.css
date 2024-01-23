@@ -2,6 +2,7 @@
     background-image: url('../../assets/faq/maintained-garden-with-artificial-turf.webp');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: bottom;
 }
 #faq_page .faq_page_hero_section_overly_color{
     background-color: rgba(0, 0, 0, 0.473);

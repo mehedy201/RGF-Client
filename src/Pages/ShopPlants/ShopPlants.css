@@ -2,6 +2,7 @@
     background-image: url('../../assets/LandingPage/DSC_1311.webp');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: bottom;
 }
 #shopPlantsSection .shopPlantsHeroBackground .backgroundOverlyColor{ 
     background-color: rgba(0, 0, 0, 0.473);
