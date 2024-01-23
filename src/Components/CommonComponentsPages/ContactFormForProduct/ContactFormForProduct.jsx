@@ -35,7 +35,7 @@ const ContactFormForProduct = () => {
             const formData = {...data, productLink}
             console.log(formData)
             setLoading(true)
-            await axios.post('https://rgv-server.onrender.com/productContactForm', formData).then(res => {
+            await axios.post('http://s.rgvturf.com/productContactForm', formData).then(res => {
                 if(res.status == 200){
                     setLoading(false)
                     reset();

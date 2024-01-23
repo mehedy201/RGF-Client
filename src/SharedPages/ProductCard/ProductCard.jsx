@@ -13,10 +13,10 @@ const ProductCard = ({products}) => {
                 <div className="row g-3">
                     {products.map((product) => {
                         return <div key={product._id} className="col-md-4">
-                            <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product?._id}/${product?.ProductTitle}`}>
+                            <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product?._id}/${product?.ProductTitle.replaceAll(' ','-')}`}>
                                 <div style={{cursor: 'pointer'}} className="overflow-hidden pointer">
                                     <div style={{height: '250px'}} className="d-flex justify-content-center align-items-center overflow-hidden p-2">
-                                        <img style={{height: '-webkit-fill-available', width: '100%',}} src={`https://rgv-server.onrender.com/${product?.img}`} alt={product?.ProductTitle} />
+                                        <img style={{height: '-webkit-fill-available', width: '100%',}} src={`http://s.rgvturf.com/${product?.img}`} alt={product?.ProductTitle} />
                                     </div>
                                     <h3 className="py-2 fs-6 px-3 border-top">{product.ProductTitle}</h3>
                                 </div>
