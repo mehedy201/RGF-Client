@@ -62,7 +62,7 @@ const router = createBrowserRouter([
           }
       },
       {
-        path: '/product-catalog/:id/:title',
+        path: '/product-catalog/:title/:id',
         element:<Suspense fallback={<LoadingSpain/>}><SingleProductPage/></Suspense>
       },
       {
