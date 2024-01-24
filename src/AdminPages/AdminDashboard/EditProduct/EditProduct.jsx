@@ -22,7 +22,6 @@ const EditProduct = () => {
     const [loading, setLoading] = useState(false);
     const [muLoading, setMuLoading] = useState(false);
     const [multipleImage, setMultipleImage] = useState([])
-    const [forSiImage, setForSiImage] = useState()
     
 
     useEffect(() => {
@@ -33,14 +32,12 @@ const EditProduct = () => {
                 setSubCategory(res.data.subCategory);
                 setFileName(res.data.fileName);
                 setMultipleImage(res.data.images);
-                setForSiImage(res.data.img)
             })
             .catch(er => console.log(er))
     },[])
 
     const [deletedImg, setDeletedImg] = useState(false)
     const siImageUpload = (e) => {
-        setForSiImage()
         const formData = new FormData();
         formData.append('files', e[0])
         axios.post('https://s.rgvturf.com/productImage', formData)
@@ -55,7 +52,6 @@ const EditProduct = () => {
     }
     // Delete Image ___________________
     const siDeleteImage = () => {
-        setForSiImage()
         setDeletedImg(true)
         axios.delete(`https://s.rgvturf.com/productImageDelete/${fileName}`)
             .then(res => {
