@@ -14,7 +14,7 @@ import LoadingSpain from './Components/LoadingSpain/LoadingSpain';
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
 import PrivetRoute from './Routes/PrivetRoute';
-import SubmitPrivetRoute from './Routes/SubmitPrivetRoute';
+import FreeQuatePage from './Pages/FreeQuatePage/FreeQuatePage';
 const ShopTurf = React.lazy(() => import('./Pages/ShopTurf/ShopTurf'));
 const ShopPlants = React.lazy(() => import('./Pages/ShopPlants/ShopPlants'));
 const Modeling = React.lazy(() => import('./Pages/Modeling/Modeling'));
@@ -25,6 +25,10 @@ const FAQs = React.lazy(() => import('./Pages/FAQs/FAQs'));
 const ContactUs = React.lazy(() => import('./Pages/ContactUs/ContactUs'));
 const ProductCatalogPage = React.lazy(() => import('./SharedPages/ProductCatalogPage/ProductCatalogPage'));
 const SingleProductPage = React.lazy(() => import('./SharedPages/SingleProductPage/SingleProductPage'));
+const SubmitData = React.lazy(() => import('./Pages/SubmitData/SubmitData'));
+const ThankYouPage = React.lazy(() => import('./Pages/ThankYouPage/ThankYouPage'));
+const SubmitDataEmploye = React.lazy(() => import('./Pages/SubmitDataEmploye/SubmitDataEmploye'));
+const SubmitPrivetRoute = React.lazy(() => import('./Routes/SubmitPrivetRoute'));
 // Admin Page ________________________________________________________________________
 const AdminLoginPage = React.lazy(() => import('./AdminPages/AdminLoginPage/AdminLoginPage'));
 const AdminDashboard = React.lazy(() => import('./AdminPages/AdminDashboard/AdminDashboard'));
@@ -33,9 +37,6 @@ const EditProduct = React.lazy(() => import('./AdminPages/AdminDashboard/EditPro
 const ManageProduct = React.lazy(() => import('./AdminPages/AdminDashboard/ManageProduct/ManageProduct'));
 const AddModelingImage = React.lazy(() => import('./AdminPages/AdminDashboard/AddModelingImage/AddModelingImage'));
 const ProductCatelog = React.lazy(() => import('./SharedPages/ProductCatelog/ProductCatelog'));
-const SubmitData = React.lazy(() => import('./Pages/SubmitData/SubmitData'));
-const ThankYouPage = React.lazy(() => import('./Pages/ThankYouPage/ThankYouPage'));
-const SubmitDataEmploye = React.lazy(() => import('./Pages/SubmitDataEmploye/SubmitDataEmploye'));
 
 
 const router = createBrowserRouter([
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
       {
         path: '/contact-us',
         element: <Suspense fallback={<LoadingSpain/>}><ContactUs/></Suspense>
+      },
+      {
+        path: '/free-quate',
+        element: <Suspense fallback={<LoadingSpain/>}><FreeQuatePage/></Suspense>
       },
       {
         path: '/submit-data',
