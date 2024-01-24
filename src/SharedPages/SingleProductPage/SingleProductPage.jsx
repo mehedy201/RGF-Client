@@ -22,16 +22,24 @@ const SingleProductPage = () => {
     const {id, title} = useParams()
     const [product, setProduct] = useState()
 
+    const [img, setImg] = useState('');
+    const [images, setImages] = useState([])
     useEffect(() => {
         fetch(`https://s.rgvturf.com/products/${id}`)
         .then(res => res.json())
         .then(data => {
-            setProduct(data)
-            console.log(data)
+            if(data){
+                setProduct(data)
+                setImg(data.img)
+                setImages(data.images)
+            }
         })
     }, [id])
  
 
+    const changeImage = (img) => {
+        setImg(img)
+    }
     
 
     return (
@@ -85,8 +93,18 @@ const SingleProductPage = () => {
                 </div>
                 <div className="row">  
                     <div className="col d-flex justify-content-center p-2 overflow-hidden">
-                        <img style={{height: '80vh', width: 'auto'}} src={`https://s.rgvturf.com/${product?.img}`} alt="" />
+                        <img style={{height: '80vh', width: 'auto'}} src={`https://s.rgvturf.com/${img}`} className='mb-4' alt="" />
                     </div>
+                    <div className='bg-light pb-3 d-flex flex-warp'>
+                    <div onClick={() => changeImage(product.img)} className='border rounded' style={{height: '60px', width: '70px', overflow: 'hidden', margin: '6px', cursor: 'pointer'}}><img style={{width: '100%', height: '100%' }} src={`https://s.rgvturf.com/${product?.img}`} alt='' /></div> 
+                            {
+                                images.map((img, index) => {
+                                
+                                   return <> <div key={index} onClick={() => changeImage(img.path)} className='border rounded' style={{height: '60px', width: '70px', overflow: 'hidden', margin: '6px', cursor: 'pointer'}}><img style={{width: '100%', height: '100%' }} src={`https://s.rgvturf.com/${img.path}`} alt={img.filename} /></div> </> 
+                                })
+                            }
+                            
+                        </div>
                 </div>
                 <div className="row">
                     <div className="col for_product_tab_style">
