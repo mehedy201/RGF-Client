@@ -1,7 +1,7 @@
 // import React from 'react';
 import './SingleProductPage.css'
 // import axios from 'axios'
-import { Link, ScrollRestoration, useParams } from "react-router-dom";
+import { Link, ScrollRestoration, useNavigate, useParams } from "react-router-dom";
 import { Tab, Tabs } from 'react-bootstrap';
 import {
     FacebookShareButton,
@@ -21,6 +21,7 @@ import ContactFormForProduct from '../../Components/CommonComponentsPages/Contac
 const SingleProductPage = () => {
     const {id, title} = useParams()
     const [product, setProduct] = useState()
+    const navigate = useNavigate('')
 
     const [img, setImg] = useState('');
     const [images, setImages] = useState([])
@@ -41,6 +42,9 @@ const SingleProductPage = () => {
         setImg(img)
     }
     
+    const handleNavigate = () => {
+        navigate('/product-catelog')
+    }
 
     return (
         <>
@@ -93,9 +97,9 @@ const SingleProductPage = () => {
                 </div>
                 <div className="row">  
                     <div className="col d-flex justify-content-center p-2 overflow-hidden">
-                        <img style={{height: '80vh', width: 'auto'}} src={`https://s.rgvturf.com/${img}`} className='mb-4' alt="" />
+                        <img src={`https://s.rgvturf.com/${img}`} className='mb-4 singlePageMainImage' alt="" />
                     </div>
-                    <div className='bg-light pb-3 d-flex flex-warp'>
+                    <div className='bg-light pb-3 d-flex flex-wrap'>
                     <div onClick={() => changeImage(product.img)} className='border rounded' style={{height: '60px', width: '70px', overflow: 'hidden', margin: '6px', cursor: 'pointer'}}><img style={{width: '100%', height: '100%' }} src={`https://s.rgvturf.com/${product?.img}`} alt='' /></div> 
                             {
                                 images.map((img, index) => {
@@ -210,6 +214,7 @@ const SingleProductPage = () => {
                         </Tabs>
                     </div>
                 </div>
+             <button onClick={handleNavigate} className='btn btn-dark text-white fw-bold my-5'>All Products</button>
             </div>
         </section>
         {/* Product Carousel ________________________ */}

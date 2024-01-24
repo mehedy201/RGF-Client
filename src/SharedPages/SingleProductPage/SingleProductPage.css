@@ -13,3 +13,21 @@
 .nav-tabs li .active{
     background-color: #eaefe4 !important;
 }
+
+.singlePageMainImage{
+    height: 80vh;
+    width: auto;
+}
+/* Responsive About Page _______________________________________________ */
+@media only screen and (max-width: 768px) {
+    .singlePageMainImage{
+        height: 70vh;
+        width: auto;
+    }
+}
+@media only screen and (max-width: 520px) {
+    .singlePageMainImage{
+        width: 100%;
+        height: auto;
+    }
+}
