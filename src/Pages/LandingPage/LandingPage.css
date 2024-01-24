@@ -50,6 +50,7 @@
     padding: 10px 30px;
     transition: 0.5s;
     z-index: 1;
+    
 }
 .landingPageButtonDiv .heroBtnStyle::after{
     position: absolute;

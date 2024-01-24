@@ -30,7 +30,7 @@ const LandingPage = () => {
                     </div>
                 </div>
                 {/* Hero Section bottom part ___________ */}
-                <div className='row py-md-5 gx-4'>
+                <div className='row py-md-5 gy-2 gx-4'>
                     <div className="col-md-4"><div className='hero_section_bottomPert_style p-2'><p className='text-white fs-4'><span className='fw-bold'>Phone:</span> <span>(956) 253-2741</span></p></div></div>
                     <div className="col-md-4"><div className='hero_section_bottomPert_style p-2'><p className='text-white fs-4'><span className='fw-bold'>Mail:</span> <span>info@rgvturf.com</span></p></div></div>
                     <div className="col-md-4">
