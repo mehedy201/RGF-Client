@@ -18,19 +18,13 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
 
     // Get product Sub Category From Use Params _____________________ 
     const { productCategory } = useParams();
-    const [productCat, setProductCat] = useState(productCategory);
+    const pCat = productCategory.replaceAll('-',' ');
+    const [productCat, setProductCat] = useState(pCat);
     // Problem Solving About Residential/Commercial Landscape '/' Problem )______________________
     let category;
     useEffect(() => {
-        if(productCategory === 'Residential Commercial Landscape'){
-            category = 'Residential-Commercial Landscape';
-            const search = fatchProduct.filter(d =>d.subCategory.includes(category))
-            setProducts(search)      
-        }else{
-            setProductCat(productCategory)
-            const search = fatchProduct.filter(d =>d.subCategory.includes(productCat))
-            setProducts(search)                                        
-        }
+        const search = fatchProduct.filter(p => p.subCategory[0].includes(pCat));
+        setProducts(search)                                        
     },[])
 
     // Implement Search Function __________________________________
@@ -40,7 +34,7 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
         setProducts(search)
     };
 
-
+    
 
     return (
         <>
@@ -63,17 +57,17 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
                                 {
                                     buttonText == 'Shop Turf' ? <>
                                         <Select
-                                            defaultValue= {productCategory}
+                                            defaultValue= {pCat}
                                             size= 'large'
                                             style={{
                                                 width: '100%',
                                             }}
                                             onChange={e => {
-                                                    const search = fatchProduct.filter(d =>d.subCategory.includes(e))
-                                                    setProducts(search)
-                                                    if(e == 'All'){
-                                                        setProducts(fatchProduct)
-                                                    }
+                                                const search = fatchProduct.filter(p => p.subCategory[0].includes(e));
+                                                setProducts(search)
+                                                if(e == 'All'){
+                                                    setProducts(fatchProduct)
+                                                }
                                             }}
                                             options={[
                                                 {value: 'All',label: 'All',},
@@ -87,13 +81,13 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
                                     </>:
                                     <>
                                         <Select
-                                            defaultValue= {productCategory}
+                                            defaultValue= {pCat}
                                             size= 'large'
                                             style={{
                                                 width: '100%',
                                             }}
                                             onChange={e => {
-                                                const search = fatchProduct.filter(d =>d.subCategory.includes(e))
+                                                const search = fatchProduct.filter(p => p.subCategory[0].includes(e));
                                                 setProducts(search)
                                                 if(e == 'All'){
                                                     setProducts(fatchProduct)
@@ -101,7 +95,7 @@ const ProductCatalogPage = ({heroText, buttonLink, buttonText}) => {
                                             }}
                                             options={[
                                                 {value: 'All',label: 'All',},
-                                                {value: 'Residential/Commercial Landscape',label: 'Residential/Commercial Landscape',},
+                                                {value: 'Residential Commercial Landscape',label: 'Residential Commercial Landscape',},
                                                 {value: 'Sport and Athletic',label: 'Sport and Athletic',},
                                                 {value: 'Childrens Play Areas',label: 'Childrens Play Areas',},
                                                 {value: 'Kennels and Pets',label: 'Kennels and Pets',},

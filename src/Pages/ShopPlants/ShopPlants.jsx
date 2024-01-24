@@ -7,7 +7,7 @@ import cypress from '../../assets/shop-plants/istockphoto-1057939746-612x612.web
 import flowers from '../../assets/shop-plants/flowers.webp'
 import trees from '../../assets/shop-plants/ezgif-5-fe0f17fe03.webp'
 import synthetiic from '../../assets/shop-plants/sports-and-athletics.webp'
-import { ScrollRestoration } from 'react-router-dom';
+import { Link, ScrollRestoration } from 'react-router-dom';
 
 const ShopPlants = () => {
 
@@ -37,11 +37,6 @@ const ShopPlants = () => {
             title: 'Trees And Palms',
             image: trees,
         },
-        {
-            id: '6',
-            title: 'Synthetic Turf',
-            image: synthetiic,
-        },
     ]
 
 
@@ -59,6 +54,14 @@ const ShopPlants = () => {
                         {
                             items.map((item, index) => <TurfPlants shopTurfLink={'plants'} item={item} key={index}/>)
                         }
+                        <div className='col-md-4 turfPlantsCard'>
+                            <Link style={{textDecoration: 'none'}} to={`/shop-turf`}>
+                                <div className="border turfPlantsCardInnerDiv">
+                                    <img style={{width: '100%', height: 'auto'}} src={synthetiic} alt="" />
+                                    <h3 className='px-2 py-3 text-center turfPlantsCardTitle'>Synthetic Turf</h3>
+                                </div>
+                            </Link>
+                        </div>
                 </div>
             </div>
         </section>

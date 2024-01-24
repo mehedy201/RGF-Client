@@ -7,7 +7,7 @@ import childrencPlay from '../../assets/shop-turf/childrens-play-areas.webp'
 import kennels from '../../assets/shop-turf/kennels-and-pets.webp'
 import golf from '../../assets/shop-turf/golf-and-putting-zones.webp'
 import syntheticPlants from '../../assets/shop-turf/synthetic-plants.webp'
-import { ScrollRestoration } from 'react-router-dom';
+import { Link, ScrollRestoration } from 'react-router-dom';
 
 
 const ShopTurf = () => {
@@ -38,14 +38,7 @@ const ShopTurf = () => {
             title: 'Golf and Putting Zones',
             image: golf,
         },
-        {
-            id: '6',
-            title: 'Synthetic Plants',
-            image: syntheticPlants,
-        },
     ]
-
-
 
 
     return (
@@ -62,6 +55,14 @@ const ShopTurf = () => {
                         {
                             items.map((item, index) => <TurfPlants shopTurfLink={'turf'} item={item} key={index}/>)
                         }
+                        <div className='col-md-4 turfPlantsCard'>
+                            <Link style={{textDecoration: 'none'}} to={`/shop-plants`}>
+                                <div className="border turfPlantsCardInnerDiv">
+                                    <img style={{width: '100%', height: 'auto'}} src={syntheticPlants} alt="" />
+                                    <h3 className='px-2 py-3 text-center turfPlantsCardTitle'>Synthetic Plants</h3>
+                                </div>
+                            </Link>
+                        </div>
                 </div>
             </div>
         </section>

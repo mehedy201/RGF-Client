@@ -12,6 +12,8 @@ import demoImage from '../../../assets/free-gallery-187-902099.webp'
 
 
 const AddProductPage = () => {
+   
+
 
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');

@@ -24,7 +24,7 @@ const EditProduct = () => {
     const [multipleImage, setMultipleImage] = useState([])
     
 
-    useEffect(() => {
+    useEffect( () => {
         axios.get(`https://s.rgvturf.com/products/${id}`)
             .then(res => {
                 setProduct(res.data)
@@ -32,8 +32,9 @@ const EditProduct = () => {
                 setSubCategory(res.data.subCategory);
                 setFileName(res.data.fileName);
                 setMultipleImage(res.data.images);
+                console.log(res.data);
             })
-            .catch(er => console.log(er))
+            .catch(er => console.log(er));
     },[])
 
     const [deletedImg, setDeletedImg] = useState(false)
@@ -45,7 +46,7 @@ const EditProduct = () => {
                 console.log(res.data.data[0].path)
                 setFileName(res.data.data[0].filename)
                 setImagePath(res.data.data[0].path);
-                console.log(imagePath)
+                // console.log(imagePath)
                 setLoading(false)
             })
             .catch(er => console.log(er))
@@ -66,7 +67,12 @@ const EditProduct = () => {
     // productCatelog
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        const img = imagePath;
+        let img;
+        if(imagePath){
+            img = imagePath
+        }else{
+            img = product.img
+        }
         if(!data.ProductTitle){
             data.ProductTitle = product.ProductTitle
         }
@@ -74,7 +80,19 @@ const EditProduct = () => {
             data.ProductDescription = product.ProductDescription
         }
         
-        const images = [...multipleImage, ...newImages]
+        let images = [];
+        if(!multipleImage && !newImages){
+            images = []
+        }
+        if(!multipleImage && newImages){
+            images = [...newImages]
+        }
+        if(!newImages && multipleImage){
+            images = [...multipleImage]
+        }
+        if(newImages && multipleImage){
+            images = [...multipleImage, ...newImages]
+        }
         const formData = {...data, img, category, subCategory, fileName, images}
         console.log(formData)
 
@@ -290,7 +308,7 @@ const EditProduct = () => {
                                     {
                                         deletedImg == false && <>
                                             {
-                                                product?.img && <> <img style={{height: '200px', weight: 'auto'}} src={`https://s.rgvturf.com/${product.img}`} alt="" />
+                                                product?.img && <> <img style={{height: '200px', weight: 'auto'}} src={`https://s.rgvturf.com/${product?.img}`} alt="" />
                                                                     <FaRegTrashAlt onClick={() => siDeleteImage()} className='deleteIcon'/>
                                                 </> 
                                             }

@@ -5,6 +5,7 @@ import './TurfPlants.css'
 
 const TurfPlants = ({item, shopTurfLink}) => {
 
+
     return (
         <div className='col-md-4 turfPlantsCard'>
             <Link style={{textDecoration: 'none'}} to={`${shopTurfLink}/${item.title.replaceAll(' ','-')}`}>
@@ -14,7 +15,6 @@ const TurfPlants = ({item, shopTurfLink}) => {
                 </div>
             </Link>
         </div>
-
     );
 };
 
