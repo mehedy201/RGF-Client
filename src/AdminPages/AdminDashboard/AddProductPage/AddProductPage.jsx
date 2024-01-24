@@ -8,14 +8,11 @@ import axios from 'axios';
 import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import toast, { Toaster } from 'react-hot-toast';
 import demoImage from '../../../assets/free-gallery-187-902099.webp'
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 
 
 const AddProductPage = () => {
 
-    const navigate = useNavigate()
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
 
@@ -62,6 +59,7 @@ const AddProductPage = () => {
                     toast.success('Succesfully Post Updated')
                     reset()
                     setImagePath('')
+                    setImages([])
             })
             .catch(er => console.log(er))
     };
@@ -258,9 +256,6 @@ const AddProductPage = () => {
                                     <input type="file" name='image' onChange={e => imageUpload(e.target.files)} multiple/>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
