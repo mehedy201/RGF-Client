@@ -27,17 +27,17 @@ const QuateForm = () => {
         }
     }, [])
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = async (data) => {
         const formData = {...data, resCom, trufIns}
         if(captchaValue === randomCaptcha){
             setCaptchaError('')
-            console.log('done', formData)
             setLoading(true)
-            await axios.post('http://localhost:5000/free-quote', formData).then(res => {
+            await axios.post('https://s.rgvturf.com/free-quote', formData).then(res => {
                 setLoading(false)
                 if(res.status == 200){
                     setLoading(false)
+                    reset()
                     return navigate('/thankyou');
                 }else{
                     setLoading(false)
@@ -99,8 +99,7 @@ const QuateForm = () => {
                             <input  className="contact_form_input mt-2 d-block" type='text' {...register("street", { required: true })} />
                             {errors.street && <span className='text-danger'>Street field is required</span>}
                             <p className='mt-3 mb-0 p-0 text-secondary'>Apartment, unit, suite, or floor #</p>
-                            <input  className="contact_form_input mt-2 d-block" type='text' {...register("ausf", { required: true })} />
-                            {errors.ausf && <span className='text-danger'>Apartment, unit, suite, or floor # field is required</span>}
+                            <input  className="contact_form_input mt-2 d-block" type='text' {...register("ausf")} />
                             <p className='mt-3 mb-0 p-0 text-secondary'>City*</p>
                             <input  className="contact_form_input mt-2 d-block" type='text' {...register("city", { required: true })} />
                             {errors.city && <span className='text-danger'>City field is required</span>}

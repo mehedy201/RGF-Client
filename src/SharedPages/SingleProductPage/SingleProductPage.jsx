@@ -214,7 +214,7 @@ const SingleProductPage = () => {
                         </Tabs>
                     </div>
                 </div>
-             <button onClick={handleNavigate} className='btn btn-dark text-white fw-bold my-5'>All Products</button>
+             <button onClick={handleNavigate} className='btn btn-dark text-white fw-bold my-5np'>All Products</button>
             </div>
         </section>
         {/* Product Carousel ________________________ */}
