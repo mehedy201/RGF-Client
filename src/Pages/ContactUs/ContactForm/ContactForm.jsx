@@ -34,7 +34,7 @@ const ContactForm = () => {
         if(captchaValue === randomCaptcha){
             console.log('done')
             setLoading(true)
-            await axios.post('http://localhost:5000/mainContactForm', data).then(res => {
+            await axios.post('https://s.rgvturf.com/mainContactForm', data).then(res => {
                 setLoading(false)
                 if(res.status == 200){
                     setLoading(false)
