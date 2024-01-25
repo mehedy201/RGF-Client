@@ -7,7 +7,7 @@ const FreeQuatePage = () => {
     return (
         <>
             <ScrollRestoration />
-            <section id="contactUsHeroSection">
+            <section className='newBanerForquateForm' id="contactUsHeroSection">
                 <div className="contactUs_hero_section_overly_color">
                     <div className='contactUs_hero_section_text'>
                         <h2>Get Quote</h2>
