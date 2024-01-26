@@ -27,30 +27,43 @@ const QuateForm = () => {
         }
     }, [])
 
+    const [errorCheck1, setErrorCheck1] = useState('')
+    const [errorCheck2, setErrorCheck2] = useState('')
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = async (data) => {
         const formData = {...data, resCom, trufIns}
-        if(captchaValue === randomCaptcha){
-            setCaptchaError('')
-            setLoading(true)
-            await axios.post('https://s.rgvturf.com/free-quote', formData).then(res => {
-                setLoading(false)
-                if(res.status == 200){
-                    setLoading(false)
-                    reset()
-                    return navigate('/thankyou');
+        if(!resCom){
+            setErrorCheck1('Please choose Residential or Commercial? Required')
+            return
+        }else if(!trufIns){
+            setErrorCheck2('Do you need the Turf installed? Required')
+            return
+        }else{
+                if(captchaValue === randomCaptcha){
+                    setErrorCheck1('')
+                    setErrorCheck2('')
+                    setCaptchaError('')
+                    setLoading(true)
+                    await axios.post('https://s.rgvturf.com/free-quote', formData).then(res => {
+                        setLoading(false)
+                        if(res.status == 200){
+                            setLoading(false)
+                            reset()
+                            return navigate('/thankyou');
+                        }else{
+                            setLoading(false)
+                            return alert('Not Send')
+                        }
+        
+                    })
                 }else{
                     setLoading(false)
-                    return alert('Not Send')
-                }
-
-            })
-        }else{
-            setLoading(false)
-            setCaptchaError('Please Fell the Captch with Righ Text')
-            return;
+                    setCaptchaError('Please Fell the Captch with Righ Text')
+                    return;
+                }            
         }
-    };
+    }
+        
 
     return (
         <section style={{backgroundColor: 'rgb(234,239,228)'}}>
@@ -81,6 +94,7 @@ const QuateForm = () => {
                                     {value: 'Commercial',label: 'Commercial',},
                                 ]}
                             />
+                            {errorCheck1 && <p className='text-danger'>{errorCheck1}</p>}
                             <p className='mt-3 mb-0 p-0 text-secondary'>Do you need the Turf installed?</p>
                             <Select
                                 placeholder="Select"
@@ -94,6 +108,7 @@ const QuateForm = () => {
                                     {value: 'No',label: 'No',},
                                 ]}
                             />
+                            {errorCheck2 && <p className='text-danger'>{errorCheck2}</p>}
                             <h4 className='fw-bold mt-3'>Address</h4>
                             <p className='mt-3 mb-0 p-0 text-secondary'>Street*</p>
                             <input  className="contact_form_input mt-2 d-block" type='text' {...register("street", { required: true })} />
