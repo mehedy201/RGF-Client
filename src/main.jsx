@@ -15,6 +15,7 @@ import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
 import PrivetRoute from './Routes/PrivetRoute';
 import FreeQuatePage from './Pages/FreeQuatePage/FreeQuatePage';
+
 const ShopTurf = React.lazy(() => import('./Pages/ShopTurf/ShopTurf'));
 const ShopPlants = React.lazy(() => import('./Pages/ShopPlants/ShopPlants'));
 const Modeling = React.lazy(() => import('./Pages/Modeling/Modeling'));
@@ -29,6 +30,7 @@ const SubmitData = React.lazy(() => import('./Pages/SubmitData/SubmitData'));
 const ThankYouPage = React.lazy(() => import('./Pages/ThankYouPage/ThankYouPage'));
 const SubmitDataEmploye = React.lazy(() => import('./Pages/SubmitDataEmploye/SubmitDataEmploye'));
 const SubmitPrivetRoute = React.lazy(() => import('./Routes/SubmitPrivetRoute'));
+const FreeQuoteThankYou = React.lazy(() => import('./Pages/FreeQuoteThankYou/FreeQuoteThankYou'));
 // Admin Page ________________________________________________________________________
 const AdminLoginPage = React.lazy(() => import('./AdminPages/AdminLoginPage/AdminLoginPage'));
 const AdminDashboard = React.lazy(() => import('./AdminPages/AdminDashboard/AdminDashboard'));
@@ -123,6 +125,10 @@ const router = createBrowserRouter([
       {
         path: '/thankyou',
         element: <Suspense fallback={<LoadingSpain/>}><ThankYouPage/></Suspense>
+      },
+      {
+        path: '/freeQuoteThank',
+        element: <Suspense fallback={<LoadingSpain/>}><FreeQuoteThankYou/></Suspense>
       },
       {
         path: '/product-catelog',

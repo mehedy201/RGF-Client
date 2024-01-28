@@ -49,7 +49,7 @@ const QuateForm = () => {
                         if(res.status == 200){
                             setLoading(false)
                             reset()
-                            return navigate('/thankyou');
+                            return navigate('/freeQuoteThank');
                         }else{
                             setLoading(false)
                             return alert('Not Send')
