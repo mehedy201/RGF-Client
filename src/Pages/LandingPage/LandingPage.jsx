@@ -26,7 +26,7 @@ const LandingPage = () => {
                     <div className='landingPageButtonDiv'>
                         <Link to={'/shop-turf'} className="heroBtnStyle">Shop Turf</Link>
                         <Link to={'/shop-plants'} className="heroBtnStyle">Shop Plants</Link>
-                        <Link to={'/free-quate'} className="heroBtnStyle">Free Quote</Link>
+                        <Link to={'/FREE-QUATE'} className="heroBtnStyle">Free Quote</Link>
                     </div>
                 </div>
                 {/* Hero Section bottom part ___________ */}

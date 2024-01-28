@@ -111,7 +111,7 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<LoadingSpain/>}><ContactUs/></Suspense>
       },
       {
-        path: '/free-quate',
+        path: '/FREE-QUATE',
         element: <Suspense fallback={<LoadingSpain/>}><FreeQuatePage/></Suspense>
       },
       {
