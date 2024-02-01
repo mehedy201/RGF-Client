@@ -98,9 +98,6 @@ const EditTestimonials = () => {
         }).then(res => res.json())
           .then(data => {
             if(data.success){
-                console.log(data)
-                setImagePath('');
-                setFileName('');
                 toast.success('Succesfully Post Updated')
                 reset();
             }
