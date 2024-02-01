@@ -140,7 +140,7 @@ const EditTestimonials = () => {
                                             {
                                                 testimonials?.img && <> 
                                                     <img style={{height: '200px', weight: '100%',}} src={`https://s.rgvturf.com/${testimonials?.img}`} alt="" />
-                                                    <FaRegTrashAlt style={{position: 'absolute', top: '10px', right: '10px'}} onClick={() => preImgDelete(testimonials.fileName)} className='deleteIcon'/>
+                                                    <FaRegTrashAlt style={{position: 'absolute', top: '10px', right: '10px', cursor: 'pointer'}} onClick={() => preImgDelete(testimonials.fileName)} className='deleteIcon'/>
                                                 </> 
                                             }
                                         </>
@@ -153,7 +153,7 @@ const EditTestimonials = () => {
                                         {
                                             imagePath &&  <img style={{height: '200px', weight: '100%'}} src={`https://s.rgvturf.com/${imagePath}`} alt="" />
                                         }
-                                            <FaRegTrashAlt style={{position: 'absolute', top: '10px', right: '10px'}} onClick={() => siDeleteImage()} className='deleteIcon'/>
+                                            <FaRegTrashAlt style={{position: 'absolute', top: '10px', right: '10px', cursor: 'pointer'}} onClick={() => siDeleteImage()} className='deleteIcon'/>
                                         </>
                                     }
                                 </div>
