@@ -13,7 +13,7 @@ const ProductCard = ({products}) => {
                 <div className="row g-3">
                     {products.map((product) => {
                         return <div key={product._id} className="col-md-4">
-                            <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product?.ProductTitle.replaceAll(' ','-')}/${product?._id}`}>
+                            <Link style={{textDecoration: 'none', color: 'black'}} to={`/product-catalog/${product?.ProductTitle.replaceAll(' ','-').replaceAll('/','-')}/${product?._id}`}>
                                 <div style={{cursor: 'pointer'}} className="overflow-hidden pointer">
                                     <div style={{height: '250px'}} className="d-flex justify-content-center align-items-center overflow-hidden p-2">
                                         <img style={{height: '-webkit-fill-available', width: '100%',}} src={`https://s.rgvturf.com/${product?.img}`} alt={product?.ProductTitle} />
