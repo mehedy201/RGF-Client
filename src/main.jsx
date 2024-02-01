@@ -39,6 +39,10 @@ const EditProduct = React.lazy(() => import('./AdminPages/AdminDashboard/EditPro
 const ManageProduct = React.lazy(() => import('./AdminPages/AdminDashboard/ManageProduct/ManageProduct'));
 const AddModelingImage = React.lazy(() => import('./AdminPages/AdminDashboard/AddModelingImage/AddModelingImage'));
 const ProductCatelog = React.lazy(() => import('./SharedPages/ProductCatelog/ProductCatelog'));
+const Testimonials = React.lazy(() => import('./AdminPages/AdminDashboard/Testimonials/Testimonials'));
+const AddTestimonials = React.lazy(() => import('./AdminPages/AdminDashboard/Testimonials/AddTestimonials/AddTestimonials'));
+const EditTestimonials = React.lazy(() => import('./AdminPages/AdminDashboard/Testimonials/EditTestimonials/EditTestimonials'));
+
 
 
 const router = createBrowserRouter([
@@ -158,6 +162,18 @@ const router = createBrowserRouter([
       {
         path:'/dashbord/manage-product',
         element: <Suspense fallback={<LoadingSpain/>}><PrivetRoute><ManageProduct/></PrivetRoute></Suspense>,
+      },
+      {
+        path:'/dashbord/testimonials',
+        element: <Suspense fallback={<LoadingSpain/>}><PrivetRoute><Testimonials/></PrivetRoute></Suspense>,
+      },
+      {
+        path:'/dashbord/add-testimonials',
+        element: <Suspense fallback={<LoadingSpain/>}><PrivetRoute><AddTestimonials/></PrivetRoute></Suspense>,
+      },
+      {
+        path:'/dashbord/edit-testimonials/:id',
+        element: <Suspense fallback={<LoadingSpain/>}><PrivetRoute><EditTestimonials/></PrivetRoute></Suspense>,
       },
       {
         path:'/dashbord/edit-product/:id',

@@ -1,0 +1,22 @@
+.add_testimonials input{
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 8px;
+    padding: 6px;
+    transition: 0.5s;
+    margin: 5px 0px;
+}
+.add_testimonials textarea{
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 8px;
+    padding: 6px;
+    transition: 0.5s;
+    margin: 5px 0px;
+}
+.add_testimonials input:focus{
+    outline: none;
+    border: 1px solid aquamarine;
+}
+.add_testimonials textarea:focus{
+    outline: none;
+    border: 1px solid aquamarine;;
+}

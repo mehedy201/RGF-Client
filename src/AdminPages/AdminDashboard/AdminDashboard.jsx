@@ -34,6 +34,7 @@ const AdminDashboard = () => {// Get data use auth state
                             <Link to={'/dashbord/add-product'} className='d-block fw-bold my-2 border p-2 dashboard_link_style'>Add Product</Link>
                             <Link to={'/dashbord/add-modeling-image'} className='d-block fw-bold my-2 border p-2 dashboard_link_style'>Modeling Images</Link>
                             <Link to={'/dashbord/manage-product'} className='d-block fw-bold my-2 border p-2 dashboard_link_style'>Manage Product</Link>
+                            <Link to={'/dashbord/testimonials'} className='d-block fw-bold my-2 border p-2 dashboard_link_style'>Testimonials</Link>
                         </div>
                     </div>
                     <div className="col-md-9">
